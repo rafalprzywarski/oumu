@@ -2,8 +2,16 @@
   (:require [oumu.cpu.registers :as r]))
 
 (def regs8 [::r/al ::r/cl ::r/dl ::r/bl ::r/ah ::r/ch ::r/dh ::r/bh])
+(def mem8 [[::r/bx ::r/si]
+           [::r/bx ::r/di]
+           [::r/bp ::r/si]
+           [::r/bp ::r/di]
+           [::r/si]
+           [::r/di]
+           nil
+           [::r/bx]])
 
-(def one-byte {0x00 {::tag ::add, ::args [::r8 ::r8]}
+(def one-byte {0x00 {::tag ::add, ::args [::r8-or-m8 ::r8]}
                0x04 {::tag ::add, ::args [::r/al ::imm8]}
                0x05 {::tag ::add, ::args [::r/ax ::imm16]}
                0x06 {::tag ::push, ::args [::r/es]}
@@ -107,6 +115,8 @@
                (= ::imm8 arg1) (assoc-in instr [::args 1] (second bytes))
                (= ::imm16 arg1) (assoc-in instr [::args 1] (word (next bytes)))
                :else instr)]
-  (if (= ::r8 arg0)
-    (assoc-in instr [::args 0] (regs8 (bit-and 0x07 (second bytes))))
+  (if (= ::r8-or-m8 arg0)
+    (if (= 0xc0 (bit-and 0xc0 (second bytes)))
+      (assoc-in instr [::args 0] (regs8 (bit-and 0x07 (second bytes))))
+      (assoc-in instr [::args 0] (mem8 (bit-and 0x07 (second bytes)))))
     instr)))
