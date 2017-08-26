@@ -8,7 +8,7 @@
            [::r/bp ::r/di]
            [::r/si]
            [::r/di]
-           nil
+           [::imm16]
            [::r/bx]])
 
 (def one-byte {0x00 {::tag ::add, ::args [::r8-or-m8 ::r8]}
@@ -118,5 +118,7 @@
   (if (= ::r8-or-m8 arg0)
     (if (= 0xc0 (bit-and 0xc0 (second bytes)))
       (assoc-in instr [::args 0] (regs8 (bit-and 0x07 (second bytes))))
-      (assoc-in instr [::args 0] (mem8 (bit-and 0x07 (second bytes)))))
+      (let [m (mem8 (bit-and 0x07 (second bytes)))
+            m (if (= m [::imm16]) [(word (nnext bytes))] m)]
+        (assoc-in instr [::args 0] m)))
     instr)))
