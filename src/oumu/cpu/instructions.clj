@@ -2,7 +2,7 @@
   (:require [oumu.cpu.registers :as r]))
 
 (def regs8 [::r/al ::r/cl ::r/dl ::r/bl ::r/ah ::r/ch ::r/dh ::r/bh])
-(def mem8 [[::r/bx ::r/si]
+(def memr [[::r/bx ::r/si]
            [::r/bx ::r/di]
            [::r/bp ::r/si]
            [::r/bp ::r/di]
@@ -10,6 +10,14 @@
            [::r/di]
            [::imm16]
            [::r/bx]])
+(def memrd8 [[::r/bx ::r/si]
+             [::r/bx ::r/di]
+             [::r/bp ::r/si]
+             [::r/bp ::r/di]
+             [::r/si]
+             [::r/di]
+             [::r/bp]
+             [::r/bx]])
 
 (def one-byte {0x00 {::tag ::add, ::args [::r8-or-m8 ::r8]}
                0x04 {::tag ::add, ::args [::r/al ::imm8]}
@@ -106,6 +114,9 @@
 (defn- word [bytes]
   (+ (first bytes) (bit-shift-left (second bytes) 8)))
 
+(defn signed-byte [v]
+  (if (< 127 v) (- v 256) v))
+
 (defn decode [bytes]
   (let [instr (one-byte (first bytes))
         arg0 (first (::args instr))
@@ -116,9 +127,13 @@
                (= ::imm16 arg1) (assoc-in instr [::args 1] (word (next bytes)))
                :else instr)]
   (if (= ::r8-or-m8 arg0)
-    (if (= 0xc0 (bit-and 0xc0 (second bytes)))
-      (assoc-in instr [::args 0] (regs8 (bit-and 0x07 (second bytes))))
-      (let [m (mem8 (bit-and 0x07 (second bytes)))
-            m (if (= m [::imm16]) [(word (nnext bytes))] m)]
-        (assoc-in instr [::args 0] m)))
+    (let [mod (bit-and 0xc0 (second bytes))]
+      (cond
+        (= 0xc0 mod) (assoc-in instr [::args 0] (regs8 (bit-and 0x07 (second bytes))))
+        (= 0x40 mod) (assoc-in instr [::args 0] (let [d (signed-byte (second (next bytes)))
+                                                      ptr (memrd8 (bit-and 0x07 (second bytes)))]
+                                                  (if (zero? d) ptr (conj ptr d))))
+        :else (let [m (memr (bit-and 0x07 (second bytes)))
+                    m (if (= m [::imm16]) [(word (nnext bytes))] m)]
+                (assoc-in instr [::args 0] m))))
     instr)))
