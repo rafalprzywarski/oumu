@@ -1,8 +1,12 @@
 (ns oumu.cpu.instructions
   (:require [oumu.cpu.registers :as r]))
 
+(def regs8 [::r/al ::r/cl ::r/dl ::r/bl ::r/ah ::r/ch ::r/dh ::r/bh])
 
-(def one-byte {0x06 {::tag ::push, ::args [::r/es]}
+(def one-byte {0x00 {::tag ::add, ::args [::r8 ::r8]}
+               0x04 {::tag ::add, ::args [::r/al ::imm8]}
+               0x05 {::tag ::add, ::args [::r/ax ::imm16]}
+               0x06 {::tag ::push, ::args [::r/es]}
                0x07 {::tag ::pop, ::args [::r/es]}
                0x0e {::tag ::push, ::args [::r/cs]}
                0x16 {::tag ::push, ::args [::r/ss]}
@@ -91,5 +95,18 @@
                0xfc {::tag ::cld}
                0xfd {::tag ::std}})
 
+(defn- word [bytes]
+  (+ (first bytes) (bit-shift-left (second bytes) 8)))
+
 (defn decode [bytes]
-  (one-byte (first bytes)))
+  (let [instr (one-byte (first bytes))
+        arg0 (first (::args instr))
+        arg1 (second (::args instr))
+        instr (cond
+               (= ::r8 arg1) (assoc-in instr [::args 1] (regs8 (bit-and 0x07 (bit-shift-right (second bytes) 3))))
+               (= ::imm8 arg1) (assoc-in instr [::args 1] (second bytes))
+               (= ::imm16 arg1) (assoc-in instr [::args 1] (word (next bytes)))
+               :else instr)]
+  (if (= ::r8 arg0)
+    (assoc-in instr [::args 0] (regs8 (bit-and 0x07 (second bytes))))
+    instr)))
