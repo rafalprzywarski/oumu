@@ -115,7 +115,10 @@
   (+ (first bytes) (bit-shift-left (second bytes) 8)))
 
 (defn signed-byte [v]
-  (if (< 127 v) (- v 256) v))
+  (if (< 0x7f v) (- v 0x100) v))
+
+(defn signed-word [v]
+  (if (< 0x7fff v) (- v 0x10000) v))
 
 (defn decode [bytes]
   (let [instr (one-byte (first bytes))
@@ -131,6 +134,9 @@
       (cond
         (= 0xc0 mod) (assoc-in instr [::args 0] (regs8 (bit-and 0x07 (second bytes))))
         (= 0x40 mod) (assoc-in instr [::args 0] (let [d (signed-byte (second (next bytes)))
+                                                      ptr (memrd8 (bit-and 0x07 (second bytes)))]
+                                                  (if (zero? d) ptr (conj ptr d))))
+        (= 0x80 mod) (assoc-in instr [::args 0] (let [d (signed-word (word (nnext bytes)))
                                                       ptr (memrd8 (bit-and 0x07 (second bytes)))]
                                                   (if (zero? d) ptr (conj ptr d))))
         :else (let [m (memr (bit-and 0x07 (second bytes)))
