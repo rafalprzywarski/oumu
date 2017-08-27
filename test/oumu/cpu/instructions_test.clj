@@ -2198,7 +2198,9 @@
   (safe-merge
    decode-examples
    (gen-numeric-examples 0x00 ::i/add)
-   (gen-numeric-examples 0x08 ::i/or)))
+   (gen-numeric-examples 0x08 ::i/or)
+   (gen-numeric-examples 0x10 ::i/adc)
+   (gen-numeric-examples 0x18 ::i/sbb)))
 
 
 (defn find-gaps []

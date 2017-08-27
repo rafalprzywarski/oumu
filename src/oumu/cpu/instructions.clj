@@ -38,8 +38,20 @@
                0x0c {::tag ::or, ::args [::r/al ::imm8]}
                0x0d {::tag ::or, ::args [::r/ax ::imm16]}
                0x0e {::tag ::push, ::args [::r/cs]}
+               0x10 {::tag ::adc, ::args [::r-or-m8 ::r8]}
+               0x11 {::tag ::adc, ::args [::r-or-m16 ::r16]}
+               0x12 {::tag ::adc, ::args [::r8 ::r-or-m8]}
+               0x13 {::tag ::adc, ::args [::r16 ::r-or-m16]}
+               0x14 {::tag ::adc, ::args [::r/al ::imm8]}
+               0x15 {::tag ::adc, ::args [::r/ax ::imm16]}
                0x16 {::tag ::push, ::args [::r/ss]}
                0x17 {::tag ::pop, ::args [::r/ss]}
+               0x18 {::tag ::sbb, ::args [::r-or-m8 ::r8]}
+               0x19 {::tag ::sbb, ::args [::r-or-m16 ::r16]}
+               0x1a {::tag ::sbb, ::args [::r8 ::r-or-m8]}
+               0x1b {::tag ::sbb, ::args [::r16 ::r-or-m16]}
+               0x1c {::tag ::sbb, ::args [::r/al ::imm8]}
+               0x1d {::tag ::sbb, ::args [::r/ax ::imm16]}
                0x1e {::tag ::push, ::args [::r/ds]}
                0x1f {::tag ::pop, ::args [::r/ds]}
                0x27 {::tag ::daa}
