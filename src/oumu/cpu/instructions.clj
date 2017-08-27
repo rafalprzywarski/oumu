@@ -164,6 +164,9 @@
                0xcf {::tag ::iret}
                0xd6 {::tag ::setalc}
                0xd7 {::tag ::xlat}
+               0xe0 {::tag ::loopne, ::args [::rel8]}
+               0xe1 {::tag ::loope, ::args [::rel8]}
+               0xe2 {::tag ::loop, ::args [::rel8]}
                0xe3 {::tag ::jcxz, ::args [::rel8]}
                0xe4 {::tag ::in, ::args [::r/al ::imm8]}
                0xe5 {::tag ::in, ::args [::r/ax ::imm8]}

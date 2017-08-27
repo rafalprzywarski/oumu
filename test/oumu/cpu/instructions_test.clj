@@ -2215,6 +2215,12 @@
    [0xcf] {::i/tag ::i/iret}
    [0xd6] {::i/tag ::i/setalc}
    [0xd7] {::i/tag ::i/xlat}
+   [0xe0 0xf0] {::i/tag ::i/loopne, ::i/args [-16]}
+   [0xe0 0x0f] {::i/tag ::i/loopne, ::i/args [15]}
+   [0xe1 0xf0] {::i/tag ::i/loope, ::i/args [-16]}
+   [0xe1 0x0f] {::i/tag ::i/loope, ::i/args [15]}
+   [0xe2 0xf0] {::i/tag ::i/loop, ::i/args [-16]}
+   [0xe2 0x0f] {::i/tag ::i/loop, ::i/args [15]}
    [0xe3 0xf0] {::i/tag ::i/jcxz, ::i/args [-16]}
    [0xe3 0x0f] {::i/tag ::i/jcxz, ::i/args [15]}
    [0xe4 0xf0] {::i/tag ::i/in, ::i/args [::r/al 0xf0]}
