@@ -120,26 +120,49 @@
 (defn signed-word [v]
   (if (< 0x7fff v) (- v 0x10000) v))
 
+(defn- decode-reg8 [offset modrm]
+  (regs8 (bit-and 0x07 (bit-shift-right modrm offset))))
+
+(defn- decode-memrd8 [modrm]
+  (memrd8 (bit-and 0x07 modrm)))
+
+(defn- decode-memr [modrm]
+  (memr (bit-and 0x07 modrm)))
+
+(defn- decode-arg1 [instr bytes]
+  (let [arg1 (second (::args instr))]
+    (cond
+      (= ::r8 arg1) (assoc-in instr [::args 1] (decode-reg8 3 (first bytes)))
+      (= ::imm8 arg1) (assoc-in instr [::args 1] (first bytes))
+      (= ::imm16 arg1) (assoc-in instr [::args 1] (word bytes))
+      :else instr)))
+
+(defn- conj-not-zero [coll val]
+  (if (zero? val)
+    coll
+    (conj coll val)))
+
+(defn- decode-arg0 [instr bytes]
+  (let [arg0 (first (::args instr))]
+    (if (= ::r8-or-m8 arg0)
+      (let [modrm (first bytes)
+            mod (bit-and 0xc0 modrm)
+            arg0 (cond
+                   (= 0xc0 mod) (decode-reg8 0 modrm)
+                   (= 0x40 mod) (let [d (signed-byte (second bytes))
+                                      ptr (decode-memrd8 modrm)]
+                                  (conj-not-zero ptr d))
+                   (= 0x80 mod) (let [d (signed-word (word (next bytes)))
+                                      ptr (decode-memrd8 modrm)]
+                                  (conj-not-zero ptr d))
+                   :else (let [m (decode-memr modrm)
+                               m (if (= m [::imm16]) [(word (next bytes))] m)]
+                           m))]
+       (assoc-in instr [::args 0] arg0))
+      instr)))
+
 (defn decode [bytes]
   (let [instr (one-byte (first bytes))
-        arg0 (first (::args instr))
-        arg1 (second (::args instr))
-        instr (cond
-               (= ::r8 arg1) (assoc-in instr [::args 1] (regs8 (bit-and 0x07 (bit-shift-right (second bytes) 3))))
-               (= ::imm8 arg1) (assoc-in instr [::args 1] (second bytes))
-               (= ::imm16 arg1) (assoc-in instr [::args 1] (word (next bytes)))
-               :else instr)]
-    (if (= ::r8-or-m8 arg0)
-      (let [mod (bit-and 0xc0 (second bytes))]
-        (cond
-          (= 0xc0 mod) (assoc-in instr [::args 0] (regs8 (bit-and 0x07 (second bytes))))
-          (= 0x40 mod) (assoc-in instr [::args 0] (let [d (signed-byte (second (next bytes)))
-                                                        ptr (memrd8 (bit-and 0x07 (second bytes)))]
-                                                    (if (zero? d) ptr (conj ptr d))))
-          (= 0x80 mod) (assoc-in instr [::args 0] (let [d (signed-word (word (nnext bytes)))
-                                                        ptr (memrd8 (bit-and 0x07 (second bytes)))]
-                                                    (if (zero? d) ptr (conj ptr d))))
-          :else (let [m (memr (bit-and 0x07 (second bytes)))
-                      m (if (= m [::imm16]) [(word (nnext bytes))] m)]
-                  (assoc-in instr [::args 0] m))))
-      instr)))
+        instr (decode-arg0 instr (next bytes))
+        instr (decode-arg1 instr (next bytes))]
+    instr))
