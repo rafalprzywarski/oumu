@@ -75,6 +75,12 @@
                0x34 {::tag ::xor, ::args [::r/al ::imm8]}
                0x35 {::tag ::xor, ::args [::r/ax ::imm16]}
                0x37 {::tag ::aaa}
+               0x38 {::tag ::cmp, ::args [::r-or-m8 ::r8]}
+               0x39 {::tag ::cmp, ::args [::r-or-m16 ::r16]}
+               0x3a {::tag ::cmp, ::args [::r8 ::r-or-m8]}
+               0x3b {::tag ::cmp, ::args [::r16 ::r-or-m16]}
+               0x3c {::tag ::cmp, ::args [::r/al ::imm8]}
+               0x3d {::tag ::cmp, ::args [::r/ax ::imm16]}
                0x3f {::tag ::aas}
                0x40 {::tag ::inc, ::args [::r/ax]}
                0x41 {::tag ::inc, ::args [::r/cx]}
