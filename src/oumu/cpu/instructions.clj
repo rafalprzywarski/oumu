@@ -164,6 +164,8 @@
                0xcf {::tag ::iret}
                0xd6 {::tag ::setalc}
                0xd7 {::tag ::xlat}
+               0xe9 {::tag ::jmp, ::args [::rel16]}
+               0xeb {::tag ::jmp, ::args [::rel8]}
                0xec {::tag ::in, ::args [::r/al ::r/dx]}
                0xed {::tag ::in, ::args [::r/ax ::r/dx]}
                0xee {::tag ::out, ::args [::r/dx ::r/al]}
@@ -224,6 +226,7 @@
     ::imm8 (first bytes)
     ::rel8 (signed-byte (first bytes))
     ::imm16 (word bytes)
+    ::rel16 (signed-word (word bytes))
     nil))
 
 (defn decode [bytes]

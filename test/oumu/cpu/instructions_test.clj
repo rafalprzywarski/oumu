@@ -2215,6 +2215,10 @@
    [0xcf] {::i/tag ::i/iret}
    [0xd6] {::i/tag ::i/setalc}
    [0xd7] {::i/tag ::i/xlat}
+   [0xe9 0xf0 0x0f] {::i/tag ::i/jmp, ::i/args [4080]}
+   [0xe9 0x0f 0xf0] {::i/tag ::i/jmp, ::i/args [-4081]}
+   [0xeb 0xf0] {::i/tag ::i/jmp, ::i/args [-16]}
+   [0xeb 0x0f] {::i/tag ::i/jmp, ::i/args [15]}
    [0xec] {::i/tag ::i/in, ::i/args [::r/al ::r/dx]}
    [0xed] {::i/tag ::i/in, ::i/args [::r/ax ::r/dx]}
    [0xee] {::i/tag ::i/out, ::i/args [::r/dx ::r/al]}
