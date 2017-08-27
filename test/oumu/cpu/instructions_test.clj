@@ -2215,6 +2215,8 @@
    [0xcf] {::i/tag ::i/iret}
    [0xd6] {::i/tag ::i/setalc}
    [0xd7] {::i/tag ::i/xlat}
+   [0xe3 0xf0] {::i/tag ::i/jcxz, ::i/args [-16]}
+   [0xe3 0x0f] {::i/tag ::i/jcxz, ::i/args [15]}
    [0xe8 0xf0 0x0f] {::i/tag ::i/call, ::i/args [4080]}
    [0xe8 0x0f 0xf0] {::i/tag ::i/call, ::i/args [-4081]}
    [0xe9 0xf0 0x0f] {::i/tag ::i/jmp, ::i/args [4080]}
