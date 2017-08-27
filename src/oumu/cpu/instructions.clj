@@ -129,17 +129,17 @@
                (= ::imm8 arg1) (assoc-in instr [::args 1] (second bytes))
                (= ::imm16 arg1) (assoc-in instr [::args 1] (word (next bytes)))
                :else instr)]
-  (if (= ::r8-or-m8 arg0)
-    (let [mod (bit-and 0xc0 (second bytes))]
-      (cond
-        (= 0xc0 mod) (assoc-in instr [::args 0] (regs8 (bit-and 0x07 (second bytes))))
-        (= 0x40 mod) (assoc-in instr [::args 0] (let [d (signed-byte (second (next bytes)))
-                                                      ptr (memrd8 (bit-and 0x07 (second bytes)))]
-                                                  (if (zero? d) ptr (conj ptr d))))
-        (= 0x80 mod) (assoc-in instr [::args 0] (let [d (signed-word (word (nnext bytes)))
-                                                      ptr (memrd8 (bit-and 0x07 (second bytes)))]
-                                                  (if (zero? d) ptr (conj ptr d))))
-        :else (let [m (memr (bit-and 0x07 (second bytes)))
-                    m (if (= m [::imm16]) [(word (nnext bytes))] m)]
-                (assoc-in instr [::args 0] m))))
-    instr)))
+    (if (= ::r8-or-m8 arg0)
+      (let [mod (bit-and 0xc0 (second bytes))]
+        (cond
+          (= 0xc0 mod) (assoc-in instr [::args 0] (regs8 (bit-and 0x07 (second bytes))))
+          (= 0x40 mod) (assoc-in instr [::args 0] (let [d (signed-byte (second (next bytes)))
+                                                        ptr (memrd8 (bit-and 0x07 (second bytes)))]
+                                                    (if (zero? d) ptr (conj ptr d))))
+          (= 0x80 mod) (assoc-in instr [::args 0] (let [d (signed-word (word (nnext bytes)))
+                                                        ptr (memrd8 (bit-and 0x07 (second bytes)))]
+                                                    (if (zero? d) ptr (conj ptr d))))
+          :else (let [m (memr (bit-and 0x07 (second bytes)))
+                      m (if (= m [::imm16]) [(word (nnext bytes))] m)]
+                  (assoc-in instr [::args 0] m))))
+      instr)))
