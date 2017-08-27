@@ -26,6 +26,7 @@
 (def one-byte {0x00 {::tag ::add, ::args [::r-or-m8 ::r8]}
                0x01 {::tag ::add, ::args [::r-or-m16 ::r16]}
                0x02 {::tag ::add, ::args [::r8 ::r-or-m8]}
+               0x03 {::tag ::add, ::args [::r16 ::r-or-m16]}
                0x04 {::tag ::add, ::args [::r/al ::imm8]}
                0x05 {::tag ::add, ::args [::r/ax ::imm16]}
                0x06 {::tag ::push, ::args [::r/es]}
@@ -156,19 +157,23 @@
 
 (defn- decode-arg0 [instr bytes]
   (let [arg0 (first (::args instr))]
-    (cond
-      (= ::r8 arg0) (decode-reg regs8 3 (first bytes))
-      (= ::r-or-m8 arg0) (decode-r-or-m regs8 bytes)
-      (= ::r-or-m16 arg0) (decode-r-or-m regs16 bytes))))
+    (case arg0
+      ::r8 (decode-reg regs8 3 (first bytes))
+      ::r-or-m8 (decode-r-or-m regs8 bytes)
+      ::r16 (decode-reg regs16 3 (first bytes))
+      ::r-or-m16 (decode-r-or-m regs16 bytes)
+      nil)))
 
 (defn- decode-arg1 [instr bytes]
   (let [arg1 (second (::args instr))]
-    (cond
-      (= ::r8 arg1) (decode-reg regs8 3 (first bytes))
-      (= ::r-or-m8 arg1) (decode-r-or-m regs8 bytes)
-      (= ::r16 arg1) (decode-reg regs16 3 (first bytes))
-      (= ::imm8 arg1) (first bytes)
-      (= ::imm16 arg1) (word bytes))))
+    (case arg1
+      ::r8 (decode-reg regs8 3 (first bytes))
+      ::r-or-m8 (decode-r-or-m regs8 bytes)
+      ::r16 (decode-reg regs16 3 (first bytes))
+      ::r-or-m16 (decode-r-or-m regs16 bytes)
+      ::imm8 (first bytes)
+      ::imm16 (word bytes)
+      nil)))
 
 (defn decode [bytes]
   (let [instr (one-byte (first bytes))
