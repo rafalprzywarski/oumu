@@ -31,6 +31,12 @@
                0x05 {::tag ::add, ::args [::r/ax ::imm16]}
                0x06 {::tag ::push, ::args [::r/es]}
                0x07 {::tag ::pop, ::args [::r/es]}
+               0x08 {::tag ::or, ::args [::r-or-m8 ::r8]}
+               0x09 {::tag ::or, ::args [::r-or-m16 ::r16]}
+               0x0a {::tag ::or, ::args [::r8 ::r-or-m8]}
+               0x0b {::tag ::or, ::args [::r16 ::r-or-m16]}
+               0x0c {::tag ::or, ::args [::r/al ::imm8]}
+               0x0d {::tag ::or, ::args [::r/ax ::imm16]}
                0x0e {::tag ::push, ::args [::r/cs]}
                0x16 {::tag ::push, ::args [::r/ss]}
                0x17 {::tag ::pop, ::args [::r/ss]}
