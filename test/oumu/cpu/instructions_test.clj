@@ -2235,6 +2235,7 @@
    [0xed] {::i/tag ::i/in, ::i/args [::r/ax ::r/dx]}
    [0xee] {::i/tag ::i/out, ::i/args [::r/dx ::r/al]}
    [0xef] {::i/tag ::i/out, ::i/args [::r/dx ::r/ax]}
+   [0xf0] nil
    [0xf1] {::i/tag ::i/icebp}
    [0xf4] {::i/tag ::i/hlt}
    [0xf5] {::i/tag ::i/cmc}
