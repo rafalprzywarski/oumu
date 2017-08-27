@@ -2153,10 +2153,6 @@
    [0x68 0x0f 0xf0] {::i/tag ::i/push, ::i/args [0xf00f]}
    [0x6a 0xf0] {::i/tag ::i/push, ::i/args [0xf0]}
    [0x6a 0x0f] {::i/tag ::i/push, ::i/args [0x0f]}
-   [0x6c] {::i/tag ::i/insb}
-   [0x6d] {::i/tag ::i/insw}
-   [0x6e] {::i/tag ::i/outsb}
-   [0x6f] {::i/tag ::i/outsw}
    [0x70 0xf0] {::i/tag ::i/jo, ::i/args [-16]}
    [0x70 0x0f] {::i/tag ::i/jo, ::i/args [15]}
    [0x71 0xf0] {::i/tag ::i/jno, ::i/args [-16]}
