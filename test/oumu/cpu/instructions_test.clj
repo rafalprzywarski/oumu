@@ -2200,7 +2200,8 @@
    (gen-numeric-examples 0x00 ::i/add)
    (gen-numeric-examples 0x08 ::i/or)
    (gen-numeric-examples 0x10 ::i/adc)
-   (gen-numeric-examples 0x18 ::i/sbb)))
+   (gen-numeric-examples 0x18 ::i/sbb)
+   (gen-numeric-examples 0x20 ::i/and)))
 
 
 (defn find-gaps []
