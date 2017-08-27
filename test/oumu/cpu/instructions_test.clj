@@ -2157,6 +2157,38 @@
    [0x6d] {::i/tag ::i/insw}
    [0x6e] {::i/tag ::i/outsb}
    [0x6f] {::i/tag ::i/outsw}
+   [0x70 0xf0] {::i/tag ::i/jo, ::i/args [-16]}
+   [0x70 0x0f] {::i/tag ::i/jo, ::i/args [15]}
+   [0x71 0xf0] {::i/tag ::i/jno, ::i/args [-16]}
+   [0x71 0x0f] {::i/tag ::i/jno, ::i/args [15]}
+   [0x72 0xf0] {::i/tag ::i/jb, ::i/args [-16]}
+   [0x72 0x0f] {::i/tag ::i/jb, ::i/args [15]}
+   [0x73 0xf0] {::i/tag ::i/jnb, ::i/args [-16]}
+   [0x73 0x0f] {::i/tag ::i/jnb, ::i/args [15]}
+   [0x74 0xf0] {::i/tag ::i/je, ::i/args [-16]}
+   [0x74 0x0f] {::i/tag ::i/je, ::i/args [15]}
+   [0x75 0xf0] {::i/tag ::i/jne, ::i/args [-16]}
+   [0x75 0x0f] {::i/tag ::i/jne, ::i/args [15]}
+   [0x76 0xf0] {::i/tag ::i/jbe, ::i/args [-16]}
+   [0x76 0x0f] {::i/tag ::i/jbe, ::i/args [15]}
+   [0x77 0xf0] {::i/tag ::i/jnbe, ::i/args [-16]}
+   [0x77 0x0f] {::i/tag ::i/jnbe, ::i/args [15]}
+   [0x78 0xf0] {::i/tag ::i/js, ::i/args [-16]}
+   [0x78 0x0f] {::i/tag ::i/js, ::i/args [15]}
+   [0x79 0xf0] {::i/tag ::i/jns, ::i/args [-16]}
+   [0x79 0x0f] {::i/tag ::i/jns, ::i/args [15]}
+   [0x7a 0xf0] {::i/tag ::i/jp, ::i/args [-16]}
+   [0x7a 0x0f] {::i/tag ::i/jp, ::i/args [15]}
+   [0x7b 0xf0] {::i/tag ::i/jnp, ::i/args [-16]}
+   [0x7b 0x0f] {::i/tag ::i/jnp, ::i/args [15]}
+   [0x7c 0xf0] {::i/tag ::i/jl, ::i/args [-16]}
+   [0x7c 0x0f] {::i/tag ::i/jl, ::i/args [15]}
+   [0x7d 0xf0] {::i/tag ::i/jnl, ::i/args [-16]}
+   [0x7d 0x0f] {::i/tag ::i/jnl, ::i/args [15]}
+   [0x7e 0xf0] {::i/tag ::i/jle, ::i/args [-16]}
+   [0x7e 0x0f] {::i/tag ::i/jle, ::i/args [15]}
+   [0x7f 0xf0] {::i/tag ::i/jnle, ::i/args [-16]}
+   [0x7f 0x0f] {::i/tag ::i/jnle, ::i/args [15]}
    [0x90] {::i/tag ::i/nop}
    [0x98] {::i/tag ::i/cbw}
    [0x99] {::i/tag ::i/cwd}

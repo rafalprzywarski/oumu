@@ -122,6 +122,22 @@
                0x6d {::tag ::insw}
                0x6e {::tag ::outsb}
                0x6f {::tag ::outsw}
+               0x70 {::tag ::jo, ::args [::rel8]}
+               0x71 {::tag ::jno, ::args [::rel8]}
+               0x72 {::tag ::jb, ::args [::rel8]}
+               0x73 {::tag ::jnb, ::args [::rel8]}
+               0x74 {::tag ::je, ::args [::rel8]}
+               0x75 {::tag ::jne, ::args [::rel8]}
+               0x76 {::tag ::jbe, ::args [::rel8]}
+               0x77 {::tag ::jnbe, ::args [::rel8]}
+               0x78 {::tag ::js, ::args [::rel8]}
+               0x79 {::tag ::jns, ::args [::rel8]}
+               0x7a {::tag ::jp, ::args [::rel8]}
+               0x7b {::tag ::jnp, ::args [::rel8]}
+               0x7c {::tag ::jl, ::args [::rel8]}
+               0x7d {::tag ::jnl, ::args [::rel8]}
+               0x7e {::tag ::jle, ::args [::rel8]}
+               0x7f {::tag ::jnle, ::args [::rel8]}
                0x90 {::tag ::nop}
                0x98 {::tag ::cbw}
                0x99 {::tag ::cwd}
@@ -206,6 +222,7 @@
     ::r16 (decode-reg regs16 3 (first bytes))
     ::r-or-m16 (decode-r-or-m regs16 bytes)
     ::imm8 (first bytes)
+    ::rel8 (signed-byte (first bytes))
     ::imm16 (word bytes)
     nil))
 
