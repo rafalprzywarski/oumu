@@ -2201,7 +2201,8 @@
    (gen-numeric-examples 0x08 ::i/or)
    (gen-numeric-examples 0x10 ::i/adc)
    (gen-numeric-examples 0x18 ::i/sbb)
-   (gen-numeric-examples 0x20 ::i/and)))
+   (gen-numeric-examples 0x20 ::i/and)
+   (gen-numeric-examples 0x28 ::i/sub)))
 
 
 (defn find-gaps []
