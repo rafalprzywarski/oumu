@@ -116,6 +116,8 @@
                0x5f {::tag ::pop, ::args [::r/di]}
                0x60 {::tag ::pusha}
                0x61 {::tag ::popa}
+               0x68 {::tag ::push, ::args [::imm16]}
+               0x6a {::tag ::push, ::args [::imm8]}
                0x6c {::tag ::insb}
                0x6d {::tag ::insw}
                0x6e {::tag ::outsb}
@@ -197,32 +199,23 @@
       :else (let [mr (decode-memr modrm)]
               (if (= mr [::imm16]) [(word (next bytes))] mr)))))
 
-(defn- decode-arg0 [instr bytes]
-  (let [arg0 (first (::args instr))]
-    (case arg0
-      ::r8 (decode-reg regs8 3 (first bytes))
-      ::r-or-m8 (decode-r-or-m regs8 bytes)
-      ::r16 (decode-reg regs16 3 (first bytes))
-      ::r-or-m16 (decode-r-or-m regs16 bytes)
-      nil)))
-
-(defn- decode-arg1 [instr bytes]
-  (let [arg1 (second (::args instr))]
-    (case arg1
-      ::r8 (decode-reg regs8 3 (first bytes))
-      ::r-or-m8 (decode-r-or-m regs8 bytes)
-      ::r16 (decode-reg regs16 3 (first bytes))
-      ::r-or-m16 (decode-r-or-m regs16 bytes)
-      ::imm8 (first bytes)
-      ::imm16 (word bytes)
-      nil)))
+(defn- decode-arg [arg bytes]
+  (case arg
+    ::r8 (decode-reg regs8 3 (first bytes))
+    ::r-or-m8 (decode-r-or-m regs8 bytes)
+    ::r16 (decode-reg regs16 3 (first bytes))
+    ::r-or-m16 (decode-r-or-m regs16 bytes)
+    ::imm8 (first bytes)
+    ::imm16 (word bytes)
+    nil))
 
 (defn decode [bytes]
   (let [instr (one-byte (first bytes))
-        instr (if-let [arg0 (decode-arg0 instr (next bytes))]
+        args (::args instr)
+        instr (if-let [arg0 (decode-arg (first args) (next bytes))]
                 (assoc-in instr [::args 0] arg0)
                 instr)
-        instr (if-let [arg1 (decode-arg1 instr (next bytes))]
+        instr (if-let [arg1 (decode-arg (second args) (next bytes))]
                 (assoc-in instr [::args 1] arg1)
                 instr)]
     instr))
