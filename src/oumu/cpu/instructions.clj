@@ -68,6 +68,12 @@
                0x2c {::tag ::sub, ::args [::r/al ::imm8]}
                0x2d {::tag ::sub, ::args [::r/ax ::imm16]}
                0x2f {::tag ::das}
+               0x30 {::tag ::xor, ::args [::r-or-m8 ::r8]}
+               0x31 {::tag ::xor, ::args [::r-or-m16 ::r16]}
+               0x32 {::tag ::xor, ::args [::r8 ::r-or-m8]}
+               0x33 {::tag ::xor, ::args [::r16 ::r-or-m16]}
+               0x34 {::tag ::xor, ::args [::r/al ::imm8]}
+               0x35 {::tag ::xor, ::args [::r/ax ::imm16]}
                0x37 {::tag ::aaa}
                0x3f {::tag ::aas}
                0x40 {::tag ::inc, ::args [::r/ax]}
