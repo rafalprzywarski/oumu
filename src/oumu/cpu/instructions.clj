@@ -167,6 +167,8 @@
                0xe3 {::tag ::jcxz, ::args [::rel8]}
                0xe4 {::tag ::in, ::args [::r/al ::imm8]}
                0xe5 {::tag ::in, ::args [::r/ax ::imm8]}
+               0xe6 {::tag ::out, ::args [::imm8 ::r/al]}
+               0xe7 {::tag ::out, ::args [::imm8 ::r/ax]}
                0xe8 {::tag ::call, ::args [::rel16]}
                0xe9 {::tag ::jmp, ::args [::rel16]}
                0xeb {::tag ::jmp, ::args [::rel8]}
