@@ -164,6 +164,7 @@
                0xcf {::tag ::iret}
                0xd6 {::tag ::setalc}
                0xd7 {::tag ::xlat}
+               0xe8 {::tag ::call, ::args [::rel16]}
                0xe9 {::tag ::jmp, ::args [::rel16]}
                0xeb {::tag ::jmp, ::args [::rel8]}
                0xec {::tag ::in, ::args [::r/al ::r/dx]}
