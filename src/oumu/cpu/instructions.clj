@@ -118,6 +118,10 @@
                0x61 {::tag ::popa}
                0x68 {::tag ::push, ::args [::imm16]}
                0x6a {::tag ::push, ::args [::imm8]}
+               0x6c {::tag ::insb}
+               0x6d {::tag ::insw}
+               0x6e {::tag ::outsb}
+               0x6f {::tag ::outsw}
                0x70 {::tag ::jo, ::args [::rel8]}
                0x71 {::tag ::jno, ::args [::rel8]}
                0x72 {::tag ::jb, ::args [::rel8]}
