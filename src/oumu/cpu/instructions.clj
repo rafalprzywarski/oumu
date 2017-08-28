@@ -23,171 +23,172 @@
             [::r/bp]
             [::r/bx]])
 
-(def one-byte {0x00 {::tag ::add, ::args [::r-or-m8 ::r8]}
-               0x01 {::tag ::add, ::args [::r-or-m16 ::r16]}
-               0x02 {::tag ::add, ::args [::r8 ::r-or-m8]}
-               0x03 {::tag ::add, ::args [::r16 ::r-or-m16]}
-               0x04 {::tag ::add, ::args [::r/al ::imm8]}
-               0x05 {::tag ::add, ::args [::r/ax ::imm16]}
-               0x06 {::tag ::push, ::args [::r/es]}
-               0x07 {::tag ::pop, ::args [::r/es]}
-               0x08 {::tag ::or, ::args [::r-or-m8 ::r8]}
-               0x09 {::tag ::or, ::args [::r-or-m16 ::r16]}
-               0x0a {::tag ::or, ::args [::r8 ::r-or-m8]}
-               0x0b {::tag ::or, ::args [::r16 ::r-or-m16]}
-               0x0c {::tag ::or, ::args [::r/al ::imm8]}
-               0x0d {::tag ::or, ::args [::r/ax ::imm16]}
-               0x0e {::tag ::push, ::args [::r/cs]}
-               0x10 {::tag ::adc, ::args [::r-or-m8 ::r8]}
-               0x11 {::tag ::adc, ::args [::r-or-m16 ::r16]}
-               0x12 {::tag ::adc, ::args [::r8 ::r-or-m8]}
-               0x13 {::tag ::adc, ::args [::r16 ::r-or-m16]}
-               0x14 {::tag ::adc, ::args [::r/al ::imm8]}
-               0x15 {::tag ::adc, ::args [::r/ax ::imm16]}
-               0x16 {::tag ::push, ::args [::r/ss]}
-               0x17 {::tag ::pop, ::args [::r/ss]}
-               0x18 {::tag ::sbb, ::args [::r-or-m8 ::r8]}
-               0x19 {::tag ::sbb, ::args [::r-or-m16 ::r16]}
-               0x1a {::tag ::sbb, ::args [::r8 ::r-or-m8]}
-               0x1b {::tag ::sbb, ::args [::r16 ::r-or-m16]}
-               0x1c {::tag ::sbb, ::args [::r/al ::imm8]}
-               0x1d {::tag ::sbb, ::args [::r/ax ::imm16]}
-               0x1e {::tag ::push, ::args [::r/ds]}
-               0x1f {::tag ::pop, ::args [::r/ds]}
-               0x20 {::tag ::and, ::args [::r-or-m8 ::r8]}
-               0x21 {::tag ::and, ::args [::r-or-m16 ::r16]}
-               0x22 {::tag ::and, ::args [::r8 ::r-or-m8]}
-               0x23 {::tag ::and, ::args [::r16 ::r-or-m16]}
-               0x24 {::tag ::and, ::args [::r/al ::imm8]}
-               0x25 {::tag ::and, ::args [::r/ax ::imm16]}
-               0x27 {::tag ::daa}
-               0x28 {::tag ::sub, ::args [::r-or-m8 ::r8]}
-               0x29 {::tag ::sub, ::args [::r-or-m16 ::r16]}
-               0x2a {::tag ::sub, ::args [::r8 ::r-or-m8]}
-               0x2b {::tag ::sub, ::args [::r16 ::r-or-m16]}
-               0x2c {::tag ::sub, ::args [::r/al ::imm8]}
-               0x2d {::tag ::sub, ::args [::r/ax ::imm16]}
-               0x2f {::tag ::das}
-               0x30 {::tag ::xor, ::args [::r-or-m8 ::r8]}
-               0x31 {::tag ::xor, ::args [::r-or-m16 ::r16]}
-               0x32 {::tag ::xor, ::args [::r8 ::r-or-m8]}
-               0x33 {::tag ::xor, ::args [::r16 ::r-or-m16]}
-               0x34 {::tag ::xor, ::args [::r/al ::imm8]}
-               0x35 {::tag ::xor, ::args [::r/ax ::imm16]}
-               0x37 {::tag ::aaa}
-               0x38 {::tag ::cmp, ::args [::r-or-m8 ::r8]}
-               0x39 {::tag ::cmp, ::args [::r-or-m16 ::r16]}
-               0x3a {::tag ::cmp, ::args [::r8 ::r-or-m8]}
-               0x3b {::tag ::cmp, ::args [::r16 ::r-or-m16]}
-               0x3c {::tag ::cmp, ::args [::r/al ::imm8]}
-               0x3d {::tag ::cmp, ::args [::r/ax ::imm16]}
-               0x3f {::tag ::aas}
-               0x40 {::tag ::inc, ::args [::r/ax]}
-               0x41 {::tag ::inc, ::args [::r/cx]}
-               0x42 {::tag ::inc, ::args [::r/dx]}
-               0x43 {::tag ::inc, ::args [::r/bx]}
-               0x44 {::tag ::inc, ::args [::r/sp]}
-               0x45 {::tag ::inc, ::args [::r/bp]}
-               0x46 {::tag ::inc, ::args [::r/si]}
-               0x47 {::tag ::inc, ::args [::r/di]}
-               0x48 {::tag ::dec, ::args [::r/ax]}
-               0x49 {::tag ::dec, ::args [::r/cx]}
-               0x4a {::tag ::dec, ::args [::r/dx]}
-               0x4b {::tag ::dec, ::args [::r/bx]}
-               0x4c {::tag ::dec, ::args [::r/sp]}
-               0x4d {::tag ::dec, ::args [::r/bp]}
-               0x4e {::tag ::dec, ::args [::r/si]}
-               0x4f {::tag ::dec, ::args [::r/di]}
-               0x50 {::tag ::push, ::args [::r/ax]}
-               0x51 {::tag ::push, ::args [::r/cx]}
-               0x52 {::tag ::push, ::args [::r/dx]}
-               0x53 {::tag ::push, ::args [::r/bx]}
-               0x54 {::tag ::push, ::args [::r/sp]}
-               0x55 {::tag ::push, ::args [::r/bp]}
-               0x56 {::tag ::push, ::args [::r/si]}
-               0x57 {::tag ::push, ::args [::r/di]}
-               0x58 {::tag ::pop, ::args [::r/ax]}
-               0x59 {::tag ::pop, ::args [::r/cx]}
-               0x5a {::tag ::pop, ::args [::r/dx]}
-               0x5b {::tag ::pop, ::args [::r/bx]}
-               0x5c {::tag ::pop, ::args [::r/sp]}
-               0x5d {::tag ::pop, ::args [::r/bp]}
-               0x5e {::tag ::pop, ::args [::r/si]}
-               0x5f {::tag ::pop, ::args [::r/di]}
-               0x60 {::tag ::pusha}
-               0x61 {::tag ::popa}
-               0x68 {::tag ::push, ::args [::imm16]}
-               0x6a {::tag ::push, ::args [::imm8]}
-               0x6c {::tag ::insb}
-               0x6d {::tag ::insw}
-               0x6e {::tag ::outsb}
-               0x6f {::tag ::outsw}
-               0x70 {::tag ::jo, ::args [::rel8]}
-               0x71 {::tag ::jno, ::args [::rel8]}
-               0x72 {::tag ::jb, ::args [::rel8]}
-               0x73 {::tag ::jnb, ::args [::rel8]}
-               0x74 {::tag ::je, ::args [::rel8]}
-               0x75 {::tag ::jne, ::args [::rel8]}
-               0x76 {::tag ::jbe, ::args [::rel8]}
-               0x77 {::tag ::jnbe, ::args [::rel8]}
-               0x78 {::tag ::js, ::args [::rel8]}
-               0x79 {::tag ::jns, ::args [::rel8]}
-               0x7a {::tag ::jp, ::args [::rel8]}
-               0x7b {::tag ::jnp, ::args [::rel8]}
-               0x7c {::tag ::jl, ::args [::rel8]}
-               0x7d {::tag ::jnl, ::args [::rel8]}
-               0x7e {::tag ::jle, ::args [::rel8]}
-               0x7f {::tag ::jnle, ::args [::rel8]}
-               0x90 {::tag ::nop}
-               0x98 {::tag ::cbw}
-               0x99 {::tag ::cwd}
-               0x9b {::tag ::fwait}
-               0x9c {::tag ::pushf}
-               0x9d {::tag ::popf}
-               0x9e {::tag ::sahf}
-               0x9f {::tag ::lahf}
-               0xa4 {::tag ::movsb}
-               0xa5 {::tag ::movsw}
-               0xa6 {::tag ::cmpsb}
-               0xa7 {::tag ::cmpsw}
-               0xaa {::tag ::stosb}
-               0xab {::tag ::stosw}
-               0xac {::tag ::lodsb}
-               0xad {::tag ::lodsw}
-               0xae {::tag ::scasb}
-               0xaf {::tag ::scasw}
-               0xc3 {::tag ::ret}
-               0xc9 {::tag ::leave}
-               0xcb {::tag ::retf}
-               0xcc {::tag ::int, ::args [(byte 3)]}
-               0xce {::tag ::into}
-               0xcf {::tag ::iret}
-               0xd6 {::tag ::setalc}
-               0xd7 {::tag ::xlat}
-               0xe0 {::tag ::loopne, ::args [::rel8]}
-               0xe1 {::tag ::loope, ::args [::rel8]}
-               0xe2 {::tag ::loop, ::args [::rel8]}
-               0xe3 {::tag ::jcxz, ::args [::rel8]}
-               0xe4 {::tag ::in, ::args [::r/al ::imm8]}
-               0xe5 {::tag ::in, ::args [::r/ax ::imm8]}
-               0xe6 {::tag ::out, ::args [::imm8 ::r/al]}
-               0xe7 {::tag ::out, ::args [::imm8 ::r/ax]}
-               0xe8 {::tag ::call, ::args [::rel16]}
-               0xe9 {::tag ::jmp, ::args [::rel16]}
-               0xeb {::tag ::jmp, ::args [::rel8]}
-               0xec {::tag ::in, ::args [::r/al ::r/dx]}
-               0xed {::tag ::in, ::args [::r/ax ::r/dx]}
-               0xee {::tag ::out, ::args [::r/dx ::r/al]}
-               0xef {::tag ::out, ::args [::r/dx ::r/ax]}
-               0xf1 {::tag ::icebp}
-               0xf4 {::tag ::hlt}
-               0xf5 {::tag ::cmc}
-               0xf8 {::tag ::clc}
-               0xf9 {::tag ::stc}
-               0xfa {::tag ::cli}
-               0xfb {::tag ::sti}
-               0xfc {::tag ::cld}
-               0xfd {::tag ::std}})
+(def one-byte {0x00 {::tag ::add, ::args [::r-or-m8 ::r8], ::length 2}
+               0x01 {::tag ::add, ::args [::r-or-m16 ::r16], ::length 2}
+               0x02 {::tag ::add, ::args [::r8 ::r-or-m8], ::length 2}
+               0x03 {::tag ::add, ::args [::r16 ::r-or-m16], ::length 2}
+               0x04 {::tag ::add, ::args [::r/al ::imm8], ::length 1}
+               0x05 {::tag ::add, ::args [::r/ax ::imm16], ::length 1}
+               0x06 {::tag ::push, ::args [::r/es], ::length 1}
+               0x07 {::tag ::pop, ::args [::r/es], ::length 1}
+               0x08 {::tag ::or, ::args [::r-or-m8 ::r8], ::length 2}
+               0x09 {::tag ::or, ::args [::r-or-m16 ::r16], ::length 2}
+               0x0a {::tag ::or, ::args [::r8 ::r-or-m8], ::length 2}
+               0x0b {::tag ::or, ::args [::r16 ::r-or-m16], ::length 2}
+               0x0c {::tag ::or, ::args [::r/al ::imm8], ::length 1}
+               0x0d {::tag ::or, ::args [::r/ax ::imm16], ::length 1}
+               0x0e {::tag ::push, ::args [::r/cs], ::length 1}
+               0x10 {::tag ::adc, ::args [::r-or-m8 ::r8], ::length 2}
+               0x11 {::tag ::adc, ::args [::r-or-m16 ::r16], ::length 2}
+               0x12 {::tag ::adc, ::args [::r8 ::r-or-m8], ::length 2}
+               0x13 {::tag ::adc, ::args [::r16 ::r-or-m16], ::length 2}
+               0x14 {::tag ::adc, ::args [::r/al ::imm8], ::length 1}
+               0x15 {::tag ::adc, ::args [::r/ax ::imm16], ::length 1}
+               0x16 {::tag ::push, ::args [::r/ss], ::length 1}
+               0x17 {::tag ::pop, ::args [::r/ss], ::length 1}
+               0x18 {::tag ::sbb, ::args [::r-or-m8 ::r8], ::length 2}
+               0x19 {::tag ::sbb, ::args [::r-or-m16 ::r16], ::length 2}
+               0x1a {::tag ::sbb, ::args [::r8 ::r-or-m8], ::length 2}
+               0x1b {::tag ::sbb, ::args [::r16 ::r-or-m16], ::length 2}
+               0x1c {::tag ::sbb, ::args [::r/al ::imm8], ::length 1}
+               0x1d {::tag ::sbb, ::args [::r/ax ::imm16], ::length 1}
+               0x1e {::tag ::push, ::args [::r/ds], ::length 1}
+               0x1f {::tag ::pop, ::args [::r/ds], ::length 1}
+               0x20 {::tag ::and, ::args [::r-or-m8 ::r8], ::length 2}
+               0x21 {::tag ::and, ::args [::r-or-m16 ::r16], ::length 2}
+               0x22 {::tag ::and, ::args [::r8 ::r-or-m8], ::length 2}
+               0x23 {::tag ::and, ::args [::r16 ::r-or-m16], ::length 2}
+               0x24 {::tag ::and, ::args [::r/al ::imm8], ::length 1}
+               0x25 {::tag ::and, ::args [::r/ax ::imm16], ::length 1}
+               0x27 {::tag ::daa, ::length 1}
+               0x28 {::tag ::sub, ::args [::r-or-m8 ::r8], ::length 2}
+               0x29 {::tag ::sub, ::args [::r-or-m16 ::r16], ::length 2}
+               0x2a {::tag ::sub, ::args [::r8 ::r-or-m8], ::length 2}
+               0x2b {::tag ::sub, ::args [::r16 ::r-or-m16], ::length 2}
+               0x2c {::tag ::sub, ::args [::r/al ::imm8], ::length 1}
+               0x2d {::tag ::sub, ::args [::r/ax ::imm16], ::length 1}
+               0x2f {::tag ::das, ::length 1}
+               0x30 {::tag ::xor, ::args [::r-or-m8 ::r8], ::length 2}
+               0x31 {::tag ::xor, ::args [::r-or-m16 ::r16], ::length 2}
+               0x32 {::tag ::xor, ::args [::r8 ::r-or-m8], ::length 2}
+               0x33 {::tag ::xor, ::args [::r16 ::r-or-m16], ::length 2}
+               0x34 {::tag ::xor, ::args [::r/al ::imm8], ::length 1}
+               0x35 {::tag ::xor, ::args [::r/ax ::imm16], ::length 1}
+               0x37 {::tag ::aaa, ::length 1}
+               0x38 {::tag ::cmp, ::args [::r-or-m8 ::r8], ::length 2}
+               0x39 {::tag ::cmp, ::args [::r-or-m16 ::r16], ::length 2}
+               0x3a {::tag ::cmp, ::args [::r8 ::r-or-m8], ::length 2}
+               0x3b {::tag ::cmp, ::args [::r16 ::r-or-m16], ::length 2}
+               0x3c {::tag ::cmp, ::args [::r/al ::imm8], ::length 1}
+               0x3d {::tag ::cmp, ::args [::r/ax ::imm16], ::length 1}
+               0x3f {::tag ::aas, ::length 1}
+               0x40 {::tag ::inc, ::args [::r/ax], ::length 1}
+               0x41 {::tag ::inc, ::args [::r/cx], ::length 1}
+               0x42 {::tag ::inc, ::args [::r/dx], ::length 1}
+               0x43 {::tag ::inc, ::args [::r/bx], ::length 1}
+               0x44 {::tag ::inc, ::args [::r/sp], ::length 1}
+               0x45 {::tag ::inc, ::args [::r/bp], ::length 1}
+               0x46 {::tag ::inc, ::args [::r/si], ::length 1}
+               0x47 {::tag ::inc, ::args [::r/di], ::length 1}
+               0x48 {::tag ::dec, ::args [::r/ax], ::length 1}
+               0x49 {::tag ::dec, ::args [::r/cx], ::length 1}
+               0x4a {::tag ::dec, ::args [::r/dx], ::length 1}
+               0x4b {::tag ::dec, ::args [::r/bx], ::length 1}
+               0x4c {::tag ::dec, ::args [::r/sp], ::length 1}
+               0x4d {::tag ::dec, ::args [::r/bp], ::length 1}
+               0x4e {::tag ::dec, ::args [::r/si], ::length 1}
+               0x4f {::tag ::dec, ::args [::r/di], ::length 1}
+               0x50 {::tag ::push, ::args [::r/ax], ::length 1}
+               0x51 {::tag ::push, ::args [::r/cx], ::length 1}
+               0x52 {::tag ::push, ::args [::r/dx], ::length 1}
+               0x53 {::tag ::push, ::args [::r/bx], ::length 1}
+               0x54 {::tag ::push, ::args [::r/sp], ::length 1}
+               0x55 {::tag ::push, ::args [::r/bp], ::length 1}
+               0x56 {::tag ::push, ::args [::r/si], ::length 1}
+               0x57 {::tag ::push, ::args [::r/di], ::length 1}
+               0x58 {::tag ::pop, ::args [::r/ax], ::length 1}
+               0x59 {::tag ::pop, ::args [::r/cx], ::length 1}
+               0x5a {::tag ::pop, ::args [::r/dx], ::length 1}
+               0x5b {::tag ::pop, ::args [::r/bx], ::length 1}
+               0x5c {::tag ::pop, ::args [::r/sp], ::length 1}
+               0x5d {::tag ::pop, ::args [::r/bp], ::length 1}
+               0x5e {::tag ::pop, ::args [::r/si], ::length 1}
+               0x5f {::tag ::pop, ::args [::r/di], ::length 1}
+               0x60 {::tag ::pusha, ::length 1}
+               0x61 {::tag ::popa, ::length 1}
+               0x68 {::tag ::push, ::args [::imm16], ::length 1}
+               0x69 {::tag ::imul, ::args [::r16 ::r-or-m16 ::imm16], ::length 2}
+               0x6a {::tag ::push, ::args [::imm8], ::length 1}
+               0x6c {::tag ::insb, ::length 1}
+               0x6d {::tag ::insw, ::length 1}
+               0x6e {::tag ::outsb, ::length 1}
+               0x6f {::tag ::outsw, ::length 1}
+               0x70 {::tag ::jo, ::args [::rel8], ::length 1}
+               0x71 {::tag ::jno, ::args [::rel8], ::length 1}
+               0x72 {::tag ::jb, ::args [::rel8], ::length 1}
+               0x73 {::tag ::jnb, ::args [::rel8], ::length 1}
+               0x74 {::tag ::je, ::args [::rel8], ::length 1}
+               0x75 {::tag ::jne, ::args [::rel8], ::length 1}
+               0x76 {::tag ::jbe, ::args [::rel8], ::length 1}
+               0x77 {::tag ::jnbe, ::args [::rel8], ::length 1}
+               0x78 {::tag ::js, ::args [::rel8], ::length 1}
+               0x79 {::tag ::jns, ::args [::rel8], ::length 1}
+               0x7a {::tag ::jp, ::args [::rel8], ::length 1}
+               0x7b {::tag ::jnp, ::args [::rel8], ::length 1}
+               0x7c {::tag ::jl, ::args [::rel8], ::length 1}
+               0x7d {::tag ::jnl, ::args [::rel8], ::length 1}
+               0x7e {::tag ::jle, ::args [::rel8], ::length 1}
+               0x7f {::tag ::jnle, ::args [::rel8], ::length 1}
+               0x90 {::tag ::nop, ::length 1}
+               0x98 {::tag ::cbw, ::length 1}
+               0x99 {::tag ::cwd, ::length 1}
+               0x9b {::tag ::fwait, ::length 1}
+               0x9c {::tag ::pushf, ::length 1}
+               0x9d {::tag ::popf, ::length 1}
+               0x9e {::tag ::sahf, ::length 1}
+               0x9f {::tag ::lahf, ::length 1}
+               0xa4 {::tag ::movsb, ::length 1}
+               0xa5 {::tag ::movsw, ::length 1}
+               0xa6 {::tag ::cmpsb, ::length 1}
+               0xa7 {::tag ::cmpsw, ::length 1}
+               0xaa {::tag ::stosb, ::length 1}
+               0xab {::tag ::stosw, ::length 1}
+               0xac {::tag ::lodsb, ::length 1}
+               0xad {::tag ::lodsw, ::length 1}
+               0xae {::tag ::scasb, ::length 1}
+               0xaf {::tag ::scasw, ::length 1}
+               0xc3 {::tag ::ret, ::length 1}
+               0xc9 {::tag ::leave, ::length 1}
+               0xcb {::tag ::retf, ::length 1}
+               0xcc {::tag ::int, ::args [(byte 3)], ::length 1}
+               0xce {::tag ::into, ::length 1}
+               0xcf {::tag ::iret, ::length 1}
+               0xd6 {::tag ::setalc, ::length 1}
+               0xd7 {::tag ::xlat, ::length 1}
+               0xe0 {::tag ::loopne, ::args [::rel8], ::length 1}
+               0xe1 {::tag ::loope, ::args [::rel8], ::length 1}
+               0xe2 {::tag ::loop, ::args [::rel8], ::length 1}
+               0xe3 {::tag ::jcxz, ::args [::rel8], ::length 1}
+               0xe4 {::tag ::in, ::args [::r/al ::imm8], ::length 1}
+               0xe5 {::tag ::in, ::args [::r/ax ::imm8], ::length 1}
+               0xe6 {::tag ::out, ::args [::imm8 ::r/al], ::length 1}
+               0xe7 {::tag ::out, ::args [::imm8 ::r/ax], ::length 1}
+               0xe8 {::tag ::call, ::args [::rel16], ::length 1}
+               0xe9 {::tag ::jmp, ::args [::rel16], ::length 1}
+               0xeb {::tag ::jmp, ::args [::rel8], ::length 1}
+               0xec {::tag ::in, ::args [::r/al ::r/dx], ::length 1}
+               0xed {::tag ::in, ::args [::r/ax ::r/dx], ::length 1}
+               0xee {::tag ::out, ::args [::r/dx ::r/al], ::length 1}
+               0xef {::tag ::out, ::args [::r/dx ::r/ax], ::length 1}
+               0xf1 {::tag ::icebp, ::length 1}
+               0xf4 {::tag ::hlt, ::length 1}
+               0xf5 {::tag ::cmc, ::length 1}
+               0xf8 {::tag ::clc, ::length 1}
+               0xf9 {::tag ::stc, ::length 1}
+               0xfa {::tag ::cli, ::length 1}
+               0xfb {::tag ::sti, ::length 1}
+               0xfc {::tag ::cld, ::length 1}
+               0xfd {::tag ::std, ::length 1}})
 
 (defn- word [bytes]
   (+ (first bytes) (bit-shift-left (second bytes) 8)))
@@ -212,39 +213,41 @@
     coll
     (conj coll val)))
 
-(defn- decode-r-or-m [regs bytes]
-  (let [modrm (first bytes)
-        mod (bit-and 0xc0 modrm)]
+(defn- decode-r-or-m [regs modrm bytes]
+  (let [mod (bit-and 0xc0 modrm)]
     (cond
-      (= 0xc0 mod) (decode-reg regs 0 modrm)
-      (= 0x40 mod) (let [d (signed-byte (second bytes))
+      (= 0xc0 mod) [(decode-reg regs 0 modrm) 0]
+      (= 0x40 mod) (let [d (signed-byte (first bytes))
                          ptr (decode-memrd modrm)]
-                     (conj-not-zero ptr d))
-      (= 0x80 mod) (let [d (signed-word (word (next bytes)))
+                     [(conj-not-zero ptr d) 1])
+      (= 0x80 mod) (let [d (signed-word (word bytes))
                          ptr (decode-memrd modrm)]
-                     (conj-not-zero ptr d))
+                     [(conj-not-zero ptr d) 2])
       :else (let [mr (decode-memr modrm)]
-              (if (= mr [::imm16]) [(word (next bytes))] mr)))))
+              (if (= mr [::imm16]) [[(word bytes)] 2] [mr 0])))))
 
-(defn- decode-arg [arg bytes]
+(defn- decode-arg [arg modrm bytes]
   (case arg
-    ::r8 (decode-reg regs8 3 (first bytes))
-    ::r-or-m8 (decode-r-or-m regs8 bytes)
-    ::r16 (decode-reg regs16 3 (first bytes))
-    ::r-or-m16 (decode-r-or-m regs16 bytes)
-    ::imm8 (first bytes)
-    ::rel8 (signed-byte (first bytes))
-    ::imm16 (word bytes)
-    ::rel16 (signed-word (word bytes))
+    ::r8 [(decode-reg regs8 3 modrm) 0]
+    ::r-or-m8 (decode-r-or-m regs8 modrm bytes)
+    ::r16 [(decode-reg regs16 3 modrm) 0]
+    ::r-or-m16 (decode-r-or-m regs16 modrm bytes)
+    ::imm8 [(first bytes) 1]
+    ::rel8 [(signed-byte (first bytes)) 1]
+    ::imm16 [(word bytes) 2]
+    ::rel16 [(signed-word (word bytes)) 2]
     nil))
 
 (defn decode [bytes]
-  (let [instr (one-byte (first bytes))
-        args (::args instr)
-        instr (if-let [arg0 (decode-arg (first args) (next bytes))]
-                (assoc-in instr [::args 0] arg0)
-                instr)
-        instr (if-let [arg1 (decode-arg (second args) (next bytes))]
-                (assoc-in instr [::args 1] arg1)
-                instr)]
-    instr))
+  (when-let [instr (one-byte (first bytes))]
+    (let [args (::args instr)
+          instr (if-let [arg (decode-arg (first args) (second bytes) (drop (::length instr) bytes))]
+                  (update (assoc-in instr [::args 0] (arg 0)) ::length #(+ % (arg 1)))
+                  instr)
+          instr (if-let [arg (decode-arg (second args) (second bytes) (drop (::length instr) bytes))]
+                  (update (assoc-in instr [::args 1] (arg 0)) ::length #(+ % (arg 1)))
+                  instr)
+          instr (if-let [arg (decode-arg (second (next args)) (second bytes) (drop (::length instr) bytes))]
+                  (update (assoc-in instr [::args 2] (arg 0)) ::length #(+ % (arg 1)))
+                  instr)]
+      instr)))
