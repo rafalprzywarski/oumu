@@ -238,16 +238,14 @@
     ::rel16 [(signed-word (word bytes)) 2]
     nil))
 
+(defn- decode-instr-arg [instr n bytes]
+  (if-let [arg (decode-arg (get (::args instr) n) (second bytes) (drop (::length instr) bytes))]
+    (update (assoc-in instr [::args n] (arg 0)) ::length #(+ % (arg 1)))
+    instr))
+
 (defn decode [bytes]
   (when-let [instr (one-byte (first bytes))]
-    (let [args (::args instr)
-          instr (if-let [arg (decode-arg (first args) (second bytes) (drop (::length instr) bytes))]
-                  (update (assoc-in instr [::args 0] (arg 0)) ::length #(+ % (arg 1)))
-                  instr)
-          instr (if-let [arg (decode-arg (second args) (second bytes) (drop (::length instr) bytes))]
-                  (update (assoc-in instr [::args 1] (arg 0)) ::length #(+ % (arg 1)))
-                  instr)
-          instr (if-let [arg (decode-arg (second (next args)) (second bytes) (drop (::length instr) bytes))]
-                  (update (assoc-in instr [::args 2] (arg 0)) ::length #(+ % (arg 1)))
-                  instr)]
+    (let [instr (decode-instr-arg instr 0 bytes)
+          instr (decode-instr-arg instr 1 bytes)
+          instr (decode-instr-arg instr 2 bytes)]
       instr)))
