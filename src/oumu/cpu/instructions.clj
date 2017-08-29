@@ -208,7 +208,15 @@
    0x0482 {::tag ::and, ::args [::r-or-m8 ::imm8], ::length 2}
    0x0582 {::tag ::sub, ::args [::r-or-m8 ::imm8], ::length 2}
    0x0682 {::tag ::xor, ::args [::r-or-m8 ::imm8], ::length 2}
-   0x0782 {::tag ::cmp, ::args [::r-or-m8 ::imm8], ::length 2}})
+   0x0782 {::tag ::cmp, ::args [::r-or-m8 ::imm8], ::length 2}
+   0x0083 {::tag ::add, ::args [::r-or-m16 ::imm8e], ::length 2}
+   0x0183 {::tag ::or, ::args [::r-or-m16 ::imm8e], ::length 2}
+   0x0283 {::tag ::adc, ::args [::r-or-m16 ::imm8e], ::length 2}
+   0x0383 {::tag ::sbb, ::args [::r-or-m16 ::imm8e], ::length 2}
+   0x0483 {::tag ::and, ::args [::r-or-m16 ::imm8e], ::length 2}
+   0x0583 {::tag ::sub, ::args [::r-or-m16 ::imm8e], ::length 2}
+   0x0683 {::tag ::xor, ::args [::r-or-m16 ::imm8e], ::length 2}
+   0x0783 {::tag ::cmp, ::args [::r-or-m16 ::imm8e], ::length 2}})
 
 (defn- word [bytes]
   (+ (first bytes) (bit-shift-left (second bytes) 8)))
@@ -218,6 +226,10 @@
 
 (defn signed-word [v]
   (if (< 0x7fff v) (- v 0x10000) v))
+
+(defn byte-to-word [v]
+  (if (< v 0x80) v (bit-or 0xff00 v)))
+
 
 (defn- decode-reg [regs offset modrm]
   (regs (bit-and 0x07 (bit-shift-right modrm offset))))
@@ -255,6 +267,7 @@
     ::imm8 [(first bytes) 1]
     ::rel8 [(signed-byte (first bytes)) 1]
     ::imm16 [(word bytes) 2]
+    ::imm8e [(byte-to-word (first bytes)) 1]
     ::rel16 [(signed-word (word bytes)) 2]
     nil))
 
