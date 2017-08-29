@@ -119,7 +119,7 @@
                0x68 {::tag ::push, ::args [::imm16], ::length 1}
                0x69 {::tag ::imul, ::args [::r16 ::r-or-m16 ::imm16], ::length 2}
                0x6a {::tag ::push, ::args [::imm8], ::length 1}
-               0x6b {::tag ::imul, ::args [::r16 ::r-or-m16 ::imm8], ::length 2}
+               0x6b {::tag ::imul, ::args [::r16 ::r-or-m16 ::imm8e], ::length 2}
                0x6c {::tag ::insb, ::length 1}
                0x6d {::tag ::insw, ::length 1}
                0x6e {::tag ::outsb, ::length 1}
