@@ -181,6 +181,14 @@
                0xb5 {::tag ::mov, ::args [::r/ch ::imm8], ::length 1}
                0xb6 {::tag ::mov, ::args [::r/dh ::imm8], ::length 1}
                0xb7 {::tag ::mov, ::args [::r/bh ::imm8], ::length 1}
+               0xb8 {::tag ::mov, ::args [::r/ax ::imm16], ::length 1}
+               0xb9 {::tag ::mov, ::args [::r/cx ::imm16], ::length 1}
+               0xba {::tag ::mov, ::args [::r/dx ::imm16], ::length 1}
+               0xbb {::tag ::mov, ::args [::r/bx ::imm16], ::length 1}
+               0xbc {::tag ::mov, ::args [::r/sp ::imm16], ::length 1}
+               0xbd {::tag ::mov, ::args [::r/bp ::imm16], ::length 1}
+               0xbe {::tag ::mov, ::args [::r/si ::imm16], ::length 1}
+               0xbf {::tag ::mov, ::args [::r/di ::imm16], ::length 1}
                0xc3 {::tag ::ret, ::length 1}
                0xc9 {::tag ::leave, ::length 1}
                0xcb {::tag ::retf, ::length 1}
