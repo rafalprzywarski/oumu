@@ -4980,10 +4980,16 @@
    [0x80 0xff 0x0f] {::i/tag ::i/cmp, ::i/args [::r/bh 0x0f]}})
 
 
+(def decode-examples-0x82
+  (let [gen-example (fn [[opcodes instr]]
+                      [(assoc opcodes 0 0x82) instr])]
+    (into {} (map gen-example decode-examples-0x80))))
+
 (def all-decode-examples
   (safe-merge
    decode-examples
    decode-examples-0x80
+   decode-examples-0x82
    imul-examples
    (gen-numeric-examples 0x00 ::i/add)
    (gen-numeric-examples 0x08 ::i/or)

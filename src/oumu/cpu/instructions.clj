@@ -200,7 +200,15 @@
    0x0480 {::tag ::and, ::args [::r-or-m8 ::imm8], ::length 2}
    0x0580 {::tag ::sub, ::args [::r-or-m8 ::imm8], ::length 2}
    0x0680 {::tag ::xor, ::args [::r-or-m8 ::imm8], ::length 2}
-   0x0780 {::tag ::cmp, ::args [::r-or-m8 ::imm8], ::length 2}})
+   0x0780 {::tag ::cmp, ::args [::r-or-m8 ::imm8], ::length 2}
+   0x0082 {::tag ::add, ::args [::r-or-m8 ::imm8], ::length 2}
+   0x0182 {::tag ::or, ::args [::r-or-m8 ::imm8], ::length 2}
+   0x0282 {::tag ::adc, ::args [::r-or-m8 ::imm8], ::length 2}
+   0x0382 {::tag ::sbb, ::args [::r-or-m8 ::imm8], ::length 2}
+   0x0482 {::tag ::and, ::args [::r-or-m8 ::imm8], ::length 2}
+   0x0582 {::tag ::sub, ::args [::r-or-m8 ::imm8], ::length 2}
+   0x0682 {::tag ::xor, ::args [::r-or-m8 ::imm8], ::length 2}
+   0x0782 {::tag ::cmp, ::args [::r-or-m8 ::imm8], ::length 2}})
 
 (defn- word [bytes]
   (+ (first bytes) (bit-shift-left (second bytes) 8)))
