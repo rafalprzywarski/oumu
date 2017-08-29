@@ -144,6 +144,10 @@
                0x85 {::tag ::test, ::args [::r-or-m16 ::r16], ::length 2}
                0x86 {::tag ::xchg, ::args [::r8 ::r-or-m8], ::length 2}
                0x87 {::tag ::xchg, ::args [::r16 ::r-or-m16], ::length 2}
+               0x88 {::tag ::mov, ::args [::r-or-m8 ::r8], ::length 2}
+               0x89 {::tag ::mov, ::args [::r-or-m16 ::r16], ::length 2}
+               0x8a {::tag ::mov, ::args [::r8 ::r-or-m8], ::length 2}
+               0x8b {::tag ::mov, ::args [::r16 ::r-or-m16], ::length 2}
                0x90 {::tag ::nop, ::length 1}
                0x98 {::tag ::cbw, ::length 1}
                0x99 {::tag ::cwd, ::length 1}
