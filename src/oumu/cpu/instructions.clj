@@ -191,6 +191,17 @@
                0xfc {::tag ::cld, ::length 1}
                0xfd {::tag ::std, ::length 1}})
 
+
+(def one-byte-ext
+  {0x0080 {::tag ::add, ::args [::r-or-m8 ::imm8], ::length 2}
+   0x0180 {::tag ::or, ::args [::r-or-m8 ::imm8], ::length 2}
+   0x0280 {::tag ::adc, ::args [::r-or-m8 ::imm8], ::length 2}
+   0x0380 {::tag ::sbb, ::args [::r-or-m8 ::imm8], ::length 2}
+   0x0480 {::tag ::and, ::args [::r-or-m8 ::imm8], ::length 2}
+   0x0580 {::tag ::sub, ::args [::r-or-m8 ::imm8], ::length 2}
+   0x0680 {::tag ::xor, ::args [::r-or-m8 ::imm8], ::length 2}
+   0x0780 {::tag ::cmp, ::args [::r-or-m8 ::imm8], ::length 2}})
+
 (defn- word [bytes]
   (+ (first bytes) (bit-shift-left (second bytes) 8)))
 
@@ -239,13 +250,21 @@
     ::rel16 [(signed-word (word bytes)) 2]
     nil))
 
+
 (defn- decode-instr-arg [instr n bytes]
   (if-let [arg (decode-arg (get (::args instr) n) (second bytes) (drop (::length instr) bytes))]
     (update (assoc-in instr [::args n] (arg 0)) ::length #(+ % (arg 1)))
     instr))
 
+
+(defn- ext-opcode [bytes]
+  (bit-or (first bytes)
+          (bit-and 0x0700 (bit-shift-left (second bytes) 5))))
+
+
 (defn decode [bytes]
-  (when-let [instr (one-byte (first bytes))]
+  (when-let [instr (or (one-byte (first bytes))
+                       (one-byte-ext (ext-opcode bytes)))]
     (let [instr (decode-instr-arg instr 0 bytes)
           instr (decode-instr-arg instr 1 bytes)
           instr (decode-instr-arg instr 2 bytes)]
