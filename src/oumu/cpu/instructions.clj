@@ -255,7 +255,23 @@
    0x0483 {::tag ::and, ::args [::r-or-m16 ::imm8e], ::length 2}
    0x0583 {::tag ::sub, ::args [::r-or-m16 ::imm8e], ::length 2}
    0x0683 {::tag ::xor, ::args [::r-or-m16 ::imm8e], ::length 2}
-   0x0783 {::tag ::cmp, ::args [::r-or-m16 ::imm8e], ::length 2}})
+   0x0783 {::tag ::cmp, ::args [::r-or-m16 ::imm8e], ::length 2}
+   0x00c0 {::tag ::rol, ::args [::r-or-m8 ::imm8], ::length 2}
+   0x01c0 {::tag ::ror, ::args [::r-or-m8 ::imm8], ::length 2}
+   0x02c0 {::tag ::rcl, ::args [::r-or-m8 ::imm8], ::length 2}
+   0x03c0 {::tag ::rcr, ::args [::r-or-m8 ::imm8], ::length 2}
+   0x04c0 {::tag ::shl, ::args [::r-or-m8 ::imm8], ::length 2}
+   0x05c0 {::tag ::shr, ::args [::r-or-m8 ::imm8], ::length 2}
+   0x06c0 {::tag ::shl, ::args [::r-or-m8 ::imm8], ::length 2}
+   0x07c0 {::tag ::sar, ::args [::r-or-m8 ::imm8], ::length 2}
+   0x00c1 {::tag ::rol, ::args [::r-or-m16 ::imm16], ::length 2}
+   0x01c1 {::tag ::ror, ::args [::r-or-m16 ::imm16], ::length 2}
+   0x02c1 {::tag ::rcl, ::args [::r-or-m16 ::imm16], ::length 2}
+   0x03c1 {::tag ::rcr, ::args [::r-or-m16 ::imm16], ::length 2}
+   0x04c1 {::tag ::shl, ::args [::r-or-m16 ::imm16], ::length 2}
+   0x05c1 {::tag ::shr, ::args [::r-or-m16 ::imm16], ::length 2}
+   0x06c1 {::tag ::shl, ::args [::r-or-m16 ::imm16], ::length 2}
+   0x07c1 {::tag ::sar, ::args [::r-or-m16 ::imm16], ::length 2}})
 
 (defn- word [bytes]
   (+ (first bytes) (bit-shift-left (second bytes) 8)))
