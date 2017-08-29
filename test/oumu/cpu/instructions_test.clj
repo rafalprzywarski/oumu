@@ -4298,6 +4298,22 @@
    [0xad] {::i/tag ::i/lodsw}
    [0xae] {::i/tag ::i/scasb}
    [0xaf] {::i/tag ::i/scasw}
+   [0xb0 0xf0] {::i/tag ::i/mov, ::i/args [::r/al 0xf0]}
+   [0xb0 0x0f] {::i/tag ::i/mov, ::i/args [::r/al 0x0f]}
+   [0xb1 0xf0] {::i/tag ::i/mov, ::i/args [::r/cl 0xf0]}
+   [0xb1 0x0f] {::i/tag ::i/mov, ::i/args [::r/cl 0x0f]}
+   [0xb2 0xf0] {::i/tag ::i/mov, ::i/args [::r/dl 0xf0]}
+   [0xb2 0x0f] {::i/tag ::i/mov, ::i/args [::r/dl 0x0f]}
+   [0xb3 0xf0] {::i/tag ::i/mov, ::i/args [::r/bl 0xf0]}
+   [0xb3 0x0f] {::i/tag ::i/mov, ::i/args [::r/bl 0x0f]}
+   [0xb4 0xf0] {::i/tag ::i/mov, ::i/args [::r/ah 0xf0]}
+   [0xb4 0x0f] {::i/tag ::i/mov, ::i/args [::r/ah 0x0f]}
+   [0xb5 0xf0] {::i/tag ::i/mov, ::i/args [::r/ch 0xf0]}
+   [0xb5 0x0f] {::i/tag ::i/mov, ::i/args [::r/ch 0x0f]}
+   [0xb6 0xf0] {::i/tag ::i/mov, ::i/args [::r/dh 0xf0]}
+   [0xb6 0x0f] {::i/tag ::i/mov, ::i/args [::r/dh 0x0f]}
+   [0xb7 0xf0] {::i/tag ::i/mov, ::i/args [::r/bh 0xf0]}
+   [0xb7 0x0f] {::i/tag ::i/mov, ::i/args [::r/bh 0x0f]}
    [0xc3] {::i/tag ::i/ret}
    [0xc9] {::i/tag ::i/leave}
    [0xcb] {::i/tag ::i/retf}

@@ -173,6 +173,14 @@
                0xad {::tag ::lodsw, ::length 1}
                0xae {::tag ::scasb, ::length 1}
                0xaf {::tag ::scasw, ::length 1}
+               0xb0 {::tag ::mov, ::args [::r/al ::imm8], ::length 1}
+               0xb1 {::tag ::mov, ::args [::r/cl ::imm8], ::length 1}
+               0xb2 {::tag ::mov, ::args [::r/dl ::imm8], ::length 1}
+               0xb3 {::tag ::mov, ::args [::r/bl ::imm8], ::length 1}
+               0xb4 {::tag ::mov, ::args [::r/ah ::imm8], ::length 1}
+               0xb5 {::tag ::mov, ::args [::r/ch ::imm8], ::length 1}
+               0xb6 {::tag ::mov, ::args [::r/dh ::imm8], ::length 1}
+               0xb7 {::tag ::mov, ::args [::r/bh ::imm8], ::length 1}
                0xc3 {::tag ::ret, ::length 1}
                0xc9 {::tag ::leave, ::length 1}
                0xcb {::tag ::retf, ::length 1}
