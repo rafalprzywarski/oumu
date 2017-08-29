@@ -140,6 +140,8 @@
                0x7d {::tag ::jnl, ::args [::rel8], ::length 1}
                0x7e {::tag ::jle, ::args [::rel8], ::length 1}
                0x7f {::tag ::jnle, ::args [::rel8], ::length 1}
+               0x84 {::tag ::test, ::args [::r-or-m8 ::r8], ::length 2}
+               0x85 {::tag ::test, ::args [::r-or-m16 ::r16], ::length 2}
                0x90 {::tag ::nop, ::length 1}
                0x98 {::tag ::cbw, ::length 1}
                0x99 {::tag ::cwd, ::length 1}
