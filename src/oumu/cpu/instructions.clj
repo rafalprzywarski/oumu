@@ -201,6 +201,14 @@
    0x0580 {::tag ::sub, ::args [::r-or-m8 ::imm8], ::length 2}
    0x0680 {::tag ::xor, ::args [::r-or-m8 ::imm8], ::length 2}
    0x0780 {::tag ::cmp, ::args [::r-or-m8 ::imm8], ::length 2}
+   0x0081 {::tag ::add, ::args [::r-or-m16 ::imm16], ::length 2}
+   0x0181 {::tag ::or, ::args [::r-or-m16 ::imm16], ::length 2}
+   0x0281 {::tag ::adc, ::args [::r-or-m16 ::imm16], ::length 2}
+   0x0381 {::tag ::sbb, ::args [::r-or-m16 ::imm16], ::length 2}
+   0x0481 {::tag ::and, ::args [::r-or-m16 ::imm16], ::length 2}
+   0x0581 {::tag ::sub, ::args [::r-or-m16 ::imm16], ::length 2}
+   0x0681 {::tag ::xor, ::args [::r-or-m16 ::imm16], ::length 2}
+   0x0781 {::tag ::cmp, ::args [::r-or-m16 ::imm16], ::length 2}
    0x0082 {::tag ::add, ::args [::r-or-m8 ::imm8], ::length 2}
    0x0182 {::tag ::or, ::args [::r-or-m8 ::imm8], ::length 2}
    0x0282 {::tag ::adc, ::args [::r-or-m8 ::imm8], ::length 2}
