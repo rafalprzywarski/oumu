@@ -4274,6 +4274,13 @@
    [0x7f 0xf0] {::i/tag ::i/jnle, ::i/args [-16]}
    [0x7f 0x0f] {::i/tag ::i/jnle, ::i/args [15]}
    [0x90] {::i/tag ::i/nop}
+   [0x91] {::i/tag ::i/xchg, ::i/args [::r/cx ::r/ax]}
+   [0x92] {::i/tag ::i/xchg, ::i/args [::r/dx ::r/ax]}
+   [0x93] {::i/tag ::i/xchg, ::i/args [::r/bx ::r/ax]}
+   [0x94] {::i/tag ::i/xchg, ::i/args [::r/sp ::r/ax]}
+   [0x95] {::i/tag ::i/xchg, ::i/args [::r/bp ::r/ax]}
+   [0x96] {::i/tag ::i/xchg, ::i/args [::r/si ::r/ax]}
+   [0x97] {::i/tag ::i/xchg, ::i/args [::r/di ::r/ax]}
    [0x98] {::i/tag ::i/cbw}
    [0x99] {::i/tag ::i/cwd}
    [0x9b] {::i/tag ::i/fwait}

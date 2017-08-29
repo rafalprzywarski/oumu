@@ -149,6 +149,13 @@
                0x8a {::tag ::mov, ::args [::r8 ::r-or-m8], ::length 2}
                0x8b {::tag ::mov, ::args [::r16 ::r-or-m16], ::length 2}
                0x90 {::tag ::nop, ::length 1}
+               0x91 {::tag ::xchg, ::args [::r/cx ::r/ax] ::length 1}
+               0x92 {::tag ::xchg, ::args [::r/dx ::r/ax] ::length 1}
+               0x93 {::tag ::xchg, ::args [::r/bx ::r/ax] ::length 1}
+               0x94 {::tag ::xchg, ::args [::r/sp ::r/ax] ::length 1}
+               0x95 {::tag ::xchg, ::args [::r/bp ::r/ax] ::length 1}
+               0x96 {::tag ::xchg, ::args [::r/si ::r/ax] ::length 1}
+               0x97 {::tag ::xchg, ::args [::r/di ::r/ax] ::length 1}
                0x98 {::tag ::cbw, ::length 1}
                0x99 {::tag ::cwd, ::length 1}
                0x9b {::tag ::fwait, ::length 1}
