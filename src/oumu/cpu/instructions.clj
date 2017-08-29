@@ -142,6 +142,8 @@
                0x7f {::tag ::jnle, ::args [::rel8], ::length 1}
                0x84 {::tag ::test, ::args [::r-or-m8 ::r8], ::length 2}
                0x85 {::tag ::test, ::args [::r-or-m16 ::r16], ::length 2}
+               0x86 {::tag ::xchg, ::args [::r8 ::r-or-m8], ::length 2}
+               0x87 {::tag ::xchg, ::args [::r16 ::r-or-m16], ::length 2}
                0x90 {::tag ::nop, ::length 1}
                0x98 {::tag ::cbw, ::length 1}
                0x99 {::tag ::cwd, ::length 1}
