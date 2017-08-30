@@ -151,6 +151,7 @@
                0x8a {::tag ::mov, ::args [::r8 ::r-or-m8], ::length 2}
                0x8b {::tag ::mov, ::args [::r16 ::r-or-m16], ::length 2}
                0x8c {::tag ::mov, ::args [::r-or-m16 ::sreg], ::length 2}
+               0x8d {::tag ::lea, ::args [::r16 ::m], ::length 2}
                0x8e {::tag ::mov, ::args [::sreg ::r-or-m16], ::length 2}
                0x90 {::tag ::nop, ::length 1}
                0x91 {::tag ::xchg, ::args [::r/cx ::r/ax] ::length 1}
@@ -304,18 +305,25 @@
     coll
     (conj coll val)))
 
-(defn- decode-r-or-m [regs modrm bytes]
+(defn- decode-m [modrm bytes]
   (let [mod (bit-and 0xc0 modrm)]
-    (cond
-      (= 0xc0 mod) [(decode-reg regs 0 modrm) 0]
-      (= 0x40 mod) (let [d (signed-byte (first bytes))
-                         ptr (decode-memrd modrm)]
-                     [(conj-not-zero ptr d) 1])
-      (= 0x80 mod) (let [d (signed-word (word bytes))
-                         ptr (decode-memrd modrm)]
-                     [(conj-not-zero ptr d) 2])
-      :else (let [mr (decode-memr modrm)]
-              (if (= mr ::ptr16) [[(word bytes)] 2] [mr 0])))))
+    (case mod
+      0x00 (let [mr (decode-memr modrm)]
+             (if (= mr ::ptr16) [[(word bytes)] 2] [mr 0]))
+      0x40 (let [d (signed-byte (first bytes))
+                 ptr (decode-memrd modrm)]
+             [(conj-not-zero ptr d) 1])
+      0x80 (let [d (signed-word (word bytes))
+                 ptr (decode-memrd modrm)]
+             [(conj-not-zero ptr d) 2])
+      [::invalid 0])))
+
+
+(defn- decode-r-or-m [regs modrm bytes]
+  (if (= 0xc0 (bit-and 0xc0 modrm))
+    [(decode-reg regs 0 modrm) 0]
+    (decode-m modrm bytes)))
+
 
 (defn- decode-arg [arg modrm bytes]
   (case arg
@@ -323,6 +331,7 @@
     ::r-or-m8 (decode-r-or-m regs8 modrm bytes)
     ::r16 [(decode-reg regs16 3 modrm) 0]
     ::r-or-m16 (decode-r-or-m regs16 modrm bytes)
+    ::m (decode-m modrm bytes)
     ::imm8 [(first bytes) 1]
     ::rel8 [(signed-byte (first bytes)) 1]
     ::imm16 [(word bytes) 2]
