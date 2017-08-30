@@ -151,6 +151,7 @@
                0x8a {::tag ::mov, ::args [::r8 ::r-or-m8], ::length 2}
                0x8b {::tag ::mov, ::args [::r16 ::r-or-m16], ::length 2}
                0x8c {::tag ::mov, ::args [::r-or-m16 ::sreg], ::length 2}
+               0x8e {::tag ::mov, ::args [::sreg ::r-or-m16], ::length 2}
                0x90 {::tag ::nop, ::length 1}
                0x91 {::tag ::xchg, ::args [::r/cx ::r/ax] ::length 1}
                0x92 {::tag ::xchg, ::args [::r/dx ::r/ax] ::length 1}
