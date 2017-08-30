@@ -5,6 +5,8 @@
 
 (def regs16 [::r/ax ::r/cx ::r/dx ::r/bx ::r/sp ::r/bp ::r/si ::r/di])
 
+(def sregs [::r/es ::r/cs ::r/ss ::r/ds ::r/fs ::r/gs ::invalid ::invalid])
+
 (def memr [[::r/bx ::r/si]
            [::r/bx ::r/di]
            [::r/bp ::r/si]
@@ -148,6 +150,7 @@
                0x89 {::tag ::mov, ::args [::r-or-m16 ::r16], ::length 2}
                0x8a {::tag ::mov, ::args [::r8 ::r-or-m8], ::length 2}
                0x8b {::tag ::mov, ::args [::r16 ::r-or-m16], ::length 2}
+               0x8c {::tag ::mov, ::args [::r-or-m16 ::sreg], ::length 2}
                0x90 {::tag ::nop, ::length 1}
                0x91 {::tag ::xchg, ::args [::r/cx ::r/ax] ::length 1}
                0x92 {::tag ::xchg, ::args [::r/dx ::r/ax] ::length 1}
@@ -324,6 +327,7 @@
     ::imm16 [(word bytes) 2]
     ::imm8e [(byte-to-word (first bytes)) 1]
     ::rel16 [(signed-word (word bytes)) 2]
+    ::sreg [(decode-reg sregs 3 modrm) 0]
     nil))
 
 
@@ -344,4 +348,5 @@
     (let [instr (decode-instr-arg instr 0 bytes)
           instr (decode-instr-arg instr 1 bytes)
           instr (decode-instr-arg instr 2 bytes)]
-      instr)))
+      (if (not-any? #(= ::invalid %) (::args instr))
+        instr))))

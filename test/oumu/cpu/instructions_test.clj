@@ -10477,7 +10477,461 @@
    [0x8b 0xfc] {::i/tag ::i/mov, ::i/args [::r/di ::r/sp]}
    [0x8b 0xfd] {::i/tag ::i/mov, ::i/args [::r/di ::r/bp]}
    [0x8b 0xfe] {::i/tag ::i/mov, ::i/args [::r/di ::r/si]}
-   [0x8b 0xff] {::i/tag ::i/mov, ::i/args [::r/di ::r/di]}})
+   [0x8b 0xff] {::i/tag ::i/mov, ::i/args [::r/di ::r/di]}
+   [0x8c 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si] ::r/es]}
+   [0x8c 0x01] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di] ::r/es]}
+   [0x8c 0x02] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si] ::r/es]}
+   [0x8c 0x03] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di] ::r/es]}
+   [0x8c 0x04] {::i/tag ::i/mov, ::i/args [[::r/si] ::r/es]}
+   [0x8c 0x05] {::i/tag ::i/mov, ::i/args [[::r/di] ::r/es]}
+   [0x8c 0x06 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[0x0ff0] ::r/es]}
+   [0x8c 0x06 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[0xf00f] ::r/es]}
+   [0x8c 0x07] {::i/tag ::i/mov, ::i/args [[::r/bx] ::r/es]}
+   [0x8c 0x08] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si] ::r/cs]}
+   [0x8c 0x09] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di] ::r/cs]}
+   [0x8c 0x0a] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si] ::r/cs]}
+   [0x8c 0x0b] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di] ::r/cs]}
+   [0x8c 0x0c] {::i/tag ::i/mov, ::i/args [[::r/si] ::r/cs]}
+   [0x8c 0x0d] {::i/tag ::i/mov, ::i/args [[::r/di] ::r/cs]}
+   [0x8c 0x0e 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[0x0ff0] ::r/cs]}
+   [0x8c 0x0e 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[0xf00f] ::r/cs]}
+   [0x8c 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx] ::r/cs]}
+   [0x8c 0x10] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si] ::r/ss]}
+   [0x8c 0x11] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di] ::r/ss]}
+   [0x8c 0x12] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si] ::r/ss]}
+   [0x8c 0x13] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di] ::r/ss]}
+   [0x8c 0x14] {::i/tag ::i/mov, ::i/args [[::r/si] ::r/ss]}
+   [0x8c 0x15] {::i/tag ::i/mov, ::i/args [[::r/di] ::r/ss]}
+   [0x8c 0x16 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[0x0ff0] ::r/ss]}
+   [0x8c 0x16 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[0xf00f] ::r/ss]}
+   [0x8c 0x17] {::i/tag ::i/mov, ::i/args [[::r/bx] ::r/ss]}
+   [0x8c 0x18] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si] ::r/ds]}
+   [0x8c 0x19] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di] ::r/ds]}
+   [0x8c 0x1a] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si] ::r/ds]}
+   [0x8c 0x1b] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di] ::r/ds]}
+   [0x8c 0x1c] {::i/tag ::i/mov, ::i/args [[::r/si] ::r/ds]}
+   [0x8c 0x1d] {::i/tag ::i/mov, ::i/args [[::r/di] ::r/ds]}
+   [0x8c 0x1e 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[0x0ff0] ::r/ds]}
+   [0x8c 0x1e 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[0xf00f] ::r/ds]}
+   [0x8c 0x1f] {::i/tag ::i/mov, ::i/args [[::r/bx] ::r/ds]}
+   [0x8c 0x20] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si] ::r/fs]}
+   [0x8c 0x21] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di] ::r/fs]}
+   [0x8c 0x22] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si] ::r/fs]}
+   [0x8c 0x23] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di] ::r/fs]}
+   [0x8c 0x24] {::i/tag ::i/mov, ::i/args [[::r/si] ::r/fs]}
+   [0x8c 0x25] {::i/tag ::i/mov, ::i/args [[::r/di] ::r/fs]}
+   [0x8c 0x26 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[0x0ff0] ::r/fs]}
+   [0x8c 0x26 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[0xf00f] ::r/fs]}
+   [0x8c 0x27] {::i/tag ::i/mov, ::i/args [[::r/bx] ::r/fs]}
+   [0x8c 0x28] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si] ::r/gs]}
+   [0x8c 0x29] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di] ::r/gs]}
+   [0x8c 0x2a] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si] ::r/gs]}
+   [0x8c 0x2b] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di] ::r/gs]}
+   [0x8c 0x2c] {::i/tag ::i/mov, ::i/args [[::r/si] ::r/gs]}
+   [0x8c 0x2d] {::i/tag ::i/mov, ::i/args [[::r/di] ::r/gs]}
+   [0x8c 0x2e 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[0x0ff0] ::r/gs]}
+   [0x8c 0x2e 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[0xf00f] ::r/gs]}
+   [0x8c 0x2f] {::i/tag ::i/mov, ::i/args [[::r/bx] ::r/gs]}
+   [0x8c 0x30] nil
+   [0x8c 0x31] nil
+   [0x8c 0x32] nil
+   [0x8c 0x33] nil
+   [0x8c 0x34] nil
+   [0x8c 0x35] nil
+   [0x8c 0x36 0xf0 0x0f] nil
+   [0x8c 0x37] nil
+   [0x8c 0x38] nil
+   [0x8c 0x39] nil
+   [0x8c 0x3a] nil
+   [0x8c 0x3b] nil
+   [0x8c 0x3c] nil
+   [0x8c 0x3d] nil
+   [0x8c 0x3e 0xf0 0x0f] nil
+   [0x8c 0x3f] nil
+   [0x8c 0x40 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si] ::r/es]}
+   [0x8c 0x40 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si -16] ::r/es]}
+   [0x8c 0x40 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si 15] ::r/es]}
+   [0x8c 0x41 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di] ::r/es]}
+   [0x8c 0x41 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di -16] ::r/es]}
+   [0x8c 0x41 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di 15] ::r/es]}
+   [0x8c 0x42 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si] ::r/es]}
+   [0x8c 0x42 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si -16] ::r/es]}
+   [0x8c 0x42 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si 15] ::r/es]}
+   [0x8c 0x43 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di] ::r/es]}
+   [0x8c 0x43 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di -16] ::r/es]}
+   [0x8c 0x43 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di 15] ::r/es]}
+   [0x8c 0x44 0x00] {::i/tag ::i/mov, ::i/args [[::r/si] ::r/es]}
+   [0x8c 0x44 0xf0] {::i/tag ::i/mov, ::i/args [[::r/si -16] ::r/es]}
+   [0x8c 0x44 0x0f] {::i/tag ::i/mov, ::i/args [[::r/si 15] ::r/es]}
+   [0x8c 0x45 0x00] {::i/tag ::i/mov, ::i/args [[::r/di] ::r/es]}
+   [0x8c 0x45 0xf0] {::i/tag ::i/mov, ::i/args [[::r/di -16] ::r/es]}
+   [0x8c 0x45 0x0f] {::i/tag ::i/mov, ::i/args [[::r/di 15] ::r/es]}
+   [0x8c 0x46 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp] ::r/es]}
+   [0x8c 0x46 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp -16] ::r/es]}
+   [0x8c 0x46 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp 15] ::r/es]}
+   [0x8c 0x47 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx] ::r/es]}
+   [0x8c 0x47 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx -16] ::r/es]}
+   [0x8c 0x47 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx 15] ::r/es]}
+   [0x8c 0x48 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si] ::r/cs]}
+   [0x8c 0x48 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si -16] ::r/cs]}
+   [0x8c 0x48 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si 15] ::r/cs]}
+   [0x8c 0x49 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di] ::r/cs]}
+   [0x8c 0x49 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di -16] ::r/cs]}
+   [0x8c 0x49 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di 15] ::r/cs]}
+   [0x8c 0x4a 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si] ::r/cs]}
+   [0x8c 0x4a 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si -16] ::r/cs]}
+   [0x8c 0x4a 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si 15] ::r/cs]}
+   [0x8c 0x4b 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di] ::r/cs]}
+   [0x8c 0x4b 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di -16] ::r/cs]}
+   [0x8c 0x4b 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di 15] ::r/cs]}
+   [0x8c 0x4c 0x00] {::i/tag ::i/mov, ::i/args [[::r/si] ::r/cs]}
+   [0x8c 0x4c 0xf0] {::i/tag ::i/mov, ::i/args [[::r/si -16] ::r/cs]}
+   [0x8c 0x4c 0x0f] {::i/tag ::i/mov, ::i/args [[::r/si 15] ::r/cs]}
+   [0x8c 0x4d 0x00] {::i/tag ::i/mov, ::i/args [[::r/di] ::r/cs]}
+   [0x8c 0x4d 0xf0] {::i/tag ::i/mov, ::i/args [[::r/di -16] ::r/cs]}
+   [0x8c 0x4d 0x0f] {::i/tag ::i/mov, ::i/args [[::r/di 15] ::r/cs]}
+   [0x8c 0x4e 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp] ::r/cs]}
+   [0x8c 0x4e 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp -16] ::r/cs]}
+   [0x8c 0x4e 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp 15] ::r/cs]}
+   [0x8c 0x4f 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx] ::r/cs]}
+   [0x8c 0x4f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx -16] ::r/cs]}
+   [0x8c 0x4f 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx 15] ::r/cs]}
+   [0x8c 0x50 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si] ::r/ss]}
+   [0x8c 0x50 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si -16] ::r/ss]}
+   [0x8c 0x50 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si 15] ::r/ss]}
+   [0x8c 0x51 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di] ::r/ss]}
+   [0x8c 0x51 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di -16] ::r/ss]}
+   [0x8c 0x51 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di 15] ::r/ss]}
+   [0x8c 0x52 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si] ::r/ss]}
+   [0x8c 0x52 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si -16] ::r/ss]}
+   [0x8c 0x52 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si 15] ::r/ss]}
+   [0x8c 0x53 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di] ::r/ss]}
+   [0x8c 0x53 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di -16] ::r/ss]}
+   [0x8c 0x53 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di 15] ::r/ss]}
+   [0x8c 0x54 0x00] {::i/tag ::i/mov, ::i/args [[::r/si] ::r/ss]}
+   [0x8c 0x54 0xf0] {::i/tag ::i/mov, ::i/args [[::r/si -16] ::r/ss]}
+   [0x8c 0x54 0x0f] {::i/tag ::i/mov, ::i/args [[::r/si 15] ::r/ss]}
+   [0x8c 0x55 0x00] {::i/tag ::i/mov, ::i/args [[::r/di] ::r/ss]}
+   [0x8c 0x55 0xf0] {::i/tag ::i/mov, ::i/args [[::r/di -16] ::r/ss]}
+   [0x8c 0x55 0x0f] {::i/tag ::i/mov, ::i/args [[::r/di 15] ::r/ss]}
+   [0x8c 0x56 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp] ::r/ss]}
+   [0x8c 0x56 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp -16] ::r/ss]}
+   [0x8c 0x56 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp 15] ::r/ss]}
+   [0x8c 0x57 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx] ::r/ss]}
+   [0x8c 0x57 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx -16] ::r/ss]}
+   [0x8c 0x57 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx 15] ::r/ss]}
+   [0x8c 0x58 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si] ::r/ds]}
+   [0x8c 0x58 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si -16] ::r/ds]}
+   [0x8c 0x58 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si 15] ::r/ds]}
+   [0x8c 0x59 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di] ::r/ds]}
+   [0x8c 0x59 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di -16] ::r/ds]}
+   [0x8c 0x59 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di 15] ::r/ds]}
+   [0x8c 0x5a 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si] ::r/ds]}
+   [0x8c 0x5a 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si -16] ::r/ds]}
+   [0x8c 0x5a 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si 15] ::r/ds]}
+   [0x8c 0x5b 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di] ::r/ds]}
+   [0x8c 0x5b 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di -16] ::r/ds]}
+   [0x8c 0x5b 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di 15] ::r/ds]}
+   [0x8c 0x5c 0x00] {::i/tag ::i/mov, ::i/args [[::r/si] ::r/ds]}
+   [0x8c 0x5c 0xf0] {::i/tag ::i/mov, ::i/args [[::r/si -16] ::r/ds]}
+   [0x8c 0x5c 0x0f] {::i/tag ::i/mov, ::i/args [[::r/si 15] ::r/ds]}
+   [0x8c 0x5d 0x00] {::i/tag ::i/mov, ::i/args [[::r/di] ::r/ds]}
+   [0x8c 0x5d 0xf0] {::i/tag ::i/mov, ::i/args [[::r/di -16] ::r/ds]}
+   [0x8c 0x5d 0x0f] {::i/tag ::i/mov, ::i/args [[::r/di 15] ::r/ds]}
+   [0x8c 0x5e 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp] ::r/ds]}
+   [0x8c 0x5e 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp -16] ::r/ds]}
+   [0x8c 0x5e 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp 15] ::r/ds]}
+   [0x8c 0x5f 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx] ::r/ds]}
+   [0x8c 0x5f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx -16] ::r/ds]}
+   [0x8c 0x5f 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx 15] ::r/ds]}
+   [0x8c 0x60 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si] ::r/fs]}
+   [0x8c 0x60 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si -16] ::r/fs]}
+   [0x8c 0x60 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si 15] ::r/fs]}
+   [0x8c 0x61 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di] ::r/fs]}
+   [0x8c 0x61 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di -16] ::r/fs]}
+   [0x8c 0x61 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di 15] ::r/fs]}
+   [0x8c 0x62 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si] ::r/fs]}
+   [0x8c 0x62 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si -16] ::r/fs]}
+   [0x8c 0x62 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si 15] ::r/fs]}
+   [0x8c 0x63 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di] ::r/fs]}
+   [0x8c 0x63 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di -16] ::r/fs]}
+   [0x8c 0x63 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di 15] ::r/fs]}
+   [0x8c 0x64 0x00] {::i/tag ::i/mov, ::i/args [[::r/si] ::r/fs]}
+   [0x8c 0x64 0xf0] {::i/tag ::i/mov, ::i/args [[::r/si -16] ::r/fs]}
+   [0x8c 0x64 0x0f] {::i/tag ::i/mov, ::i/args [[::r/si 15] ::r/fs]}
+   [0x8c 0x65 0x00] {::i/tag ::i/mov, ::i/args [[::r/di] ::r/fs]}
+   [0x8c 0x65 0xf0] {::i/tag ::i/mov, ::i/args [[::r/di -16] ::r/fs]}
+   [0x8c 0x65 0x0f] {::i/tag ::i/mov, ::i/args [[::r/di 15] ::r/fs]}
+   [0x8c 0x66 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp] ::r/fs]}
+   [0x8c 0x66 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp -16] ::r/fs]}
+   [0x8c 0x66 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp 15] ::r/fs]}
+   [0x8c 0x67 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx] ::r/fs]}
+   [0x8c 0x67 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx -16] ::r/fs]}
+   [0x8c 0x67 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx 15] ::r/fs]}
+   [0x8c 0x68 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si] ::r/gs]}
+   [0x8c 0x68 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si -16] ::r/gs]}
+   [0x8c 0x68 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si 15] ::r/gs]}
+   [0x8c 0x69 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di] ::r/gs]}
+   [0x8c 0x69 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di -16] ::r/gs]}
+   [0x8c 0x69 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di 15] ::r/gs]}
+   [0x8c 0x6a 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si] ::r/gs]}
+   [0x8c 0x6a 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si -16] ::r/gs]}
+   [0x8c 0x6a 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si 15] ::r/gs]}
+   [0x8c 0x6b 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di] ::r/gs]}
+   [0x8c 0x6b 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di -16] ::r/gs]}
+   [0x8c 0x6b 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di 15] ::r/gs]}
+   [0x8c 0x6c 0x00] {::i/tag ::i/mov, ::i/args [[::r/si] ::r/gs]}
+   [0x8c 0x6c 0xf0] {::i/tag ::i/mov, ::i/args [[::r/si -16] ::r/gs]}
+   [0x8c 0x6c 0x0f] {::i/tag ::i/mov, ::i/args [[::r/si 15] ::r/gs]}
+   [0x8c 0x6d 0x00] {::i/tag ::i/mov, ::i/args [[::r/di] ::r/gs]}
+   [0x8c 0x6d 0xf0] {::i/tag ::i/mov, ::i/args [[::r/di -16] ::r/gs]}
+   [0x8c 0x6d 0x0f] {::i/tag ::i/mov, ::i/args [[::r/di 15] ::r/gs]}
+   [0x8c 0x6e 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp] ::r/gs]}
+   [0x8c 0x6e 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp -16] ::r/gs]}
+   [0x8c 0x6e 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp 15] ::r/gs]}
+   [0x8c 0x6f 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx] ::r/gs]}
+   [0x8c 0x6f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx -16] ::r/gs]}
+   [0x8c 0x6f 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx 15] ::r/gs]}
+   [0x8c 0x70 0x00] nil
+   [0x8c 0x71 0x00] nil
+   [0x8c 0x72 0x00] nil
+   [0x8c 0x73 0x00] nil
+   [0x8c 0x74 0x00] nil
+   [0x8c 0x75 0x00] nil
+   [0x8c 0x76 0x00] nil
+   [0x8c 0x77 0x00] nil
+   [0x8c 0x78 0x00] nil
+   [0x8c 0x79 0x00] nil
+   [0x8c 0x7a 0x00] nil
+   [0x8c 0x7b 0x00] nil
+   [0x8c 0x7c 0x00] nil
+   [0x8c 0x7d 0x00] nil
+   [0x8c 0x7e 0x00] nil
+   [0x8c 0x7f 0x00] nil
+   [0x8c 0x80 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si] ::r/es]}
+   [0x8c 0x80 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si 4080] ::r/es]}
+   [0x8c 0x80 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si -4081] ::r/es]}
+   [0x8c 0x81 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di] ::r/es]}
+   [0x8c 0x81 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di 4080] ::r/es]}
+   [0x8c 0x81 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di -4081] ::r/es]}
+   [0x8c 0x82 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si] ::r/es]}
+   [0x8c 0x82 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si 4080] ::r/es]}
+   [0x8c 0x82 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si -4081] ::r/es]}
+   [0x8c 0x83 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di] ::r/es]}
+   [0x8c 0x83 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di 4080] ::r/es]}
+   [0x8c 0x83 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di -4081] ::r/es]}
+   [0x8c 0x84 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/si] ::r/es]}
+   [0x8c 0x84 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/si 4080] ::r/es]}
+   [0x8c 0x84 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/si -4081] ::r/es]}
+   [0x8c 0x85 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/di] ::r/es]}
+   [0x8c 0x85 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/di 4080] ::r/es]}
+   [0x8c 0x85 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/di -4081] ::r/es]}
+   [0x8c 0x86 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp] ::r/es]}
+   [0x8c 0x86 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp 4080] ::r/es]}
+   [0x8c 0x86 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp -4081] ::r/es]}
+   [0x8c 0x87 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx] ::r/es]}
+   [0x8c 0x87 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx 4080] ::r/es]}
+   [0x8c 0x87 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx -4081] ::r/es]}
+   [0x8c 0x88 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si] ::r/cs]}
+   [0x8c 0x88 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si 4080] ::r/cs]}
+   [0x8c 0x88 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si -4081] ::r/cs]}
+   [0x8c 0x89 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di] ::r/cs]}
+   [0x8c 0x89 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di 4080] ::r/cs]}
+   [0x8c 0x89 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di -4081] ::r/cs]}
+   [0x8c 0x8a 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si] ::r/cs]}
+   [0x8c 0x8a 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si 4080] ::r/cs]}
+   [0x8c 0x8a 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si -4081] ::r/cs]}
+   [0x8c 0x8b 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di] ::r/cs]}
+   [0x8c 0x8b 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di 4080] ::r/cs]}
+   [0x8c 0x8b 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di -4081] ::r/cs]}
+   [0x8c 0x8c 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/si] ::r/cs]}
+   [0x8c 0x8c 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/si 4080] ::r/cs]}
+   [0x8c 0x8c 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/si -4081] ::r/cs]}
+   [0x8c 0x8d 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/di] ::r/cs]}
+   [0x8c 0x8d 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/di 4080] ::r/cs]}
+   [0x8c 0x8d 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/di -4081] ::r/cs]}
+   [0x8c 0x8e 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp] ::r/cs]}
+   [0x8c 0x8e 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp 4080] ::r/cs]}
+   [0x8c 0x8e 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp -4081] ::r/cs]}
+   [0x8c 0x8f 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx] ::r/cs]}
+   [0x8c 0x8f 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx 4080] ::r/cs]}
+   [0x8c 0x8f 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx -4081] ::r/cs]}
+   [0x8c 0x90 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si] ::r/ss]}
+   [0x8c 0x90 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si 4080] ::r/ss]}
+   [0x8c 0x90 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si -4081] ::r/ss]}
+   [0x8c 0x91 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di] ::r/ss]}
+   [0x8c 0x91 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di 4080] ::r/ss]}
+   [0x8c 0x91 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di -4081] ::r/ss]}
+   [0x8c 0x92 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si] ::r/ss]}
+   [0x8c 0x92 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si 4080] ::r/ss]}
+   [0x8c 0x92 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si -4081] ::r/ss]}
+   [0x8c 0x93 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di] ::r/ss]}
+   [0x8c 0x93 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di 4080] ::r/ss]}
+   [0x8c 0x93 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di -4081] ::r/ss]}
+   [0x8c 0x94 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/si] ::r/ss]}
+   [0x8c 0x94 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/si 4080] ::r/ss]}
+   [0x8c 0x94 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/si -4081] ::r/ss]}
+   [0x8c 0x95 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/di] ::r/ss]}
+   [0x8c 0x95 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/di 4080] ::r/ss]}
+   [0x8c 0x95 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/di -4081] ::r/ss]}
+   [0x8c 0x96 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp] ::r/ss]}
+   [0x8c 0x96 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp 4080] ::r/ss]}
+   [0x8c 0x96 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp -4081] ::r/ss]}
+   [0x8c 0x97 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx] ::r/ss]}
+   [0x8c 0x97 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx 4080] ::r/ss]}
+   [0x8c 0x97 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx -4081] ::r/ss]}
+   [0x8c 0x98 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si] ::r/ds]}
+   [0x8c 0x98 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si 4080] ::r/ds]}
+   [0x8c 0x98 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si -4081] ::r/ds]}
+   [0x8c 0x99 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di] ::r/ds]}
+   [0x8c 0x99 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di 4080] ::r/ds]}
+   [0x8c 0x99 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di -4081] ::r/ds]}
+   [0x8c 0x9a 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si] ::r/ds]}
+   [0x8c 0x9a 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si 4080] ::r/ds]}
+   [0x8c 0x9a 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si -4081] ::r/ds]}
+   [0x8c 0x9b 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di] ::r/ds]}
+   [0x8c 0x9b 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di 4080] ::r/ds]}
+   [0x8c 0x9b 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di -4081] ::r/ds]}
+   [0x8c 0x9c 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/si] ::r/ds]}
+   [0x8c 0x9c 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/si 4080] ::r/ds]}
+   [0x8c 0x9c 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/si -4081] ::r/ds]}
+   [0x8c 0x9d 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/di] ::r/ds]}
+   [0x8c 0x9d 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/di 4080] ::r/ds]}
+   [0x8c 0x9d 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/di -4081] ::r/ds]}
+   [0x8c 0x9e 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp] ::r/ds]}
+   [0x8c 0x9e 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp 4080] ::r/ds]}
+   [0x8c 0x9e 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp -4081] ::r/ds]}
+   [0x8c 0x9f 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx] ::r/ds]}
+   [0x8c 0x9f 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx 4080] ::r/ds]}
+   [0x8c 0x9f 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx -4081] ::r/ds]}
+   [0x8c 0xa0 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si] ::r/fs]}
+   [0x8c 0xa0 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si 4080] ::r/fs]}
+   [0x8c 0xa0 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si -4081] ::r/fs]}
+   [0x8c 0xa1 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di] ::r/fs]}
+   [0x8c 0xa1 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di 4080] ::r/fs]}
+   [0x8c 0xa1 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di -4081] ::r/fs]}
+   [0x8c 0xa2 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si] ::r/fs]}
+   [0x8c 0xa2 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si 4080] ::r/fs]}
+   [0x8c 0xa2 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si -4081] ::r/fs]}
+   [0x8c 0xa3 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di] ::r/fs]}
+   [0x8c 0xa3 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di 4080] ::r/fs]}
+   [0x8c 0xa3 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di -4081] ::r/fs]}
+   [0x8c 0xa4 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/si] ::r/fs]}
+   [0x8c 0xa4 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/si 4080] ::r/fs]}
+   [0x8c 0xa4 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/si -4081] ::r/fs]}
+   [0x8c 0xa5 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/di] ::r/fs]}
+   [0x8c 0xa5 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/di 4080] ::r/fs]}
+   [0x8c 0xa5 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/di -4081] ::r/fs]}
+   [0x8c 0xa6 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp] ::r/fs]}
+   [0x8c 0xa6 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp 4080] ::r/fs]}
+   [0x8c 0xa6 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp -4081] ::r/fs]}
+   [0x8c 0xa7 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx] ::r/fs]}
+   [0x8c 0xa7 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx 4080] ::r/fs]}
+   [0x8c 0xa7 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx -4081] ::r/fs]}
+   [0x8c 0xa8 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si] ::r/gs]}
+   [0x8c 0xa8 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si 4080] ::r/gs]}
+   [0x8c 0xa8 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/si -4081] ::r/gs]}
+   [0x8c 0xa9 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di] ::r/gs]}
+   [0x8c 0xa9 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di 4080] ::r/gs]}
+   [0x8c 0xa9 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx ::r/di -4081] ::r/gs]}
+   [0x8c 0xaa 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si] ::r/gs]}
+   [0x8c 0xaa 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si 4080] ::r/gs]}
+   [0x8c 0xaa 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/si -4081] ::r/gs]}
+   [0x8c 0xab 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di] ::r/gs]}
+   [0x8c 0xab 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di 4080] ::r/gs]}
+   [0x8c 0xab 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp ::r/di -4081] ::r/gs]}
+   [0x8c 0xac 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/si] ::r/gs]}
+   [0x8c 0xac 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/si 4080] ::r/gs]}
+   [0x8c 0xac 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/si -4081] ::r/gs]}
+   [0x8c 0xad 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/di] ::r/gs]}
+   [0x8c 0xad 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/di 4080] ::r/gs]}
+   [0x8c 0xad 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/di -4081] ::r/gs]}
+   [0x8c 0xae 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bp] ::r/gs]}
+   [0x8c 0xae 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bp 4080] ::r/gs]}
+   [0x8c 0xae 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bp -4081] ::r/gs]}
+   [0x8c 0xaf 0x00 0x00] {::i/tag ::i/mov, ::i/args [[::r/bx] ::r/gs]}
+   [0x8c 0xaf 0xf0 0x0f] {::i/tag ::i/mov, ::i/args [[::r/bx 4080] ::r/gs]}
+   [0x8c 0xaf 0x0f 0xf0] {::i/tag ::i/mov, ::i/args [[::r/bx -4081] ::r/gs]}
+   [0x8c 0xb0 0x00 0x00] nil
+   [0x8c 0xb1 0x00 0x00] nil
+   [0x8c 0xb2 0x00 0x00] nil
+   [0x8c 0xb3 0x00 0x00] nil
+   [0x8c 0xb4 0x00 0x00] nil
+   [0x8c 0xb5 0x00 0x00] nil
+   [0x8c 0xb6 0x00 0x00] nil
+   [0x8c 0xb7 0x00 0x00] nil
+   [0x8c 0xb8 0x00 0x00] nil
+   [0x8c 0xb9 0x00 0x00] nil
+   [0x8c 0xba 0x00 0x00] nil
+   [0x8c 0xbb 0x00 0x00] nil
+   [0x8c 0xbc 0x00 0x00] nil
+   [0x8c 0xbd 0x00 0x00] nil
+   [0x8c 0xbe 0x00 0x00] nil
+   [0x8c 0xbf 0x00 0x00] nil
+   [0x8c 0xc0] {::i/tag ::i/mov, ::i/args [::r/ax ::r/es]}
+   [0x8c 0xc1] {::i/tag ::i/mov, ::i/args [::r/cx ::r/es]}
+   [0x8c 0xc2] {::i/tag ::i/mov, ::i/args [::r/dx ::r/es]}
+   [0x8c 0xc3] {::i/tag ::i/mov, ::i/args [::r/bx ::r/es]}
+   [0x8c 0xc4] {::i/tag ::i/mov, ::i/args [::r/sp ::r/es]}
+   [0x8c 0xc5] {::i/tag ::i/mov, ::i/args [::r/bp ::r/es]}
+   [0x8c 0xc6] {::i/tag ::i/mov, ::i/args [::r/si ::r/es]}
+   [0x8c 0xc7] {::i/tag ::i/mov, ::i/args [::r/di ::r/es]}
+   [0x8c 0xc8] {::i/tag ::i/mov, ::i/args [::r/ax ::r/cs]}
+   [0x8c 0xc9] {::i/tag ::i/mov, ::i/args [::r/cx ::r/cs]}
+   [0x8c 0xca] {::i/tag ::i/mov, ::i/args [::r/dx ::r/cs]}
+   [0x8c 0xcb] {::i/tag ::i/mov, ::i/args [::r/bx ::r/cs]}
+   [0x8c 0xcc] {::i/tag ::i/mov, ::i/args [::r/sp ::r/cs]}
+   [0x8c 0xcd] {::i/tag ::i/mov, ::i/args [::r/bp ::r/cs]}
+   [0x8c 0xce] {::i/tag ::i/mov, ::i/args [::r/si ::r/cs]}
+   [0x8c 0xcf] {::i/tag ::i/mov, ::i/args [::r/di ::r/cs]}
+   [0x8c 0xd0] {::i/tag ::i/mov, ::i/args [::r/ax ::r/ss]}
+   [0x8c 0xd1] {::i/tag ::i/mov, ::i/args [::r/cx ::r/ss]}
+   [0x8c 0xd2] {::i/tag ::i/mov, ::i/args [::r/dx ::r/ss]}
+   [0x8c 0xd3] {::i/tag ::i/mov, ::i/args [::r/bx ::r/ss]}
+   [0x8c 0xd4] {::i/tag ::i/mov, ::i/args [::r/sp ::r/ss]}
+   [0x8c 0xd5] {::i/tag ::i/mov, ::i/args [::r/bp ::r/ss]}
+   [0x8c 0xd6] {::i/tag ::i/mov, ::i/args [::r/si ::r/ss]}
+   [0x8c 0xd7] {::i/tag ::i/mov, ::i/args [::r/di ::r/ss]}
+   [0x8c 0xd8] {::i/tag ::i/mov, ::i/args [::r/ax ::r/ds]}
+   [0x8c 0xd9] {::i/tag ::i/mov, ::i/args [::r/cx ::r/ds]}
+   [0x8c 0xda] {::i/tag ::i/mov, ::i/args [::r/dx ::r/ds]}
+   [0x8c 0xdb] {::i/tag ::i/mov, ::i/args [::r/bx ::r/ds]}
+   [0x8c 0xdc] {::i/tag ::i/mov, ::i/args [::r/sp ::r/ds]}
+   [0x8c 0xdd] {::i/tag ::i/mov, ::i/args [::r/bp ::r/ds]}
+   [0x8c 0xde] {::i/tag ::i/mov, ::i/args [::r/si ::r/ds]}
+   [0x8c 0xdf] {::i/tag ::i/mov, ::i/args [::r/di ::r/ds]}
+   [0x8c 0xe0] {::i/tag ::i/mov, ::i/args [::r/ax ::r/fs]}
+   [0x8c 0xe1] {::i/tag ::i/mov, ::i/args [::r/cx ::r/fs]}
+   [0x8c 0xe2] {::i/tag ::i/mov, ::i/args [::r/dx ::r/fs]}
+   [0x8c 0xe3] {::i/tag ::i/mov, ::i/args [::r/bx ::r/fs]}
+   [0x8c 0xe4] {::i/tag ::i/mov, ::i/args [::r/sp ::r/fs]}
+   [0x8c 0xe5] {::i/tag ::i/mov, ::i/args [::r/bp ::r/fs]}
+   [0x8c 0xe6] {::i/tag ::i/mov, ::i/args [::r/si ::r/fs]}
+   [0x8c 0xe7] {::i/tag ::i/mov, ::i/args [::r/di ::r/fs]}
+   [0x8c 0xe8] {::i/tag ::i/mov, ::i/args [::r/ax ::r/gs]}
+   [0x8c 0xe9] {::i/tag ::i/mov, ::i/args [::r/cx ::r/gs]}
+   [0x8c 0xea] {::i/tag ::i/mov, ::i/args [::r/dx ::r/gs]}
+   [0x8c 0xeb] {::i/tag ::i/mov, ::i/args [::r/bx ::r/gs]}
+   [0x8c 0xec] {::i/tag ::i/mov, ::i/args [::r/sp ::r/gs]}
+   [0x8c 0xed] {::i/tag ::i/mov, ::i/args [::r/bp ::r/gs]}
+   [0x8c 0xee] {::i/tag ::i/mov, ::i/args [::r/si ::r/gs]}
+   [0x8c 0xef] {::i/tag ::i/mov, ::i/args [::r/di ::r/gs]}
+   [0x8c 0xf0] nil
+   [0x8c 0xf1] nil
+   [0x8c 0xf2] nil
+   [0x8c 0xf3] nil
+   [0x8c 0xf4] nil
+   [0x8c 0xf5] nil
+   [0x8c 0xf6] nil
+   [0x8c 0xf7] nil
+   [0x8c 0xf8] nil
+   [0x8c 0xf9] nil
+   [0x8c 0xfa] nil
+   [0x8c 0xfb] nil
+   [0x8c 0xfc] nil
+   [0x8c 0xfd] nil
+   [0x8c 0xfe] nil
+   [0x8c 0xff] nil})
 
 
 (def decode-examples-0xc0
