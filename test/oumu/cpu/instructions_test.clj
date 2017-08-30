@@ -4300,6 +4300,10 @@
    [0xa5] {::i/tag ::i/movsw}
    [0xa6] {::i/tag ::i/cmpsb}
    [0xa7] {::i/tag ::i/cmpsw}
+   [0xa8 0xf0] {::i/tag ::i/test, ::i/args [::r/al 0xf0]}
+   [0xa8 0x0f] {::i/tag ::i/test, ::i/args [::r/al 0x0f]}
+   [0xa9 0xf0 0x0f] {::i/tag ::i/test, ::i/args [::r/ax 0x0ff0]}
+   [0xa9 0x0f 0xf0] {::i/tag ::i/test, ::i/args [::r/ax 0xf00f]}
    [0xaa] {::i/tag ::i/stosb}
    [0xab] {::i/tag ::i/stosw}
    [0xac] {::i/tag ::i/lodsb}

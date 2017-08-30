@@ -178,6 +178,8 @@
                0xa5 {::tag ::movsw, ::length 1}
                0xa6 {::tag ::cmpsb, ::length 1}
                0xa7 {::tag ::cmpsw, ::length 1}
+               0xa8 {::tag ::test, ::args [::r/al ::imm8], ::length 1}
+               0xa9 {::tag ::test, ::args [::r/ax ::imm16], ::length 1}
                0xaa {::tag ::stosb, ::length 1}
                0xab {::tag ::stosw, ::length 1}
                0xac {::tag ::lodsb, ::length 1}
