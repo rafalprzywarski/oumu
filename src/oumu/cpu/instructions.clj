@@ -261,6 +261,7 @@
    0x0583 {::tag ::sub, ::args [::r-or-m16 ::imm8e], ::length 2}
    0x0683 {::tag ::xor, ::args [::r-or-m16 ::imm8e], ::length 2}
    0x0783 {::tag ::cmp, ::args [::r-or-m16 ::imm8e], ::length 2}
+   0x008f {::tag ::pop, ::args [::r-or-m16], ::length 2}
    0x00c0 {::tag ::rol, ::args [::r-or-m8 ::imm8], ::length 2}
    0x01c0 {::tag ::ror, ::args [::r-or-m8 ::imm8], ::length 2}
    0x02c0 {::tag ::rcl, ::args [::r-or-m8 ::imm8], ::length 2}
