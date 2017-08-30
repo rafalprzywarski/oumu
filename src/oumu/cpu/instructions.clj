@@ -171,6 +171,9 @@
                0x9e {::tag ::sahf, ::length 1}
                0x9f {::tag ::lahf, ::length 1}
                0xa0 {::tag ::mov, ::args [::r/al ::ptr16], ::length 1}
+               0xa1 {::tag ::mov, ::args [::r/ax ::ptr16], ::length 1}
+               0xa2 {::tag ::mov, ::args [::ptr16 ::r/al], ::length 1}
+               0xa3 {::tag ::mov, ::args [::ptr16 ::r/ax], ::length 1}
                0xa4 {::tag ::movsb, ::length 1}
                0xa5 {::tag ::movsw, ::length 1}
                0xa6 {::tag ::cmpsb, ::length 1}
