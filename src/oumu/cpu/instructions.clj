@@ -202,6 +202,7 @@
                0xbd {::tag ::mov, ::args [::r/bp ::imm16], ::length 1}
                0xbe {::tag ::mov, ::args [::r/si ::imm16], ::length 1}
                0xbf {::tag ::mov, ::args [::r/di ::imm16], ::length 1}
+               0xc2 {::tag ::ret, ::args [::imm16], ::length 1}
                0xc3 {::tag ::ret, ::length 1}
                0xc9 {::tag ::leave, ::length 1}
                0xcb {::tag ::retf, ::length 1}
