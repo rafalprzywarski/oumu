@@ -118,6 +118,7 @@
                0x5f {::tag ::pop, ::args [::r/di], ::length 1}
                0x60 {::tag ::pusha, ::length 1}
                0x61 {::tag ::popa, ::length 1}
+               0x62 {::tag ::bound, ::args [::r16 ::r-or-m16], ::length 2}
                0x63 {::tag ::arpl, ::args [::r-or-m16 ::r16], ::length 2}
                0x68 {::tag ::push, ::args [::imm16], ::length 1}
                0x69 {::tag ::imul, ::args [::r16 ::r-or-m16 ::imm16], ::length 2}
@@ -169,6 +170,7 @@
                0x9d {::tag ::popf, ::length 1}
                0x9e {::tag ::sahf, ::length 1}
                0x9f {::tag ::lahf, ::length 1}
+               0xa0 {::tag ::mov, ::args [::r/al ::ptr16], ::length 1}
                0xa4 {::tag ::movsb, ::length 1}
                0xa5 {::tag ::movsw, ::length 1}
                0xa6 {::tag ::cmpsb, ::length 1}
@@ -340,6 +342,7 @@
     ::imm8e [(byte-to-word (first bytes)) 1]
     ::rel16 [(signed-word (word bytes)) 2]
     ::sreg [(decode-reg sregs 3 modrm) 0]
+    ::ptr16 [[(word bytes)] 2]
     nil))
 
 
