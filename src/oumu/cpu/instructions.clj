@@ -13,7 +13,7 @@
            [::r/bp ::r/di]
            [::r/si]
            [::r/di]
-           [::imm16]
+           ::ptr16
            [::r/bx]])
 
 (def memrd [[::r/bx ::r/si]
@@ -314,7 +314,7 @@
                          ptr (decode-memrd modrm)]
                      [(conj-not-zero ptr d) 2])
       :else (let [mr (decode-memr modrm)]
-              (if (= mr [::imm16]) [[(word bytes)] 2] [mr 0])))))
+              (if (= mr ::ptr16) [[(word bytes)] 2] [mr 0])))))
 
 (defn- decode-arg [arg modrm bytes]
   (case arg
