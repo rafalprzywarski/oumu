@@ -118,6 +118,7 @@
                0x5f {::tag ::pop, ::args [::r/di], ::length 1}
                0x60 {::tag ::pusha, ::length 1}
                0x61 {::tag ::popa, ::length 1}
+               0x63 {::tag ::arpl, ::args [::r-or-m16 ::r16], ::length 2}
                0x68 {::tag ::push, ::args [::imm16], ::length 1}
                0x69 {::tag ::imul, ::args [::r16 ::r-or-m16 ::imm16], ::length 2}
                0x6a {::tag ::push, ::args [::imm8], ::length 1}
