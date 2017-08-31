@@ -211,6 +211,7 @@
                0xca {::tag ::retf, ::args [::imm16], ::length 1}
                0xcb {::tag ::retf, ::length 1}
                0xcc {::tag ::int, ::args [(byte 3)], ::length 1}
+               0xcd {::tag ::int, ::args [::imm8], ::length 1}
                0xce {::tag ::into, ::length 1}
                0xcf {::tag ::iret, ::length 1}
                0xd6 {::tag ::setalc, ::length 1}

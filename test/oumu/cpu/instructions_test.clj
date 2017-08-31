@@ -4352,6 +4352,8 @@
    [0xca 0xf0 0x0f] {::i/tag ::i/retf, ::i/args [0x0ff0]}
    [0xcb] {::i/tag ::i/retf}
    [0xcc] {::i/tag ::i/int, ::i/args [3]}
+   [0xcd 0xf0] {::i/tag ::i/int, ::i/args [0xf0]}
+   [0xcd 0x0f] {::i/tag ::i/int, ::i/args [0x0f]}
    [0xce] {::i/tag ::i/into}
    [0xcf] {::i/tag ::i/iret}
    [0xd6] {::i/tag ::i/setalc}
