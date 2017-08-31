@@ -204,6 +204,8 @@
                0xbf {::tag ::mov, ::args [::r/di ::imm16], ::length 1}
                0xc2 {::tag ::ret, ::args [::imm16], ::length 1}
                0xc3 {::tag ::ret, ::length 1}
+               0xc4 {::tag ::les, ::args [::r16 ::m], ::length 2}
+               0xc5 {::tag ::lds, ::args [::r16 ::m], ::length 2}
                0xc9 {::tag ::leave, ::length 1}
                0xcb {::tag ::retf, ::length 1}
                0xcc {::tag ::int, ::args [(byte 3)], ::length 1}
