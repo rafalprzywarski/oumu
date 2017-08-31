@@ -4356,6 +4356,10 @@
    [0xcd 0x0f] {::i/tag ::i/int, ::i/args [0x0f]}
    [0xce] {::i/tag ::i/into}
    [0xcf] {::i/tag ::i/iret}
+   [0xd4 0xf0] {::i/tag ::i/aam, ::i/args [::r/al ::r/ah 0xf0]}
+   [0xd4 0x0f] {::i/tag ::i/aam, ::i/args [::r/al ::r/ah 0x0f]}
+   [0xd5 0xf0] {::i/tag ::i/aad, ::i/args [::r/al ::r/ah 0xf0]}
+   [0xd5 0x0f] {::i/tag ::i/aad, ::i/args [::r/al ::r/ah 0x0f]}
    [0xd6] {::i/tag ::i/setalc}
    [0xd7] {::i/tag ::i/xlat}
    [0xe0 0xf0] {::i/tag ::i/loopne, ::i/args [-16]}

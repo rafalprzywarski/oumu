@@ -214,6 +214,8 @@
                0xcd {::tag ::int, ::args [::imm8], ::length 1}
                0xce {::tag ::into, ::length 1}
                0xcf {::tag ::iret, ::length 1}
+               0xd4 {::tag ::aam, ::args [::r/al ::r/ah ::imm8], ::length 1}
+               0xd5 {::tag ::aad, ::args [::r/al ::r/ah ::imm8], ::length 1}
                0xd6 {::tag ::setalc, ::length 1}
                0xd7 {::tag ::xlat, ::length 1}
                0xe0 {::tag ::loopne, ::args [::rel8], ::length 1}
