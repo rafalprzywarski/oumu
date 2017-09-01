@@ -345,7 +345,14 @@
    0x04f7 {::tag ::mul, ::args [::r/dx ::r/ax ::r-or-m16], ::length 2}
    0x05f7 {::tag ::imul, ::args [::r/dx ::r/ax ::r-or-m16], ::length 2}
    0x06f7 {::tag ::div, ::args [::r/dx ::r/ax ::r-or-m16], ::length 2}
-   0x07f7 {::tag ::idiv, ::args [::r/dx ::r/ax ::r-or-m16], ::length 2}})
+   0x07f7 {::tag ::idiv, ::args [::r/dx ::r/ax ::r-or-m16], ::length 2}
+   0x00ff {::tag ::inc, ::args [::r-or-m16], ::length 2}
+   0x01ff {::tag ::dec, ::args [::r-or-m16], ::length 2}
+   0x02ff {::tag ::call, ::args [::r-or-m16], ::length 2}
+   0x03ff {::tag ::callf, ::args [::m], ::length 2}
+   0x04ff {::tag ::jmp, ::args [::r-or-m16], ::length 2}
+   0x05ff {::tag ::jmpf, ::args [::m], ::length 2}
+   0x06ff {::tag ::push, ::args [::r-or-m16], ::length 2}})
 
 (defn- word [bytes]
   (+ (first bytes) (bit-shift-left (second bytes) 8)))
