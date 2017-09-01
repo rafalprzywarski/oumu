@@ -288,14 +288,14 @@
    0x05c0 {::tag ::shr, ::args [::r-or-m8 ::imm8], ::length 2}
    0x06c0 {::tag ::shl, ::args [::r-or-m8 ::imm8], ::length 2}
    0x07c0 {::tag ::sar, ::args [::r-or-m8 ::imm8], ::length 2}
-   0x00c1 {::tag ::rol, ::args [::r-or-m16 ::imm16], ::length 2}
-   0x01c1 {::tag ::ror, ::args [::r-or-m16 ::imm16], ::length 2}
-   0x02c1 {::tag ::rcl, ::args [::r-or-m16 ::imm16], ::length 2}
-   0x03c1 {::tag ::rcr, ::args [::r-or-m16 ::imm16], ::length 2}
-   0x04c1 {::tag ::shl, ::args [::r-or-m16 ::imm16], ::length 2}
-   0x05c1 {::tag ::shr, ::args [::r-or-m16 ::imm16], ::length 2}
-   0x06c1 {::tag ::shl, ::args [::r-or-m16 ::imm16], ::length 2}
-   0x07c1 {::tag ::sar, ::args [::r-or-m16 ::imm16], ::length 2}
+   0x00c1 {::tag ::rol, ::args [::r-or-m16 ::imm8], ::length 2}
+   0x01c1 {::tag ::ror, ::args [::r-or-m16 ::imm8], ::length 2}
+   0x02c1 {::tag ::rcl, ::args [::r-or-m16 ::imm8], ::length 2}
+   0x03c1 {::tag ::rcr, ::args [::r-or-m16 ::imm8], ::length 2}
+   0x04c1 {::tag ::shl, ::args [::r-or-m16 ::imm8], ::length 2}
+   0x05c1 {::tag ::shr, ::args [::r-or-m16 ::imm8], ::length 2}
+   0x06c1 {::tag ::shl, ::args [::r-or-m16 ::imm8], ::length 2}
+   0x07c1 {::tag ::sar, ::args [::r-or-m16 ::imm8], ::length 2}
    0x00c6 {::tag ::mov, ::args [::r-or-m8 ::imm8], ::length 2}
    0x00c7 {::tag ::mov, ::args [::r-or-m16 ::imm16], ::length 2}
    0x00d0 {::tag ::rol, ::args [::r-or-m8 1], ::length 2}
