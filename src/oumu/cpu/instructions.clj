@@ -329,7 +329,15 @@
    0x04d3 {::tag ::shl, ::args [::r-or-m16 ::r/cl], ::length 2}
    0x05d3 {::tag ::shr, ::args [::r-or-m16 ::r/cl], ::length 2}
    0x06d3 {::tag ::shl, ::args [::r-or-m16 ::r/cl], ::length 2}
-   0x07d3 {::tag ::sar, ::args [::r-or-m16 ::r/cl], ::length 2}})
+   0x07d3 {::tag ::sar, ::args [::r-or-m16 ::r/cl], ::length 2}
+   0x00f6 {::tag ::test, ::args [::r-or-m8 ::imm8], ::length 2}
+   0x01f6 {::tag ::test, ::args [::r-or-m8 ::imm8], ::length 2}
+   0x02f6 {::tag ::not, ::args [::r-or-m8], ::length 2}
+   0x03f6 {::tag ::neg, ::args [::r-or-m8], ::length 2}
+   0x04f6 {::tag ::mul, ::args [::r/ax ::r/al ::r-or-m8], ::length 2}
+   0x05f6 {::tag ::imul, ::args [::r/ax ::r/al ::r-or-m8], ::length 2}
+   0x06f6 {::tag ::div, ::args [::r/al ::r/ah ::r/ax ::r-or-m8], ::length 2}
+   0x07f6 {::tag ::idiv, ::args [::r/al ::r/ah ::r/ax ::r-or-m8], ::length 2}})
 
 (defn- word [bytes]
   (+ (first bytes) (bit-shift-left (second bytes) 8)))
@@ -412,6 +420,7 @@
                        (one-byte-ext (ext-opcode bytes)))]
     (let [instr (decode-instr-arg instr 0 bytes)
           instr (decode-instr-arg instr 1 bytes)
-          instr (decode-instr-arg instr 2 bytes)]
+          instr (decode-instr-arg instr 2 bytes)
+          instr (decode-instr-arg instr 3 bytes)]
       (if (not-any? #(= ::invalid %) (::args instr))
         instr))))
