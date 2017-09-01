@@ -165,6 +165,7 @@
                0x97 {::tag ::xchg, ::args [::r/di ::r/ax] ::length 1}
                0x98 {::tag ::cbw, ::length 1}
                0x99 {::tag ::cwd, ::length 1}
+               0x9a {::tag ::call, ::args [::far-addr16], ::length 1}
                0x9b {::tag ::fwait, ::length 1}
                0x9c {::tag ::pushf, ::length 1}
                0x9d {::tag ::popf, ::length 1}
@@ -358,6 +359,7 @@
     ::rel16 [(signed-word (word bytes)) 2]
     ::sreg [(decode-reg sregs 3 modrm) 0]
     ::ptr16 [[(word bytes)] 2]
+    ::far-addr16 [{::seg (word (drop 2 bytes)) ::off (word bytes)} 4]
     nil))
 
 

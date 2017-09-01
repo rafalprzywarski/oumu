@@ -4283,6 +4283,8 @@
    [0x97] {::i/tag ::i/xchg, ::i/args [::r/di ::r/ax]}
    [0x98] {::i/tag ::i/cbw}
    [0x99] {::i/tag ::i/cwd}
+   [0x9a 0x0f 0xf0 0x12 0xf4] {::i/tag ::i/call, ::i/args [{::i/seg 0xf412 ::i/off 0xf00f}]}
+   [0x9a 0xf0 0x0f 0xf4 0x12] {::i/tag ::i/call, ::i/args [{::i/seg 0x12f4 ::i/off 0x0ff0}]}   
    [0x9b] {::i/tag ::i/fwait}
    [0x9c] {::i/tag ::i/pushf}
    [0x9d] {::i/tag ::i/popf}
