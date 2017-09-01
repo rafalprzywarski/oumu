@@ -19583,24 +19583,24 @@
 
 
 (def decode-examples-0xff
-  {[0xff 0x00] {::i/tag ::i/inc, ::i/args [[::r/bx ::r/si]]}
-   [0xff 0x01] {::i/tag ::i/inc, ::i/args [[::r/bx ::r/di]]}
-   [0xff 0x02] {::i/tag ::i/inc, ::i/args [[::r/bp ::r/si]]}
-   [0xff 0x03] {::i/tag ::i/inc, ::i/args [[::r/bp ::r/di]]}
-   [0xff 0x04] {::i/tag ::i/inc, ::i/args [[::r/si]]}
-   [0xff 0x05] {::i/tag ::i/inc, ::i/args [[::r/di]]}
-   [0xff 0x06 0x12 0x34] {::i/tag ::i/inc, ::i/args [[0x3412]]}
-   [0xff 0x06 0x34 0x12] {::i/tag ::i/inc, ::i/args [[0x1234]]}
-   [0xff 0x07] {::i/tag ::i/inc, ::i/args [[::r/bx]]}
-   [0xff 0x08] {::i/tag ::i/dec, ::i/args [[::r/bx ::r/si]]}
-   [0xff 0x09] {::i/tag ::i/dec, ::i/args [[::r/bx ::r/di]]}
-   [0xff 0x0a] {::i/tag ::i/dec, ::i/args [[::r/bp ::r/si]]}
-   [0xff 0x0b] {::i/tag ::i/dec, ::i/args [[::r/bp ::r/di]]}
-   [0xff 0x0c] {::i/tag ::i/dec, ::i/args [[::r/si]]}
-   [0xff 0x0d] {::i/tag ::i/dec, ::i/args [[::r/di]]}
-   [0xff 0x0e 0x12 0x34] {::i/tag ::i/dec, ::i/args [[0x3412]]}
-   [0xff 0x0e 0x34 0x12] {::i/tag ::i/dec, ::i/args [[0x1234]]}
-   [0xff 0x0f] {::i/tag ::i/dec, ::i/args [[::r/bx]]}
+  {[0xff 0x00] {::i/tag ::i/inc, ::i/args [[::r/bx ::r/si]], ::i/type ::i/word}
+   [0xff 0x01] {::i/tag ::i/inc, ::i/args [[::r/bx ::r/di]], ::i/type ::i/word}
+   [0xff 0x02] {::i/tag ::i/inc, ::i/args [[::r/bp ::r/si]], ::i/type ::i/word}
+   [0xff 0x03] {::i/tag ::i/inc, ::i/args [[::r/bp ::r/di]], ::i/type ::i/word}
+   [0xff 0x04] {::i/tag ::i/inc, ::i/args [[::r/si]], ::i/type ::i/word}
+   [0xff 0x05] {::i/tag ::i/inc, ::i/args [[::r/di]], ::i/type ::i/word}
+   [0xff 0x06 0x12 0x34] {::i/tag ::i/inc, ::i/args [[0x3412]], ::i/type ::i/word}
+   [0xff 0x06 0x34 0x12] {::i/tag ::i/inc, ::i/args [[0x1234]], ::i/type ::i/word}
+   [0xff 0x07] {::i/tag ::i/inc, ::i/args [[::r/bx]], ::i/type ::i/word}
+   [0xff 0x08] {::i/tag ::i/dec, ::i/args [[::r/bx ::r/si]], ::i/type ::i/word}
+   [0xff 0x09] {::i/tag ::i/dec, ::i/args [[::r/bx ::r/di]], ::i/type ::i/word}
+   [0xff 0x0a] {::i/tag ::i/dec, ::i/args [[::r/bp ::r/si]], ::i/type ::i/word}
+   [0xff 0x0b] {::i/tag ::i/dec, ::i/args [[::r/bp ::r/di]], ::i/type ::i/word}
+   [0xff 0x0c] {::i/tag ::i/dec, ::i/args [[::r/si]], ::i/type ::i/word}
+   [0xff 0x0d] {::i/tag ::i/dec, ::i/args [[::r/di]], ::i/type ::i/word}
+   [0xff 0x0e 0x12 0x34] {::i/tag ::i/dec, ::i/args [[0x3412]], ::i/type ::i/word}
+   [0xff 0x0e 0x34 0x12] {::i/tag ::i/dec, ::i/args [[0x1234]], ::i/type ::i/word}
+   [0xff 0x0f] {::i/tag ::i/dec, ::i/args [[::r/bx]], ::i/type ::i/word}
    [0xff 0x10] {::i/tag ::i/call, ::i/args [[::r/bx ::r/si]]}
    [0xff 0x11] {::i/tag ::i/call, ::i/args [[::r/bx ::r/di]]}
    [0xff 0x12] {::i/tag ::i/call, ::i/args [[::r/bp ::r/si]]}
@@ -19655,54 +19655,54 @@
    [0xff 0x3e 0x12 0x34] nil
    [0xff 0x3e 0x34 0x12] nil
    [0xff 0x3f] nil
-   [0xff 0x40 0x00] {::i/tag ::i/inc, ::i/args [[::r/bx ::r/si]]}
-   [0xff 0x40 0xf0] {::i/tag ::i/inc, ::i/args [[::r/bx ::r/si -16]]}
-   [0xff 0x40 0x0f] {::i/tag ::i/inc, ::i/args [[::r/bx ::r/si 15]]}
-   [0xff 0x41 0x00] {::i/tag ::i/inc, ::i/args [[::r/bx ::r/di]]}
-   [0xff 0x41 0xf0] {::i/tag ::i/inc, ::i/args [[::r/bx ::r/di -16]]}
-   [0xff 0x41 0x0f] {::i/tag ::i/inc, ::i/args [[::r/bx ::r/di 15]]}
-   [0xff 0x42 0x00] {::i/tag ::i/inc, ::i/args [[::r/bp ::r/si]]}
-   [0xff 0x42 0xf0] {::i/tag ::i/inc, ::i/args [[::r/bp ::r/si -16]]}
-   [0xff 0x42 0x0f] {::i/tag ::i/inc, ::i/args [[::r/bp ::r/si 15]]}
-   [0xff 0x43 0x00] {::i/tag ::i/inc, ::i/args [[::r/bp ::r/di]]}
-   [0xff 0x43 0xf0] {::i/tag ::i/inc, ::i/args [[::r/bp ::r/di -16]]}
-   [0xff 0x43 0x0f] {::i/tag ::i/inc, ::i/args [[::r/bp ::r/di 15]]}
-   [0xff 0x44 0x00] {::i/tag ::i/inc, ::i/args [[::r/si]]}
-   [0xff 0x44 0xf0] {::i/tag ::i/inc, ::i/args [[::r/si -16]]}
-   [0xff 0x44 0x0f] {::i/tag ::i/inc, ::i/args [[::r/si 15]]}
-   [0xff 0x45 0x00] {::i/tag ::i/inc, ::i/args [[::r/di]]}
-   [0xff 0x45 0xf0] {::i/tag ::i/inc, ::i/args [[::r/di -16]]}
-   [0xff 0x45 0x0f] {::i/tag ::i/inc, ::i/args [[::r/di 15]]}
-   [0xff 0x46 0x00] {::i/tag ::i/inc, ::i/args [[::r/bp]]}
-   [0xff 0x46 0xf0] {::i/tag ::i/inc, ::i/args [[::r/bp -16]]}
-   [0xff 0x46 0x0f] {::i/tag ::i/inc, ::i/args [[::r/bp 15]]}
-   [0xff 0x47 0x00] {::i/tag ::i/inc, ::i/args [[::r/bx]]}
-   [0xff 0x47 0xf0] {::i/tag ::i/inc, ::i/args [[::r/bx -16]]}
-   [0xff 0x47 0x0f] {::i/tag ::i/inc, ::i/args [[::r/bx 15]]}
-   [0xff 0x48 0x00] {::i/tag ::i/dec, ::i/args [[::r/bx ::r/si]]}
-   [0xff 0x48 0xf0] {::i/tag ::i/dec, ::i/args [[::r/bx ::r/si -16]]}
-   [0xff 0x48 0x0f] {::i/tag ::i/dec, ::i/args [[::r/bx ::r/si 15]]}
-   [0xff 0x49 0x00] {::i/tag ::i/dec, ::i/args [[::r/bx ::r/di]]}
-   [0xff 0x49 0xf0] {::i/tag ::i/dec, ::i/args [[::r/bx ::r/di -16]]}
-   [0xff 0x49 0x0f] {::i/tag ::i/dec, ::i/args [[::r/bx ::r/di 15]]}
-   [0xff 0x4a 0x00] {::i/tag ::i/dec, ::i/args [[::r/bp ::r/si]]}
-   [0xff 0x4a 0xf0] {::i/tag ::i/dec, ::i/args [[::r/bp ::r/si -16]]}
-   [0xff 0x4a 0x0f] {::i/tag ::i/dec, ::i/args [[::r/bp ::r/si 15]]}
-   [0xff 0x4b 0x00] {::i/tag ::i/dec, ::i/args [[::r/bp ::r/di]]}
-   [0xff 0x4b 0xf0] {::i/tag ::i/dec, ::i/args [[::r/bp ::r/di -16]]}
-   [0xff 0x4b 0x0f] {::i/tag ::i/dec, ::i/args [[::r/bp ::r/di 15]]}
-   [0xff 0x4c 0x00] {::i/tag ::i/dec, ::i/args [[::r/si]]}
-   [0xff 0x4c 0xf0] {::i/tag ::i/dec, ::i/args [[::r/si -16]]}
-   [0xff 0x4c 0x0f] {::i/tag ::i/dec, ::i/args [[::r/si 15]]}
-   [0xff 0x4d 0x00] {::i/tag ::i/dec, ::i/args [[::r/di]]}
-   [0xff 0x4d 0xf0] {::i/tag ::i/dec, ::i/args [[::r/di -16]]}
-   [0xff 0x4d 0x0f] {::i/tag ::i/dec, ::i/args [[::r/di 15]]}
-   [0xff 0x4e 0x00] {::i/tag ::i/dec, ::i/args [[::r/bp]]}
-   [0xff 0x4e 0xf0] {::i/tag ::i/dec, ::i/args [[::r/bp -16]]}
-   [0xff 0x4e 0x0f] {::i/tag ::i/dec, ::i/args [[::r/bp 15]]}
-   [0xff 0x4f 0x00] {::i/tag ::i/dec, ::i/args [[::r/bx]]}
-   [0xff 0x4f 0xf0] {::i/tag ::i/dec, ::i/args [[::r/bx -16]]}
-   [0xff 0x4f 0x0f] {::i/tag ::i/dec, ::i/args [[::r/bx 15]]}
+   [0xff 0x40 0x00] {::i/tag ::i/inc, ::i/args [[::r/bx ::r/si]], ::i/type ::i/word}
+   [0xff 0x40 0xf0] {::i/tag ::i/inc, ::i/args [[::r/bx ::r/si -16]], ::i/type ::i/word}
+   [0xff 0x40 0x0f] {::i/tag ::i/inc, ::i/args [[::r/bx ::r/si 15]], ::i/type ::i/word}
+   [0xff 0x41 0x00] {::i/tag ::i/inc, ::i/args [[::r/bx ::r/di]], ::i/type ::i/word}
+   [0xff 0x41 0xf0] {::i/tag ::i/inc, ::i/args [[::r/bx ::r/di -16]], ::i/type ::i/word}
+   [0xff 0x41 0x0f] {::i/tag ::i/inc, ::i/args [[::r/bx ::r/di 15]], ::i/type ::i/word}
+   [0xff 0x42 0x00] {::i/tag ::i/inc, ::i/args [[::r/bp ::r/si]], ::i/type ::i/word}
+   [0xff 0x42 0xf0] {::i/tag ::i/inc, ::i/args [[::r/bp ::r/si -16]], ::i/type ::i/word}
+   [0xff 0x42 0x0f] {::i/tag ::i/inc, ::i/args [[::r/bp ::r/si 15]], ::i/type ::i/word}
+   [0xff 0x43 0x00] {::i/tag ::i/inc, ::i/args [[::r/bp ::r/di]], ::i/type ::i/word}
+   [0xff 0x43 0xf0] {::i/tag ::i/inc, ::i/args [[::r/bp ::r/di -16]], ::i/type ::i/word}
+   [0xff 0x43 0x0f] {::i/tag ::i/inc, ::i/args [[::r/bp ::r/di 15]], ::i/type ::i/word}
+   [0xff 0x44 0x00] {::i/tag ::i/inc, ::i/args [[::r/si]], ::i/type ::i/word}
+   [0xff 0x44 0xf0] {::i/tag ::i/inc, ::i/args [[::r/si -16]], ::i/type ::i/word}
+   [0xff 0x44 0x0f] {::i/tag ::i/inc, ::i/args [[::r/si 15]], ::i/type ::i/word}
+   [0xff 0x45 0x00] {::i/tag ::i/inc, ::i/args [[::r/di]], ::i/type ::i/word}
+   [0xff 0x45 0xf0] {::i/tag ::i/inc, ::i/args [[::r/di -16]], ::i/type ::i/word}
+   [0xff 0x45 0x0f] {::i/tag ::i/inc, ::i/args [[::r/di 15]], ::i/type ::i/word}
+   [0xff 0x46 0x00] {::i/tag ::i/inc, ::i/args [[::r/bp]], ::i/type ::i/word}
+   [0xff 0x46 0xf0] {::i/tag ::i/inc, ::i/args [[::r/bp -16]], ::i/type ::i/word}
+   [0xff 0x46 0x0f] {::i/tag ::i/inc, ::i/args [[::r/bp 15]], ::i/type ::i/word}
+   [0xff 0x47 0x00] {::i/tag ::i/inc, ::i/args [[::r/bx]], ::i/type ::i/word}
+   [0xff 0x47 0xf0] {::i/tag ::i/inc, ::i/args [[::r/bx -16]], ::i/type ::i/word}
+   [0xff 0x47 0x0f] {::i/tag ::i/inc, ::i/args [[::r/bx 15]], ::i/type ::i/word}
+   [0xff 0x48 0x00] {::i/tag ::i/dec, ::i/args [[::r/bx ::r/si]], ::i/type ::i/word}
+   [0xff 0x48 0xf0] {::i/tag ::i/dec, ::i/args [[::r/bx ::r/si -16]], ::i/type ::i/word}
+   [0xff 0x48 0x0f] {::i/tag ::i/dec, ::i/args [[::r/bx ::r/si 15]], ::i/type ::i/word}
+   [0xff 0x49 0x00] {::i/tag ::i/dec, ::i/args [[::r/bx ::r/di]], ::i/type ::i/word}
+   [0xff 0x49 0xf0] {::i/tag ::i/dec, ::i/args [[::r/bx ::r/di -16]], ::i/type ::i/word}
+   [0xff 0x49 0x0f] {::i/tag ::i/dec, ::i/args [[::r/bx ::r/di 15]], ::i/type ::i/word}
+   [0xff 0x4a 0x00] {::i/tag ::i/dec, ::i/args [[::r/bp ::r/si]], ::i/type ::i/word}
+   [0xff 0x4a 0xf0] {::i/tag ::i/dec, ::i/args [[::r/bp ::r/si -16]], ::i/type ::i/word}
+   [0xff 0x4a 0x0f] {::i/tag ::i/dec, ::i/args [[::r/bp ::r/si 15]], ::i/type ::i/word}
+   [0xff 0x4b 0x00] {::i/tag ::i/dec, ::i/args [[::r/bp ::r/di]], ::i/type ::i/word}
+   [0xff 0x4b 0xf0] {::i/tag ::i/dec, ::i/args [[::r/bp ::r/di -16]], ::i/type ::i/word}
+   [0xff 0x4b 0x0f] {::i/tag ::i/dec, ::i/args [[::r/bp ::r/di 15]], ::i/type ::i/word}
+   [0xff 0x4c 0x00] {::i/tag ::i/dec, ::i/args [[::r/si]], ::i/type ::i/word}
+   [0xff 0x4c 0xf0] {::i/tag ::i/dec, ::i/args [[::r/si -16]], ::i/type ::i/word}
+   [0xff 0x4c 0x0f] {::i/tag ::i/dec, ::i/args [[::r/si 15]], ::i/type ::i/word}
+   [0xff 0x4d 0x00] {::i/tag ::i/dec, ::i/args [[::r/di]], ::i/type ::i/word}
+   [0xff 0x4d 0xf0] {::i/tag ::i/dec, ::i/args [[::r/di -16]], ::i/type ::i/word}
+   [0xff 0x4d 0x0f] {::i/tag ::i/dec, ::i/args [[::r/di 15]], ::i/type ::i/word}
+   [0xff 0x4e 0x00] {::i/tag ::i/dec, ::i/args [[::r/bp]], ::i/type ::i/word}
+   [0xff 0x4e 0xf0] {::i/tag ::i/dec, ::i/args [[::r/bp -16]], ::i/type ::i/word}
+   [0xff 0x4e 0x0f] {::i/tag ::i/dec, ::i/args [[::r/bp 15]], ::i/type ::i/word}
+   [0xff 0x4f 0x00] {::i/tag ::i/dec, ::i/args [[::r/bx]], ::i/type ::i/word}
+   [0xff 0x4f 0xf0] {::i/tag ::i/dec, ::i/args [[::r/bx -16]], ::i/type ::i/word}
+   [0xff 0x4f 0x0f] {::i/tag ::i/dec, ::i/args [[::r/bx 15]], ::i/type ::i/word}
    [0xff 0x50 0x00] {::i/tag ::i/call, ::i/args [[::r/bx ::r/si]]}
    [0xff 0x50 0xf0] {::i/tag ::i/call, ::i/args [[::r/bx ::r/si -16]]}
    [0xff 0x50 0x0f] {::i/tag ::i/call, ::i/args [[::r/bx ::r/si 15]]}
@@ -19847,54 +19847,54 @@
    [0xff 0x7f 0x00] nil
    [0xff 0x7f 0xf0] nil
    [0xff 0x7f 0x0f] nil
-   [0xff 0x80 0x00 0x00] {::i/tag ::i/inc, ::i/args [[::r/bx ::r/si]]}
-   [0xff 0x80 0xf0 0x0f] {::i/tag ::i/inc, ::i/args [[::r/bx ::r/si 4080]]}
-   [0xff 0x80 0x0f 0xf0] {::i/tag ::i/inc, ::i/args [[::r/bx ::r/si -4081]]}
-   [0xff 0x81 0x00 0x00] {::i/tag ::i/inc, ::i/args [[::r/bx ::r/di]]}
-   [0xff 0x81 0xf0 0x0f] {::i/tag ::i/inc, ::i/args [[::r/bx ::r/di 4080]]}
-   [0xff 0x81 0x0f 0xf0] {::i/tag ::i/inc, ::i/args [[::r/bx ::r/di -4081]]}
-   [0xff 0x82 0x00 0x00] {::i/tag ::i/inc, ::i/args [[::r/bp ::r/si]]}
-   [0xff 0x82 0xf0 0x0f] {::i/tag ::i/inc, ::i/args [[::r/bp ::r/si 4080]]}
-   [0xff 0x82 0x0f 0xf0] {::i/tag ::i/inc, ::i/args [[::r/bp ::r/si -4081]]}
-   [0xff 0x83 0x00 0x00] {::i/tag ::i/inc, ::i/args [[::r/bp ::r/di]]}
-   [0xff 0x83 0xf0 0x0f] {::i/tag ::i/inc, ::i/args [[::r/bp ::r/di 4080]]}
-   [0xff 0x83 0x0f 0xf0] {::i/tag ::i/inc, ::i/args [[::r/bp ::r/di -4081]]}
-   [0xff 0x84 0x00 0x00] {::i/tag ::i/inc, ::i/args [[::r/si]]}
-   [0xff 0x84 0xf0 0x0f] {::i/tag ::i/inc, ::i/args [[::r/si 4080]]}
-   [0xff 0x84 0x0f 0xf0] {::i/tag ::i/inc, ::i/args [[::r/si -4081]]}
-   [0xff 0x85 0x00 0x00] {::i/tag ::i/inc, ::i/args [[::r/di]]}
-   [0xff 0x85 0xf0 0x0f] {::i/tag ::i/inc, ::i/args [[::r/di 4080]]}
-   [0xff 0x85 0x0f 0xf0] {::i/tag ::i/inc, ::i/args [[::r/di -4081]]}
-   [0xff 0x86 0x00 0x00] {::i/tag ::i/inc, ::i/args [[::r/bp]]}
-   [0xff 0x86 0xf0 0x0f] {::i/tag ::i/inc, ::i/args [[::r/bp 4080]]}
-   [0xff 0x86 0x0f 0xf0] {::i/tag ::i/inc, ::i/args [[::r/bp -4081]]}
-   [0xff 0x87 0x00 0x00] {::i/tag ::i/inc, ::i/args [[::r/bx]]}
-   [0xff 0x87 0xf0 0x0f] {::i/tag ::i/inc, ::i/args [[::r/bx 4080]]}
-   [0xff 0x87 0x0f 0xf0] {::i/tag ::i/inc, ::i/args [[::r/bx -4081]]}
-   [0xff 0x88 0x00 0x00] {::i/tag ::i/dec, ::i/args [[::r/bx ::r/si]]}
-   [0xff 0x88 0xf0 0x0f] {::i/tag ::i/dec, ::i/args [[::r/bx ::r/si 4080]]}
-   [0xff 0x88 0x0f 0xf0] {::i/tag ::i/dec, ::i/args [[::r/bx ::r/si -4081]]}
-   [0xff 0x89 0x00 0x00] {::i/tag ::i/dec, ::i/args [[::r/bx ::r/di]]}
-   [0xff 0x89 0xf0 0x0f] {::i/tag ::i/dec, ::i/args [[::r/bx ::r/di 4080]]}
-   [0xff 0x89 0x0f 0xf0] {::i/tag ::i/dec, ::i/args [[::r/bx ::r/di -4081]]}
-   [0xff 0x8a 0x00 0x00] {::i/tag ::i/dec, ::i/args [[::r/bp ::r/si]]}
-   [0xff 0x8a 0xf0 0x0f] {::i/tag ::i/dec, ::i/args [[::r/bp ::r/si 4080]]}
-   [0xff 0x8a 0x0f 0xf0] {::i/tag ::i/dec, ::i/args [[::r/bp ::r/si -4081]]}
-   [0xff 0x8b 0x00 0x00] {::i/tag ::i/dec, ::i/args [[::r/bp ::r/di]]}
-   [0xff 0x8b 0xf0 0x0f] {::i/tag ::i/dec, ::i/args [[::r/bp ::r/di 4080]]}
-   [0xff 0x8b 0x0f 0xf0] {::i/tag ::i/dec, ::i/args [[::r/bp ::r/di -4081]]}
-   [0xff 0x8c 0x00 0x00] {::i/tag ::i/dec, ::i/args [[::r/si]]}
-   [0xff 0x8c 0xf0 0x0f] {::i/tag ::i/dec, ::i/args [[::r/si 4080]]}
-   [0xff 0x8c 0x0f 0xf0] {::i/tag ::i/dec, ::i/args [[::r/si -4081]]}
-   [0xff 0x8d 0x00 0x00] {::i/tag ::i/dec, ::i/args [[::r/di]]}
-   [0xff 0x8d 0xf0 0x0f] {::i/tag ::i/dec, ::i/args [[::r/di 4080]]}
-   [0xff 0x8d 0x0f 0xf0] {::i/tag ::i/dec, ::i/args [[::r/di -4081]]}
-   [0xff 0x8e 0x00 0x00] {::i/tag ::i/dec, ::i/args [[::r/bp]]}
-   [0xff 0x8e 0xf0 0x0f] {::i/tag ::i/dec, ::i/args [[::r/bp 4080]]}
-   [0xff 0x8e 0x0f 0xf0] {::i/tag ::i/dec, ::i/args [[::r/bp -4081]]}
-   [0xff 0x8f 0x00 0x00] {::i/tag ::i/dec, ::i/args [[::r/bx]]}
-   [0xff 0x8f 0xf0 0x0f] {::i/tag ::i/dec, ::i/args [[::r/bx 4080]]}
-   [0xff 0x8f 0x0f 0xf0] {::i/tag ::i/dec, ::i/args [[::r/bx -4081]]}
+   [0xff 0x80 0x00 0x00] {::i/tag ::i/inc, ::i/args [[::r/bx ::r/si]], ::i/type ::i/word}
+   [0xff 0x80 0xf0 0x0f] {::i/tag ::i/inc, ::i/args [[::r/bx ::r/si 4080]], ::i/type ::i/word}
+   [0xff 0x80 0x0f 0xf0] {::i/tag ::i/inc, ::i/args [[::r/bx ::r/si -4081]], ::i/type ::i/word}
+   [0xff 0x81 0x00 0x00] {::i/tag ::i/inc, ::i/args [[::r/bx ::r/di]], ::i/type ::i/word}
+   [0xff 0x81 0xf0 0x0f] {::i/tag ::i/inc, ::i/args [[::r/bx ::r/di 4080]], ::i/type ::i/word}
+   [0xff 0x81 0x0f 0xf0] {::i/tag ::i/inc, ::i/args [[::r/bx ::r/di -4081]], ::i/type ::i/word}
+   [0xff 0x82 0x00 0x00] {::i/tag ::i/inc, ::i/args [[::r/bp ::r/si]], ::i/type ::i/word}
+   [0xff 0x82 0xf0 0x0f] {::i/tag ::i/inc, ::i/args [[::r/bp ::r/si 4080]], ::i/type ::i/word}
+   [0xff 0x82 0x0f 0xf0] {::i/tag ::i/inc, ::i/args [[::r/bp ::r/si -4081]], ::i/type ::i/word}
+   [0xff 0x83 0x00 0x00] {::i/tag ::i/inc, ::i/args [[::r/bp ::r/di]], ::i/type ::i/word}
+   [0xff 0x83 0xf0 0x0f] {::i/tag ::i/inc, ::i/args [[::r/bp ::r/di 4080]], ::i/type ::i/word}
+   [0xff 0x83 0x0f 0xf0] {::i/tag ::i/inc, ::i/args [[::r/bp ::r/di -4081]], ::i/type ::i/word}
+   [0xff 0x84 0x00 0x00] {::i/tag ::i/inc, ::i/args [[::r/si]], ::i/type ::i/word}
+   [0xff 0x84 0xf0 0x0f] {::i/tag ::i/inc, ::i/args [[::r/si 4080]], ::i/type ::i/word}
+   [0xff 0x84 0x0f 0xf0] {::i/tag ::i/inc, ::i/args [[::r/si -4081]], ::i/type ::i/word}
+   [0xff 0x85 0x00 0x00] {::i/tag ::i/inc, ::i/args [[::r/di]], ::i/type ::i/word}
+   [0xff 0x85 0xf0 0x0f] {::i/tag ::i/inc, ::i/args [[::r/di 4080]], ::i/type ::i/word}
+   [0xff 0x85 0x0f 0xf0] {::i/tag ::i/inc, ::i/args [[::r/di -4081]], ::i/type ::i/word}
+   [0xff 0x86 0x00 0x00] {::i/tag ::i/inc, ::i/args [[::r/bp]], ::i/type ::i/word}
+   [0xff 0x86 0xf0 0x0f] {::i/tag ::i/inc, ::i/args [[::r/bp 4080]], ::i/type ::i/word}
+   [0xff 0x86 0x0f 0xf0] {::i/tag ::i/inc, ::i/args [[::r/bp -4081]], ::i/type ::i/word}
+   [0xff 0x87 0x00 0x00] {::i/tag ::i/inc, ::i/args [[::r/bx]], ::i/type ::i/word}
+   [0xff 0x87 0xf0 0x0f] {::i/tag ::i/inc, ::i/args [[::r/bx 4080]], ::i/type ::i/word}
+   [0xff 0x87 0x0f 0xf0] {::i/tag ::i/inc, ::i/args [[::r/bx -4081]], ::i/type ::i/word}
+   [0xff 0x88 0x00 0x00] {::i/tag ::i/dec, ::i/args [[::r/bx ::r/si]], ::i/type ::i/word}
+   [0xff 0x88 0xf0 0x0f] {::i/tag ::i/dec, ::i/args [[::r/bx ::r/si 4080]], ::i/type ::i/word}
+   [0xff 0x88 0x0f 0xf0] {::i/tag ::i/dec, ::i/args [[::r/bx ::r/si -4081]], ::i/type ::i/word}
+   [0xff 0x89 0x00 0x00] {::i/tag ::i/dec, ::i/args [[::r/bx ::r/di]], ::i/type ::i/word}
+   [0xff 0x89 0xf0 0x0f] {::i/tag ::i/dec, ::i/args [[::r/bx ::r/di 4080]], ::i/type ::i/word}
+   [0xff 0x89 0x0f 0xf0] {::i/tag ::i/dec, ::i/args [[::r/bx ::r/di -4081]], ::i/type ::i/word}
+   [0xff 0x8a 0x00 0x00] {::i/tag ::i/dec, ::i/args [[::r/bp ::r/si]], ::i/type ::i/word}
+   [0xff 0x8a 0xf0 0x0f] {::i/tag ::i/dec, ::i/args [[::r/bp ::r/si 4080]], ::i/type ::i/word}
+   [0xff 0x8a 0x0f 0xf0] {::i/tag ::i/dec, ::i/args [[::r/bp ::r/si -4081]], ::i/type ::i/word}
+   [0xff 0x8b 0x00 0x00] {::i/tag ::i/dec, ::i/args [[::r/bp ::r/di]], ::i/type ::i/word}
+   [0xff 0x8b 0xf0 0x0f] {::i/tag ::i/dec, ::i/args [[::r/bp ::r/di 4080]], ::i/type ::i/word}
+   [0xff 0x8b 0x0f 0xf0] {::i/tag ::i/dec, ::i/args [[::r/bp ::r/di -4081]], ::i/type ::i/word}
+   [0xff 0x8c 0x00 0x00] {::i/tag ::i/dec, ::i/args [[::r/si]], ::i/type ::i/word}
+   [0xff 0x8c 0xf0 0x0f] {::i/tag ::i/dec, ::i/args [[::r/si 4080]], ::i/type ::i/word}
+   [0xff 0x8c 0x0f 0xf0] {::i/tag ::i/dec, ::i/args [[::r/si -4081]], ::i/type ::i/word}
+   [0xff 0x8d 0x00 0x00] {::i/tag ::i/dec, ::i/args [[::r/di]], ::i/type ::i/word}
+   [0xff 0x8d 0xf0 0x0f] {::i/tag ::i/dec, ::i/args [[::r/di 4080]], ::i/type ::i/word}
+   [0xff 0x8d 0x0f 0xf0] {::i/tag ::i/dec, ::i/args [[::r/di -4081]], ::i/type ::i/word}
+   [0xff 0x8e 0x00 0x00] {::i/tag ::i/dec, ::i/args [[::r/bp]], ::i/type ::i/word}
+   [0xff 0x8e 0xf0 0x0f] {::i/tag ::i/dec, ::i/args [[::r/bp 4080]], ::i/type ::i/word}
+   [0xff 0x8e 0x0f 0xf0] {::i/tag ::i/dec, ::i/args [[::r/bp -4081]], ::i/type ::i/word}
+   [0xff 0x8f 0x00 0x00] {::i/tag ::i/dec, ::i/args [[::r/bx]], ::i/type ::i/word}
+   [0xff 0x8f 0xf0 0x0f] {::i/tag ::i/dec, ::i/args [[::r/bx 4080]], ::i/type ::i/word}
+   [0xff 0x8f 0x0f 0xf0] {::i/tag ::i/dec, ::i/args [[::r/bx -4081]], ::i/type ::i/word}
    [0xff 0x90 0x00 0x00] {::i/tag ::i/call, ::i/args [[::r/bx ::r/si]]}
    [0xff 0x90 0xf0 0x0f] {::i/tag ::i/call, ::i/args [[::r/bx ::r/si 4080]]}
    [0xff 0x90 0x0f 0xf0] {::i/tag ::i/call, ::i/args [[::r/bx ::r/si -4081]]}
@@ -20039,22 +20039,22 @@
    [0xff 0xbf 0x00 0x00] nil
    [0xff 0xbf 0xf0 0x0f] nil
    [0xff 0xbf 0x0f 0xf0] nil
-   [0xff 0xc0] {::i/tag ::i/inc, ::i/args [::r/ax]}
-   [0xff 0xc1] {::i/tag ::i/inc, ::i/args [::r/cx]}
-   [0xff 0xc2] {::i/tag ::i/inc, ::i/args [::r/dx]}
-   [0xff 0xc3] {::i/tag ::i/inc, ::i/args [::r/bx]}
-   [0xff 0xc4] {::i/tag ::i/inc, ::i/args [::r/sp]}
-   [0xff 0xc5] {::i/tag ::i/inc, ::i/args [::r/bp]}
-   [0xff 0xc6] {::i/tag ::i/inc, ::i/args [::r/si]}
-   [0xff 0xc7] {::i/tag ::i/inc, ::i/args [::r/di]}
-   [0xff 0xc8] {::i/tag ::i/dec, ::i/args [::r/ax]}
-   [0xff 0xc9] {::i/tag ::i/dec, ::i/args [::r/cx]}
-   [0xff 0xca] {::i/tag ::i/dec, ::i/args [::r/dx]}
-   [0xff 0xcb] {::i/tag ::i/dec, ::i/args [::r/bx]}
-   [0xff 0xcc] {::i/tag ::i/dec, ::i/args [::r/sp]}
-   [0xff 0xcd] {::i/tag ::i/dec, ::i/args [::r/bp]}
-   [0xff 0xce] {::i/tag ::i/dec, ::i/args [::r/si]}
-   [0xff 0xcf] {::i/tag ::i/dec, ::i/args [::r/di]}
+   [0xff 0xc0] {::i/tag ::i/inc, ::i/args [::r/ax], ::i/type ::i/word}
+   [0xff 0xc1] {::i/tag ::i/inc, ::i/args [::r/cx], ::i/type ::i/word}
+   [0xff 0xc2] {::i/tag ::i/inc, ::i/args [::r/dx], ::i/type ::i/word}
+   [0xff 0xc3] {::i/tag ::i/inc, ::i/args [::r/bx], ::i/type ::i/word}
+   [0xff 0xc4] {::i/tag ::i/inc, ::i/args [::r/sp], ::i/type ::i/word}
+   [0xff 0xc5] {::i/tag ::i/inc, ::i/args [::r/bp], ::i/type ::i/word}
+   [0xff 0xc6] {::i/tag ::i/inc, ::i/args [::r/si], ::i/type ::i/word}
+   [0xff 0xc7] {::i/tag ::i/inc, ::i/args [::r/di], ::i/type ::i/word}
+   [0xff 0xc8] {::i/tag ::i/dec, ::i/args [::r/ax], ::i/type ::i/word}
+   [0xff 0xc9] {::i/tag ::i/dec, ::i/args [::r/cx], ::i/type ::i/word}
+   [0xff 0xca] {::i/tag ::i/dec, ::i/args [::r/dx], ::i/type ::i/word}
+   [0xff 0xcb] {::i/tag ::i/dec, ::i/args [::r/bx], ::i/type ::i/word}
+   [0xff 0xcc] {::i/tag ::i/dec, ::i/args [::r/sp], ::i/type ::i/word}
+   [0xff 0xcd] {::i/tag ::i/dec, ::i/args [::r/bp], ::i/type ::i/word}
+   [0xff 0xce] {::i/tag ::i/dec, ::i/args [::r/si], ::i/type ::i/word}
+   [0xff 0xcf] {::i/tag ::i/dec, ::i/args [::r/di], ::i/type ::i/word}
    [0xff 0xd0] {::i/tag ::i/call, ::i/args [::r/ax]}
    [0xff 0xd1] {::i/tag ::i/call, ::i/args [::r/cx]}
    [0xff 0xd2] {::i/tag ::i/call, ::i/args [::r/dx]}
