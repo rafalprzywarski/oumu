@@ -229,6 +229,7 @@
                0xe7 {::tag ::out, ::args [::imm8 ::r/ax], ::length 1}
                0xe8 {::tag ::call, ::args [::rel16], ::length 1}
                0xe9 {::tag ::jmp, ::args [::rel16], ::length 1}
+               0xea {::tag ::jmp, ::args [::far-addr16], ::length 1}
                0xeb {::tag ::jmp, ::args [::rel8], ::length 1}
                0xec {::tag ::in, ::args [::r/al ::r/dx], ::length 1}
                0xed {::tag ::in, ::args [::r/ax ::r/dx], ::length 1}
