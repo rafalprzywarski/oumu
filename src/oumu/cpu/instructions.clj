@@ -337,7 +337,15 @@
    0x04f6 {::tag ::mul, ::args [::r/ax ::r/al ::r-or-m8], ::length 2}
    0x05f6 {::tag ::imul, ::args [::r/ax ::r/al ::r-or-m8], ::length 2}
    0x06f6 {::tag ::div, ::args [::r/al ::r/ah ::r/ax ::r-or-m8], ::length 2}
-   0x07f6 {::tag ::idiv, ::args [::r/al ::r/ah ::r/ax ::r-or-m8], ::length 2}})
+   0x07f6 {::tag ::idiv, ::args [::r/al ::r/ah ::r/ax ::r-or-m8], ::length 2}
+   0x00f7 {::tag ::test, ::args [::r-or-m16 ::imm16], ::length 2}
+   0x01f7 {::tag ::test, ::args [::r-or-m16 ::imm16], ::length 2}
+   0x02f7 {::tag ::not, ::args [::r-or-m16], ::length 2}
+   0x03f7 {::tag ::neg, ::args [::r-or-m16], ::length 2}
+   0x04f7 {::tag ::mul, ::args [::r/dx ::r/ax ::r-or-m16], ::length 2}
+   0x05f7 {::tag ::imul, ::args [::r/dx ::r/ax ::r-or-m16], ::length 2}
+   0x06f7 {::tag ::div, ::args [::r/dx ::r/ax ::r-or-m16], ::length 2}
+   0x07f7 {::tag ::idiv, ::args [::r/dx ::r/ax ::r-or-m16], ::length 2}})
 
 (defn- word [bytes]
   (+ (first bytes) (bit-shift-left (second bytes) 8)))
