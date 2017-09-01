@@ -313,7 +313,23 @@
    0x04d1 {::tag ::shl, ::args [::r-or-m16 1], ::length 2}
    0x05d1 {::tag ::shr, ::args [::r-or-m16 1], ::length 2}
    0x06d1 {::tag ::shl, ::args [::r-or-m16 1], ::length 2}
-   0x07d1 {::tag ::sar, ::args [::r-or-m16 1], ::length 2}})
+   0x07d1 {::tag ::sar, ::args [::r-or-m16 1], ::length 2}
+   0x00d2 {::tag ::rol, ::args [::r-or-m8 ::r/cl], ::length 2}
+   0x01d2 {::tag ::ror, ::args [::r-or-m8 ::r/cl], ::length 2}
+   0x02d2 {::tag ::rcl, ::args [::r-or-m8 ::r/cl], ::length 2}
+   0x03d2 {::tag ::rcr, ::args [::r-or-m8 ::r/cl], ::length 2}
+   0x04d2 {::tag ::shl, ::args [::r-or-m8 ::r/cl], ::length 2}
+   0x05d2 {::tag ::shr, ::args [::r-or-m8 ::r/cl], ::length 2}
+   0x06d2 {::tag ::shl, ::args [::r-or-m8 ::r/cl], ::length 2}
+   0x07d2 {::tag ::sar, ::args [::r-or-m8 ::r/cl], ::length 2}
+   0x00d3 {::tag ::rol, ::args [::r-or-m16 ::r/cl], ::length 2}
+   0x01d3 {::tag ::ror, ::args [::r-or-m16 ::r/cl], ::length 2}
+   0x02d3 {::tag ::rcl, ::args [::r-or-m16 ::r/cl], ::length 2}
+   0x03d3 {::tag ::rcr, ::args [::r-or-m16 ::r/cl], ::length 2}
+   0x04d3 {::tag ::shl, ::args [::r-or-m16 ::r/cl], ::length 2}
+   0x05d3 {::tag ::shr, ::args [::r-or-m16 ::r/cl], ::length 2}
+   0x06d3 {::tag ::shl, ::args [::r-or-m16 ::r/cl], ::length 2}
+   0x07d3 {::tag ::sar, ::args [::r-or-m16 ::r/cl], ::length 2}})
 
 (defn- word [bytes]
   (+ (first bytes) (bit-shift-left (second bytes) 8)))
