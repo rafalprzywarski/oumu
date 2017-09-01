@@ -293,7 +293,8 @@
    0x04c1 {::tag ::shl, ::args [::r-or-m16 ::imm16], ::length 2}
    0x05c1 {::tag ::shr, ::args [::r-or-m16 ::imm16], ::length 2}
    0x06c1 {::tag ::shl, ::args [::r-or-m16 ::imm16], ::length 2}
-   0x07c1 {::tag ::sar, ::args [::r-or-m16 ::imm16], ::length 2}})
+   0x07c1 {::tag ::sar, ::args [::r-or-m16 ::imm16], ::length 2}
+   0x00c7 {::tag ::mov, ::args [::r-or-m16 ::imm16], ::length 2}})
 
 (defn- word [bytes]
   (+ (first bytes) (bit-shift-left (second bytes) 8)))
