@@ -305,7 +305,15 @@
    0x04d0 {::tag ::shl, ::args [::r-or-m8 1], ::length 2}
    0x05d0 {::tag ::shr, ::args [::r-or-m8 1], ::length 2}
    0x06d0 {::tag ::shl, ::args [::r-or-m8 1], ::length 2}
-   0x07d0 {::tag ::sar, ::args [::r-or-m8 1], ::length 2}})
+   0x07d0 {::tag ::sar, ::args [::r-or-m8 1], ::length 2}
+   0x00d1 {::tag ::rol, ::args [::r-or-m16 1], ::length 2}
+   0x01d1 {::tag ::ror, ::args [::r-or-m16 1], ::length 2}
+   0x02d1 {::tag ::rcl, ::args [::r-or-m16 1], ::length 2}
+   0x03d1 {::tag ::rcr, ::args [::r-or-m16 1], ::length 2}
+   0x04d1 {::tag ::shl, ::args [::r-or-m16 1], ::length 2}
+   0x05d1 {::tag ::shr, ::args [::r-or-m16 1], ::length 2}
+   0x06d1 {::tag ::shl, ::args [::r-or-m16 1], ::length 2}
+   0x07d1 {::tag ::sar, ::args [::r-or-m16 1], ::length 2}})
 
 (defn- word [bytes]
   (+ (first bytes) (bit-shift-left (second bytes) 8)))
