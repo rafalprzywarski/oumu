@@ -7,6 +7,8 @@
 
 (def sregs [::r/es ::r/cs ::r/ss ::r/ds ::r/fs ::r/gs ::invalid ::invalid])
 
+(def fregs [::r/st0 ::r/st1 ::r/st2 ::r/st3 ::r/st4 ::r/st5 ::r/st6 ::r/st7])
+
 (def memr [[::r/bx ::r/si]
            [::r/bx ::r/di]
            [::r/bp ::r/si]
@@ -330,6 +332,14 @@
    0x05d3 {::tag ::shr, ::args [::r-or-m16 ::r/cl], ::length 2}
    0x06d3 {::tag ::shl, ::args [::r-or-m16 ::r/cl], ::length 2}
    0x07d3 {::tag ::sar, ::args [::r-or-m16 ::r/cl], ::length 2}
+   0x00d8 {::tag ::fadd, ::args [::st-or-m32real], ::length 2}
+   0x01d8 {::tag ::fmul, ::args [::st-or-m32real], ::length 2}
+   0x02d8 {::tag ::fcom, ::args [::st-or-m32real], ::length 2}
+   0x03d8 {::tag ::fcomp, ::args [::st-or-m32real], ::length 2}
+   0x04d8 {::tag ::fsub, ::args [::st-or-m32real], ::length 2}
+   0x05d8 {::tag ::fsubr, ::args [::st-or-m32real], ::length 2}
+   0x06d8 {::tag ::fdiv, ::args [::st-or-m32real], ::length 2}
+   0x07d8 {::tag ::fdivr, ::args [::st-or-m32real], ::length 2}
    0x00f6 {::tag ::test, ::args [::r-or-m8 ::imm8], ::length 2}
    0x01f6 {::tag ::test, ::args [::r-or-m8 ::imm8], ::length 2}
    0x02f6 {::tag ::not, ::args [::r-or-m8], ::length 2}
@@ -418,6 +428,7 @@
     ::sreg [(decode-reg sregs 3 modrm) 0]
     ::ptr16 [[(word bytes)] 2]
     ::far-addr16 [{::seg (word (drop 2 bytes)) ::off (word bytes)} 4]
+    ::st-or-m32real (decode-r-or-m fregs modrm bytes)
     nil))
 
 
