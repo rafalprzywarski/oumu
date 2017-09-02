@@ -348,6 +348,14 @@
    0x05d9 {::tag ::fldcw, ::args [::m], ::length 2}
    0x06d9 {::tag ::fnstenvw, ::args [::m], ::length 2}
    0x07d9 {::tag ::fnstcw, ::args [::m], ::length 2}
+   0x00da {::tag ::fiadd, ::args [::m], ::length 2}
+   0x01da {::tag ::fimul, ::args [::m], ::length 2}
+   0x02da {::tag ::ficom, ::args [::m], ::length 2}
+   0x03da {::tag ::ficomp, ::args [::m], ::length 2}
+   0x04da {::tag ::fisub, ::args [::m], ::length 2}
+   0x05da {::tag ::fisubr, ::args [::m], ::length 2}
+   0x06da {::tag ::fidiv, ::args [::m], ::length 2}
+   0x07da {::tag ::fidivr, ::args [::m], ::length 2}
    0x00f6 {::tag ::test, ::args [::r-or-m8 ::imm8], ::length 2}
    0x01f6 {::tag ::test, ::args [::r-or-m8 ::imm8], ::length 2}
    0x02f6 {::tag ::not, ::args [::r-or-m8], ::length 2}
@@ -404,7 +412,8 @@
    0xfcd9 {::tag ::frndint, ::length 2}
    0xfdd9 {::tag ::fscale, ::length 2}
    0xfed9 {::tag ::fsin, ::length 2}
-   0xffd9 {::tag ::fcos, ::length 2}})
+   0xffd9 {::tag ::fcos, ::length 2}
+   0xe9da {::tag ::fucompp, ::length 2}})
 
 
 (defn- word [bytes]
