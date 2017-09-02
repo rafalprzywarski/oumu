@@ -361,6 +361,21 @@
    0x03db {::tag ::fistp, ::args [::m], ::length 2}
    0x05db {::tag ::fld, ::args [::m], ::length 2}
    0x07db {::tag ::fstp, ::args [::m], ::length 2}
+   0x00dc {::tag ::fadd, ::args [::st-or-m64real], ::length 2, ::type ::qword}
+   0x01dc {::tag ::fmul, ::args [::st-or-m64real], ::length 2, ::type ::qword}
+   0x02dc {::tag ::fcom, ::args [::m], ::length 2, ::type ::qword}
+   0x03dc {::tag ::fcomp, ::args [::m], ::length 2, ::type ::qword}
+   0x04dc {::tag ::fsub, ::args [::st-or-m64real], ::length 2, ::type ::qword}
+   0x05dc {::tag ::fsubr, ::args [::st-or-m64real], ::length 2, ::type ::qword}
+   0x06dc {::tag ::fdiv, ::args [::st-or-m64real], ::length 2, ::type ::qword}
+   0x07dc {::tag ::fdivr, ::args [::st-or-m64real], ::length 2, ::type ::qword}
+   0x00dd {::tag ::fld, ::args [::st-or-m64real], ::length 2, ::type ::qword}
+   0x02dd {::tag ::fst, ::args [::st-or-m64real], ::length 2, ::type ::qword}
+   0x03dd {::tag ::fstp, ::args [::st-or-m64real], ::length 2, ::type ::qword}
+   0x04dd {::tag ::frstorw, ::args [::m], ::length 2}
+   0x05dd {::tag ::fucomp, ::args [::st-only], ::length 2}
+   0x06dd {::tag ::fnsavew, ::args [::m], ::length 2}
+   0x07dd {::tag ::fnstsw, ::args [::m], ::length 2}
    0x00f6 {::tag ::test, ::args [::r-or-m8 ::imm8], ::length 2}
    0x01f6 {::tag ::test, ::args [::r-or-m8 ::imm8], ::length 2}
    0x02f6 {::tag ::not, ::args [::r-or-m8], ::length 2}
@@ -386,6 +401,11 @@
    0x04ff {::tag ::jmp, ::args [::r-or-m16], ::length 2}
    0x05ff {::tag ::jmpf, ::args [::m], ::length 2}
    0x06ff {::tag ::push, ::args [::r-or-m16], ::length 2}})
+
+
+(def one-byte-ext-st
+  {0xc0dd {::tag ::ffree, ::args [::st-only], ::length 2}
+   0xc4dd {::tag ::fucom, ::args [::st-only], ::length 2}})
 
 
 (def two-byte
@@ -425,7 +445,12 @@
    0xe3db {::tag ::fninit, ::length 2}
    0xe4db {::tag ::fnsetpm, ::length 2}
    0xe5db {::tag ::frstpm, ::length 2}
-   0xf8db {::tag ::fnop, ::length 2}})
+   0xf8db {::tag ::fnop, ::length 2}
+   0xd0dc {::tag ::fnop, ::length 2}
+   0xd8dc {::tag ::fnop, ::length 2}
+   0xc8dd {::tag ::fnop, ::length 2}
+   0xf0dd {::tag ::fnop, ::length 2}
+   0xf8dd {::tag ::fnop, ::length 2}})
 
 
 (defn- word [bytes]
@@ -498,6 +523,7 @@
     ::ptr16 [[(word bytes)] 2]
     ::far-addr16 [{::seg (word (drop 2 bytes)) ::off (word bytes)} 4]
     ::st-or-m32real (decode-r-or-m fregs modrm bytes)
+    ::st-or-m64real (decode-r-or-m fregs modrm bytes)
     ::st-only (decode-st-only modrm bytes)
     nil))
 
@@ -513,13 +539,21 @@
           (bit-and 0x0700 (bit-shift-left (second bytes) 5))))
 
 
+(defn- ext-opcode-st [bytes]
+  (bit-or (first bytes)
+          (bit-and 0x0700 (bit-shift-left (second bytes) 5))
+          (bit-and 0xc000 (bit-shift-left (second bytes) 8))))
+
+
 (defn decode [bytes]
   (when-let [instr (or (one-byte (first bytes))
                        (two-byte (word bytes))
+                       (one-byte-ext-st (ext-opcode-st bytes))
                        (one-byte-ext (ext-opcode bytes)))]
     (let [instr (decode-instr-arg instr 0 bytes)
           instr (decode-instr-arg instr 1 bytes)
           instr (decode-instr-arg instr 2 bytes)
-          instr (decode-instr-arg instr 3 bytes)]
+          instr (decode-instr-arg instr 3 bytes)
+          instr (if (not-any? vector? (::args instr)) (dissoc instr ::type) instr)]
       (if (not-any? #(= ::invalid %) (::args instr))
         instr))))
