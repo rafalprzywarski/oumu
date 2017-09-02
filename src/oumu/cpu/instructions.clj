@@ -340,6 +340,14 @@
    0x05d8 {::tag ::fsubr, ::args [::st-or-m32real], ::length 2}
    0x06d8 {::tag ::fdiv, ::args [::st-or-m32real], ::length 2}
    0x07d8 {::tag ::fdivr, ::args [::st-or-m32real], ::length 2}
+   0x00d9 {::tag ::fld, ::args [::st-or-m32real], ::length 2}
+   0x01d9 {::tag ::fxch, ::args [::st-only], ::length 2}
+   0x02d9 {::tag ::fst, ::args [::m], ::length 2}
+   0x03d9 {::tag ::fstp, ::args [::m], ::length 2}
+   0x04d9 {::tag ::fldenvw, ::args [::m], ::length 2}
+   0x05d9 {::tag ::fldcw, ::args [::m], ::length 2}
+   0x06d9 {::tag ::fnstenvw, ::args [::m], ::length 2}
+   0x07d9 {::tag ::fnstcw, ::args [::m], ::length 2}
    0x00f6 {::tag ::test, ::args [::r-or-m8 ::imm8], ::length 2}
    0x01f6 {::tag ::test, ::args [::r-or-m8 ::imm8], ::length 2}
    0x02f6 {::tag ::not, ::args [::r-or-m8], ::length 2}
@@ -365,6 +373,39 @@
    0x04ff {::tag ::jmp, ::args [::r-or-m16], ::length 2}
    0x05ff {::tag ::jmpf, ::args [::m], ::length 2}
    0x06ff {::tag ::push, ::args [::r-or-m16], ::length 2}})
+
+
+(def two-byte
+  {0xd0d9 {::tag ::fnop, ::length 2}
+   0xd8d9 {::tag ::fnop, ::length 2}
+   0xe0d9 {::tag ::fchs, ::length 2}
+   0xe1d9 {::tag ::fabs, ::length 2}
+   0xe4d9 {::tag ::ftst, ::length 2}
+   0xe5d9 {::tag ::fxam, ::length 2}
+   0xe8d9 {::tag ::fld1, ::length 2}
+   0xe9d9 {::tag ::fldl2t, ::length 2}
+   0xead9 {::tag ::fldl2e, ::length 2}
+   0xebd9 {::tag ::fldpi, ::length 2}
+   0xecd9 {::tag ::fldlg2, ::length 2}
+   0xedd9 {::tag ::fldln2, ::length 2}
+   0xeed9 {::tag ::fldz, ::length 2}
+   0xf0d9 {::tag ::f2xm1, ::length 2}
+   0xf1d9 {::tag ::fyl2x, ::length 2}
+   0xf2d9 {::tag ::fptan, ::length 2}
+   0xf3d9 {::tag ::fpatan, ::length 2}
+   0xf4d9 {::tag ::fxtract, ::length 2}
+   0xf5d9 {::tag ::fprem1, ::length 2}
+   0xf6d9 {::tag ::fdecstp, ::length 2}
+   0xf7d9 {::tag ::fincstp, ::length 2}
+   0xf8d9 {::tag ::fprem, ::length 2}
+   0xf9d9 {::tag ::fyl2xp1, ::length 2}
+   0xfad9 {::tag ::fsqrt, ::length 2}
+   0xfbd9 {::tag ::fsincos, ::length 2}
+   0xfcd9 {::tag ::frndint, ::length 2}
+   0xfdd9 {::tag ::fscale, ::length 2}
+   0xfed9 {::tag ::fsin, ::length 2}
+   0xffd9 {::tag ::fcos, ::length 2}})
+
 
 (defn- word [bytes]
   (+ (first bytes) (bit-shift-left (second bytes) 8)))
@@ -413,6 +454,13 @@
     (decode-m modrm bytes)))
 
 
+(defn- decode-st-only [modrm bytes]
+  [(if (= 0xc0 (bit-and 0xc0 modrm))
+     (decode-reg fregs 0 modrm)
+     ::invalid)
+   0])
+
+
 (defn- decode-arg [arg modrm bytes]
   (case arg
     ::r8 [(decode-reg regs8 3 modrm) 0]
@@ -429,6 +477,7 @@
     ::ptr16 [[(word bytes)] 2]
     ::far-addr16 [{::seg (word (drop 2 bytes)) ::off (word bytes)} 4]
     ::st-or-m32real (decode-r-or-m fregs modrm bytes)
+    ::st-only (decode-st-only modrm bytes)
     nil))
 
 
@@ -445,6 +494,7 @@
 
 (defn decode [bytes]
   (when-let [instr (or (one-byte (first bytes))
+                       (two-byte (word bytes))
                        (one-byte-ext (ext-opcode bytes)))]
     (let [instr (decode-instr-arg instr 0 bytes)
           instr (decode-instr-arg instr 1 bytes)
