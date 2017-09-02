@@ -376,6 +376,21 @@
    0x05dd {::tag ::fucomp, ::args [::st-only], ::length 2}
    0x06dd {::tag ::fnsavew, ::args [::m], ::length 2}
    0x07dd {::tag ::fnstsw, ::args [::m], ::length 2}
+   0x00de {::tag ::fiadd, ::args [::m], ::length 2, ::type ::word}
+   0x01de {::tag ::fimul, ::args [::m], ::length 2, ::type ::word}
+   0x02de {::tag ::ficom, ::args [::m], ::length 2, ::type ::word}
+   0x03de {::tag ::ficomp, ::args [::m], ::length 2, ::type ::word}
+   0x04de {::tag ::fisub, ::args [::m], ::length 2, ::type ::word}
+   0x05de {::tag ::fisubr, ::args [::m], ::length 2, ::type ::word}
+   0x06de {::tag ::fidiv, ::args [::m], ::length 2, ::type ::word}
+   0x07de {::tag ::fidivr, ::args [::m], ::length 2, ::type ::word}
+   0x00df {::tag ::fild, ::args [::m], ::length 2, ::type ::word}
+   0x02df {::tag ::fist, ::args [::m], ::length 2, ::type ::word}
+   0x03df {::tag ::fistp, ::args [::m], ::length 2, ::type ::word}
+   0x04df {::tag ::fbld, ::args [::m], ::length 2}
+   0x05df {::tag ::fild, ::args [::m], ::length 2, ::type ::qword}
+   0x06df {::tag ::fbstp, ::args [::m], ::length 2}
+   0x07df {::tag ::fistp, ::args [::m], ::length 2, ::type ::qword}
    0x00f6 {::tag ::test, ::args [::r-or-m8 ::imm8], ::length 2}
    0x01f6 {::tag ::test, ::args [::r-or-m8 ::imm8], ::length 2}
    0x02f6 {::tag ::not, ::args [::r-or-m8], ::length 2}
@@ -405,7 +420,14 @@
 
 (def one-byte-ext-st
   {0xc0dd {::tag ::ffree, ::args [::st-only], ::length 2}
-   0xc4dd {::tag ::fucom, ::args [::st-only], ::length 2}})
+   0xc4dd {::tag ::fucom, ::args [::st-only], ::length 2}
+   0xc0de {::tag ::faddp, ::args [::st-only], ::length 2}
+   0xc1de {::tag ::fmulp, ::args [::st-only], ::length 2}
+   0xc4de {::tag ::fsubrp, ::args [::st-only], ::length 2}
+   0xc5de {::tag ::fsubp, ::args [::st-only], ::length 2}
+   0xc6de {::tag ::fdivrp, ::args [::st-only], ::length 2}
+   0xc7de {::tag ::fdivp, ::args [::st-only], ::length 2}
+   0xc0df {::tag ::ffreep, ::args [::st-only], ::length 2}})
 
 
 (def two-byte
@@ -450,7 +472,14 @@
    0xd8dc {::tag ::fnop, ::length 2}
    0xc8dd {::tag ::fnop, ::length 2}
    0xf0dd {::tag ::fnop, ::length 2}
-   0xf8dd {::tag ::fnop, ::length 2}})
+   0xf8dd {::tag ::fnop, ::length 2}
+   0xd0de {::tag ::fnop, ::length 2}
+   0xd9de {::tag ::fcompp, ::length 2}
+   0xc8df {::tag ::fnop, ::length 2}
+   0xd0df {::tag ::fnop, ::length 2}
+   0xd8df {::tag ::fnop, ::length 2}
+   0xe0df {::tag ::fnstsw, ::args [::r/ax], ::length 2}
+   0xf8df {::tag ::fnop, ::length 2}})
 
 
 (defn- word [bytes]
