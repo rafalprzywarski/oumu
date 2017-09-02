@@ -356,6 +356,11 @@
    0x05da {::tag ::fisubr, ::args [::m], ::length 2}
    0x06da {::tag ::fidiv, ::args [::m], ::length 2}
    0x07da {::tag ::fidivr, ::args [::m], ::length 2}
+   0x00db {::tag ::fild, ::args [::m], ::length 2}
+   0x02db {::tag ::fist, ::args [::m], ::length 2}
+   0x03db {::tag ::fistp, ::args [::m], ::length 2}
+   0x05db {::tag ::fld, ::args [::m], ::length 2}
+   0x07db {::tag ::fstp, ::args [::m], ::length 2}
    0x00f6 {::tag ::test, ::args [::r-or-m8 ::imm8], ::length 2}
    0x01f6 {::tag ::test, ::args [::r-or-m8 ::imm8], ::length 2}
    0x02f6 {::tag ::not, ::args [::r-or-m8], ::length 2}
@@ -413,7 +418,14 @@
    0xfdd9 {::tag ::fscale, ::length 2}
    0xfed9 {::tag ::fsin, ::length 2}
    0xffd9 {::tag ::fcos, ::length 2}
-   0xe9da {::tag ::fucompp, ::length 2}})
+   0xe9da {::tag ::fucompp, ::length 2}
+   0xe0db {::tag ::fneni, ::length 2}
+   0xe1db {::tag ::fndisi, ::length 2}
+   0xe2db {::tag ::fnclex, ::length 2}
+   0xe3db {::tag ::fninit, ::length 2}
+   0xe4db {::tag ::fnsetpm, ::length 2}
+   0xe5db {::tag ::frstpm, ::length 2}
+   0xf8db {::tag ::fnop, ::length 2}})
 
 
 (defn- word [bytes]
