@@ -524,7 +524,23 @@
    0x02010f {::tag ::lgdtw, ::args [::m], ::length 3}
    0x03010f {::tag ::lidtw, ::args [::m], ::length 3}
    0x04010f {::tag ::smsw, ::args [::r-or-m16], ::length 3}
-   0x06010f {::tag ::lmsw, ::args [::r-or-m16], ::length 3}})
+   0x06010f {::tag ::lmsw, ::args [::r-or-m16], ::length 3}
+   0x00900f {::tag ::seto, ::args [::r-or-m8], ::length 3, ::type ::byte}
+   0x00910f {::tag ::setno, ::args [::r-or-m8], ::length 3, ::type ::byte}
+   0x00920f {::tag ::setb, ::args [::r-or-m8], ::length 3, ::type ::byte}
+   0x00930f {::tag ::setnb, ::args [::r-or-m8], ::length 3, ::type ::byte}
+   0x00940f {::tag ::sete, ::args [::r-or-m8], ::length 3, ::type ::byte}
+   0x00950f {::tag ::setne, ::args [::r-or-m8], ::length 3, ::type ::byte}
+   0x00960f {::tag ::setbe, ::args [::r-or-m8], ::length 3, ::type ::byte}
+   0x00970f {::tag ::setnbe, ::args [::r-or-m8], ::length 3, ::type ::byte}
+   0x00980f {::tag ::sets, ::args [::r-or-m8], ::length 3, ::type ::byte}
+   0x00990f {::tag ::setns, ::args [::r-or-m8], ::length 3, ::type ::byte}
+   0x009a0f {::tag ::setp, ::args [::r-or-m8], ::length 3, ::type ::byte}
+   0x009b0f {::tag ::setnp, ::args [::r-or-m8], ::length 3, ::type ::byte}
+   0x009c0f {::tag ::setl, ::args [::r-or-m8], ::length 3, ::type ::byte}
+   0x009d0f {::tag ::setnl, ::args [::r-or-m8], ::length 3, ::type ::byte}
+   0x009e0f {::tag ::setle, ::args [::r-or-m8], ::length 3, ::type ::byte}
+   0x009f0f {::tag ::setnle, ::args [::r-or-m8], ::length 3, ::type ::byte}})
 
 
 (defn- word [bytes]
