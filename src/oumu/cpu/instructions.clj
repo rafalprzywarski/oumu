@@ -482,6 +482,15 @@
    0xf8df {::tag ::fnop, ::length 2}})
 
 
+(def two-byte-ext
+  {0x00000f {::tag ::sldt, ::args [::r-or-m16], ::length 3}
+   0x01000f {::tag ::str, ::args [::r-or-m16], ::length 3}
+   0x02000f {::tag ::lldt, ::args [::r-or-m16], ::length 3}
+   0x03000f {::tag ::ltr, ::args [::r-or-m16], ::length 3}
+   0x04000f {::tag ::verr, ::args [::r-or-m16], ::length 3}
+   0x05000f {::tag ::verw, ::args [::r-or-m16], ::length 3}})
+
+
 (defn- word [bytes]
   (+ (first bytes) (bit-shift-left (second bytes) 8)))
 
@@ -557,8 +566,8 @@
     nil))
 
 
-(defn- decode-instr-arg [instr n bytes]
-  (if-let [arg (decode-arg (get (::args instr) n) (second bytes) (drop (::length instr) bytes))]
+(defn- decode-instr-arg [instr modrm n bytes]
+  (if-let [arg (decode-arg (get (::args instr) n) modrm (drop (::length instr) bytes))]
     (update (assoc-in instr [::args n] (arg 0)) ::length #(+ % (arg 1)))
     instr))
 
@@ -566,6 +575,12 @@
 (defn- ext-opcode [bytes]
   (bit-or (first bytes)
           (bit-and 0x0700 (bit-shift-left (second bytes) 5))))
+
+
+(defn- ext2-opcode [bytes]
+  (bit-or (first bytes)
+          (bit-shift-left (second bytes) 8)
+          (bit-and 0x070000 (bit-shift-left (second (next bytes)) 13))))
 
 
 (defn- ext-opcode-st [bytes]
@@ -577,12 +592,14 @@
 (defn decode [bytes]
   (when-let [instr (or (one-byte (first bytes))
                        (two-byte (word bytes))
+                       (two-byte-ext (ext2-opcode bytes))
                        (one-byte-ext-st (ext-opcode-st bytes))
                        (one-byte-ext (ext-opcode bytes)))]
-    (let [instr (decode-instr-arg instr 0 bytes)
-          instr (decode-instr-arg instr 1 bytes)
-          instr (decode-instr-arg instr 2 bytes)
-          instr (decode-instr-arg instr 3 bytes)
+    (let [modrm (nth bytes (dec (::length instr)))
+          instr (decode-instr-arg instr modrm 0 bytes)
+          instr (decode-instr-arg instr modrm 1 bytes)
+          instr (decode-instr-arg instr modrm 2 bytes)
+          instr (decode-instr-arg instr modrm 3 bytes)
           instr (if (not-any? vector? (::args instr)) (dissoc instr ::type) instr)]
       (if (not-any? #(= ::invalid %) (::args instr))
         instr))))
