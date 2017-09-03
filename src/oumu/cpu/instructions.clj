@@ -445,6 +445,22 @@
    0x210f {::tag ::mov, ::args [::r32-only ::dr-only], ::length 3}
    0x220f {::tag ::mov, ::args [::cr-only ::r32-only], ::length 3}
    0x230f {::tag ::mov, ::args [::dr-only ::r32-only], ::length 3}
+   0x800f {::tag ::jo, ::args [::rel16], ::length 2}
+   0x810f {::tag ::jno, ::args [::rel16], ::length 2}
+   0x820f {::tag ::jb, ::args [::rel16], ::length 2}
+   0x830f {::tag ::jnb, ::args [::rel16], ::length 2}
+   0x840f {::tag ::je, ::args [::rel16], ::length 2}
+   0x850f {::tag ::jne, ::args [::rel16], ::length 2}
+   0x860f {::tag ::jbe, ::args [::rel16], ::length 2}
+   0x870f {::tag ::jnbe, ::args [::rel16], ::length 2}
+   0x880f {::tag ::js, ::args [::rel16], ::length 2}
+   0x890f {::tag ::jns, ::args [::rel16], ::length 2}
+   0x8a0f {::tag ::jp, ::args [::rel16], ::length 2}
+   0x8b0f {::tag ::jnp, ::args [::rel16], ::length 2}
+   0x8c0f {::tag ::jl, ::args [::rel16], ::length 2}
+   0x8d0f {::tag ::jnl, ::args [::rel16], ::length 2}
+   0x8e0f {::tag ::jle, ::args [::rel16], ::length 2}
+   0x8f0f {::tag ::jnle, ::args [::rel16], ::length 2}
    0xd0d9 {::tag ::fnop, ::length 2}
    0xd8d9 {::tag ::fnop, ::length 2}
    0xe0d9 {::tag ::fchs, ::length 2}
