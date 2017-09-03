@@ -5,9 +5,15 @@
 
 (def regs16 [::r/ax ::r/cx ::r/dx ::r/bx ::r/sp ::r/bp ::r/si ::r/di])
 
+(def regs32 [::r/eax ::r/ecx ::r/edx ::r/ebx ::r/esp ::r/ebp ::r/esi ::r/edi])
+
 (def sregs [::r/es ::r/cs ::r/ss ::r/ds ::r/fs ::r/gs ::invalid ::invalid])
 
 (def fregs [::r/st0 ::r/st1 ::r/st2 ::r/st3 ::r/st4 ::r/st5 ::r/st6 ::r/st7])
+
+(def cregs [::r/cr0 ::invalid ::r/cr2 ::r/cr3 ::r/cr4 ::invalid ::invalid ::invalid])
+
+(def dregs [::r/dr0 ::r/dr1 ::r/dr2 ::r/dr3 ::r/dr4 ::r/dr5 ::r/dr6 ::r/dr7])
 
 (def memr [[::r/bx ::r/si]
            [::r/bx ::r/di]
@@ -435,6 +441,10 @@
    0x030f {::tag ::lsl, ::args [::r16 ::r-or-m16], ::length 3}
    0x060f {::tag ::clts, ::length 2}
    0x0b0f {::tag ::ud2, ::length 2}
+   0x200f {::tag ::mov, ::args [::r32-only ::cr-only], ::length 3}
+   0x210f {::tag ::mov, ::args [::r32-only ::dr-only], ::length 3}
+   0x220f {::tag ::mov, ::args [::cr-only ::r32-only], ::length 3}
+   0x230f {::tag ::mov, ::args [::dr-only ::r32-only], ::length 3}
    0xd0d9 {::tag ::fnop, ::length 2}
    0xd8d9 {::tag ::fnop, ::length 2}
    0xe0d9 {::tag ::fchs, ::length 2}
@@ -548,9 +558,9 @@
     (decode-m modrm bytes)))
 
 
-(defn- decode-st-only [modrm bytes]
+(defn- decode-r-only [regs offset modrm bytes]
   [(if (= 0xc0 (bit-and 0xc0 modrm))
-     (decode-reg fregs 0 modrm)
+     (decode-reg regs offset modrm)
      ::invalid)
    0])
 
@@ -561,6 +571,7 @@
     ::r-or-m8 (decode-r-or-m regs8 modrm bytes)
     ::r16 [(decode-reg regs16 3 modrm) 0]
     ::r-or-m16 (decode-r-or-m regs16 modrm bytes)
+    ::r32-only [(decode-reg regs32 0 modrm) 0]
     ::m (decode-m modrm bytes)
     ::imm8 [(first bytes) 1]
     ::rel8 [(signed-byte (first bytes)) 1]
@@ -572,7 +583,9 @@
     ::far-addr16 [{::seg (word (drop 2 bytes)) ::off (word bytes)} 4]
     ::st-or-m32real (decode-r-or-m fregs modrm bytes)
     ::st-or-m64real (decode-r-or-m fregs modrm bytes)
-    ::st-only (decode-st-only modrm bytes)
+    ::st-only (decode-r-only fregs 0 modrm bytes)
+    ::cr-only (decode-r-only cregs 3 modrm bytes)
+    ::dr-only (decode-r-only dregs 3 modrm bytes)
     nil))
 
 
