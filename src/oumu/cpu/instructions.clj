@@ -455,6 +455,10 @@
    0x870f {::tag ::jnbe, ::args [::rel16], ::length 2}
    0x880f {::tag ::js, ::args [::rel16], ::length 2}
    0x890f {::tag ::jns, ::args [::rel16], ::length 2}
+   0xa00f {::tag ::push, ::args [::r/fs], ::length 2}
+   0xa10f {::tag ::pop, ::args [::r/fs], ::length 2}
+   0xa80f {::tag ::push, ::args [::r/gs], ::length 2}
+   0xa90f {::tag ::pop, ::args [::r/gs], ::length 2}
    0x8a0f {::tag ::jp, ::args [::rel16], ::length 2}
    0x8b0f {::tag ::jnp, ::args [::rel16], ::length 2}
    0x8c0f {::tag ::jl, ::args [::rel16], ::length 2}
