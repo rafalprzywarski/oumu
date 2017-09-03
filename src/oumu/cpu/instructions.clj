@@ -431,7 +431,9 @@
 
 
 (def two-byte
-  {0xd0d9 {::tag ::fnop, ::length 2}
+  {0x020f {::tag ::lar, ::args [::r16 ::r-or-m16], ::length 3}
+   0x030f {::tag ::lsl, ::args [::r16 ::r-or-m16], ::length 3}
+   0xd0d9 {::tag ::fnop, ::length 2}
    0xd8d9 {::tag ::fnop, ::length 2}
    0xe0d9 {::tag ::fchs, ::length 2}
    0xe1d9 {::tag ::fabs, ::length 2}
