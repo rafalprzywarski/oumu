@@ -459,6 +459,7 @@
    0xa10f {::tag ::pop, ::args [::r/fs], ::length 2}
    0xa80f {::tag ::push, ::args [::r/gs], ::length 2}
    0xa90f {::tag ::pop, ::args [::r/gs], ::length 2}
+   0xaa0f {::tag ::rsm, ::length 2}
    0x8a0f {::tag ::jp, ::args [::rel16], ::length 2}
    0x8b0f {::tag ::jnp, ::args [::rel16], ::length 2}
    0x8c0f {::tag ::jl, ::args [::rel16], ::length 2}
