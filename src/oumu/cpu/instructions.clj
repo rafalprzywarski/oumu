@@ -462,6 +462,7 @@
    0xa90f {::tag ::pop, ::args [::r/gs], ::length 2}
    0xaa0f {::tag ::rsm, ::length 2}
    0xab0f {::tag ::bts, ::args [::r-or-m16 ::r16], ::length 3}
+   0xb30f {::tag ::btr, ::args [::r-or-m16 ::r16], ::length 3}
    0x8a0f {::tag ::jp, ::args [::rel16], ::length 2}
    0x8b0f {::tag ::jnp, ::args [::rel16], ::length 2}
    0x8c0f {::tag ::jl, ::args [::rel16], ::length 2}
