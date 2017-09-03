@@ -488,7 +488,13 @@
    0x02000f {::tag ::lldt, ::args [::r-or-m16], ::length 3}
    0x03000f {::tag ::ltr, ::args [::r-or-m16], ::length 3}
    0x04000f {::tag ::verr, ::args [::r-or-m16], ::length 3}
-   0x05000f {::tag ::verw, ::args [::r-or-m16], ::length 3}})
+   0x05000f {::tag ::verw, ::args [::r-or-m16], ::length 3}
+   0x00010f {::tag ::sgdtw, ::args [::m], ::length 3}
+   0x01010f {::tag ::sidtw, ::args [::m], ::length 3}
+   0x02010f {::tag ::lgdtw, ::args [::m], ::length 3}
+   0x03010f {::tag ::lidtw, ::args [::m], ::length 3}
+   0x04010f {::tag ::smsw, ::args [::r-or-m16], ::length 3}
+   0x06010f {::tag ::lmsw, ::args [::r-or-m16], ::length 3}})
 
 
 (defn- word [bytes]
