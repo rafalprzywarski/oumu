@@ -4191,6 +4191,7 @@
   {[0x06] {::i/tag ::i/push, ::i/args [::r/es]}
    [0x07] {::i/tag ::i/pop, ::i/args [::r/es]}
    [0x0e] {::i/tag ::i/push, ::i/args [::r/cs]}
+   [0x0f 0x06] {::i/tag ::i/clts}
    [0x16] {::i/tag ::i/push, ::i/args [::r/ss]}
    [0x17] {::i/tag ::i/pop, ::i/args [::r/ss]}
    [0x1e] {::i/tag ::i/push, ::i/args [::r/ds]}
