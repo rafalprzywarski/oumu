@@ -458,6 +458,7 @@
    0xa00f {::tag ::push, ::args [::r/fs], ::length 2}
    0xa10f {::tag ::pop, ::args [::r/fs], ::length 2}
    0xa30f {::tag ::bt, ::args [::r-or-m16 ::r16], ::length 3}
+   0xa40f {::tag ::shld, ::args [::r-or-m16 ::r16 ::imm8], ::length 3}
    0xa50f {::tag ::shld, ::args [::r-or-m16 ::r16 ::r/cl], ::length 3}
    0xa80f {::tag ::push, ::args [::r/gs], ::length 2}
    0xa90f {::tag ::pop, ::args [::r/gs], ::length 2}
