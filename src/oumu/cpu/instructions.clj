@@ -472,6 +472,8 @@
    0xb40f {::tag ::lfs, ::args [::r16 ::m], ::length 3}
    0xb50f {::tag ::lgs, ::args [::r16 ::m], ::length 3}
    0xbb0f {::tag ::btc, ::args [::r-or-m16 ::r16], ::length 3}
+   0xbc0f {::tag ::bsf, ::args [::r16 ::r-or-m16], ::length 3}
+   0xbd0f {::tag ::bsr, ::args [::r16 ::r-or-m16], ::length 3}
    0x8a0f {::tag ::jp, ::args [::rel16], ::length 2}
    0x8b0f {::tag ::jnp, ::args [::rel16], ::length 2}
    0x8c0f {::tag ::jl, ::args [::rel16], ::length 2}
