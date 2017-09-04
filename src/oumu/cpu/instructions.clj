@@ -467,6 +467,7 @@
    0xac0f {::tag ::shrd, ::args [::r-or-m16 ::r16 ::imm8], ::length 3}
    0xad0f {::tag ::shrd, ::args [::r-or-m16 ::r16 ::r/cl], ::length 3}
    0xaf0f {::tag ::imul, ::args [::r16 ::r-or-m16], ::length 3}
+   0xb20f {::tag ::lss, ::args [::r16 ::m], ::length 3}
    0xb30f {::tag ::btr, ::args [::r-or-m16 ::r16], ::length 3}
    0xb40f {::tag ::lfs, ::args [::r16 ::m], ::length 3}
    0xb50f {::tag ::lgs, ::args [::r16 ::m], ::length 3}
