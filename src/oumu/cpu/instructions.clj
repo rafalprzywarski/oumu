@@ -471,6 +471,8 @@
    0xb30f {::tag ::btr, ::args [::r-or-m16 ::r16], ::length 3}
    0xb40f {::tag ::lfs, ::args [::r16 ::m], ::length 3}
    0xb50f {::tag ::lgs, ::args [::r16 ::m], ::length 3}
+   0xb60f {::tag ::movzx, ::args [::r16 ::r-or-m8], ::length 3, ::type ::byte}
+   0xb70f {::tag ::movzx, ::args [::r16 ::r-or-m16], ::length 3, ::type ::word}
    0xbb0f {::tag ::btc, ::args [::r-or-m16 ::r16], ::length 3}
    0xbc0f {::tag ::bsf, ::args [::r16 ::r-or-m16], ::length 3}
    0xbd0f {::tag ::bsr, ::args [::r16 ::r-or-m16], ::length 3}
