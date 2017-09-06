@@ -563,7 +563,11 @@
    0x009c0f {::tag ::setl, ::args [::r-or-m8], ::length 3, ::type ::byte}
    0x009d0f {::tag ::setnl, ::args [::r-or-m8], ::length 3, ::type ::byte}
    0x009e0f {::tag ::setle, ::args [::r-or-m8], ::length 3, ::type ::byte}
-   0x009f0f {::tag ::setnle, ::args [::r-or-m8], ::length 3, ::type ::byte}})
+   0x009f0f {::tag ::setnle, ::args [::r-or-m8], ::length 3, ::type ::byte}
+   0x04ba0f {::tag ::bt, ::args [::r-or-m16 ::imm8], ::length 3}
+   0x05ba0f {::tag ::bts, ::args [::r-or-m16 ::imm8], ::length 3}
+   0x06ba0f {::tag ::btr, ::args [::r-or-m16 ::imm8], ::length 3}
+   0x07ba0f {::tag ::btc, ::args [::r-or-m16 ::imm8], ::length 3}})
 
 
 (defn- word [bytes]
