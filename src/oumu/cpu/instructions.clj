@@ -571,7 +571,7 @@
 
 
 (defn- word [bytes]
-  (+ (first bytes) (bit-shift-left (second bytes) 8)))
+  (+ (nth bytes 0) (bit-shift-left (nth bytes 1) 8)))
 
 (defn signed-byte [v]
   (if (< 0x7f v) (- v 0x100) v))
@@ -602,7 +602,7 @@
     (case mod
       0x00 (let [mr (decode-memr modrm)]
              (if (= mr ::ptr16) [[(word bytes)] 2] [mr 0]))
-      0x40 (let [d (signed-byte (first bytes))
+      0x40 (let [d (signed-byte (nth bytes 0))
                  ptr (decode-memrd modrm)]
              [(conj-not-zero ptr d) 1])
       0x80 (let [d (signed-word (word bytes))
@@ -632,10 +632,10 @@
     ::r-or-m16 (decode-r-or-m regs16 modrm bytes)
     ::r32-only [(decode-reg regs32 0 modrm) 0]
     ::m (decode-m modrm bytes)
-    ::imm8 [(first bytes) 1]
-    ::rel8 [(signed-byte (first bytes)) 1]
+    ::imm8 [(nth bytes 0) 1]
+    ::rel8 [(signed-byte (nth bytes 0)) 1]
     ::imm16 [(word bytes) 2]
-    ::imm8e [(byte-to-word (first bytes)) 1]
+    ::imm8e [(byte-to-word (nth bytes 0)) 1]
     ::rel16 [(signed-word (word bytes)) 2]
     ::sreg [(decode-reg sregs 3 modrm) 0]
     ::ptr16 [[(word bytes)] 2]
@@ -655,33 +655,38 @@
 
 
 (defn- ext-opcode [bytes]
-  (bit-or (first bytes)
-          (bit-and 0x0700 (bit-shift-left (second bytes) 5))))
+  (bit-or (nth bytes 0)
+          (bit-and 0x0700 (bit-shift-left (nth bytes 1) 5))))
 
 
 (defn- ext2-opcode [bytes]
-  (bit-or (first bytes)
-          (bit-shift-left (second bytes) 8)
-          (bit-and 0x070000 (bit-shift-left (second (next bytes)) 13))))
+  (bit-or (nth bytes 0)
+          (bit-shift-left (nth bytes 1) 8)
+          (bit-and 0x070000 (bit-shift-left (nth bytes 2) 13))))
 
 
 (defn- ext-opcode-st [bytes]
-  (bit-or (first bytes)
+  (bit-or (nth bytes 0)
           (bit-and 0x0700 (bit-shift-left (second bytes) 5))
           (bit-and 0xc000 (bit-shift-left (second bytes) 8))))
 
 
 (defn decode [bytes]
   (when-let [instr (or (one-byte (first bytes))
-                       (two-byte (word bytes))
-                       (two-byte-ext (ext2-opcode bytes))
-                       (one-byte-ext-st (ext-opcode-st bytes))
-                       (one-byte-ext (ext-opcode bytes)))]
-    (let [modrm (nth bytes (dec (::length instr)))
-          instr (decode-instr-arg instr modrm 0 bytes)
-          instr (decode-instr-arg instr modrm 1 bytes)
-          instr (decode-instr-arg instr modrm 2 bytes)
-          instr (decode-instr-arg instr modrm 3 bytes)
-          instr (if (not-any? vector? (::args instr)) (dissoc instr ::type) instr)]
-      (if (not-any? #(= ::invalid %) (::args instr))
-        instr))))
+                       (when (contains? bytes 1)
+                         (or (two-byte (word bytes))
+                             (when (contains? bytes 2)
+                               (two-byte-ext (ext2-opcode bytes)))
+                             (one-byte-ext-st (ext-opcode-st bytes))
+                             (one-byte-ext (ext-opcode bytes)))))]
+    (try
+      (let [modrm (nth bytes (dec (::length instr)))
+            instr (decode-instr-arg instr modrm 0 bytes)
+            instr (decode-instr-arg instr modrm 1 bytes)
+            instr (decode-instr-arg instr modrm 2 bytes)
+            instr (decode-instr-arg instr modrm 3 bytes)
+            instr (if (not-any? vector? (::args instr)) (dissoc instr ::type) instr)]
+        (if (not-any? #(= ::invalid %) (::args instr))
+          instr))
+      (catch IndexOutOfBoundsException e
+        nil))))

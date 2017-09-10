@@ -47282,7 +47282,16 @@
 
 
 (deftest decode-test
-  (doseq [br (sort-by (comp ::i/tag second) all-decode-examples)]
-    (let [expected (when (br 1) (assoc (br 1) ::i/length (count (br 0))))
-          bytes (conj (br 0) 0xff 0x00 0xff)]
-      (is (= expected (decode bytes)) (mapv #(format "%02x" %) (br 0))))))
+  (let [test (fn [instr bytes]
+               (is (= instr (decode bytes)) (mapv #(format "%02x" %) bytes)))]
+    (doseq [[bytes instr] (sort-by (comp ::i/tag second) all-decode-examples)]
+      (let [instr (when instr
+                    (assoc instr ::i/length (count bytes)))]
+        (test instr (conj bytes 0xff 0x00 0xff))
+        (test instr (conj bytes 0xff 0x00))
+        (test instr (conj bytes 0xff))
+        (test instr bytes)
+        (doseq [len (range 1 (count bytes))]
+          (test nil (subvec bytes 0 len)))))
+    (test nil [])
+    (test nil nil)))
