@@ -5141,7 +5141,6 @@
    [0xed] {::i/tag ::i/in, ::i/args [::r/ax ::r/dx]}
    [0xee] {::i/tag ::i/out, ::i/args [::r/dx ::r/al]}
    [0xef] {::i/tag ::i/out, ::i/args [::r/dx ::r/ax]}
-   [0xf0] nil
    [0xf1] {::i/tag ::i/icebp}
    [0xf4] {::i/tag ::i/hlt}
    [0xf5] {::i/tag ::i/cmc}
@@ -47247,17 +47246,9 @@
 
 
 (defn find-gaps []
-  (let [later [0x0f 0x26 0x2e 0x36 0x3e 0x64 0x65 0x66 0x67 0xf2 0xf3]
-        used (set (concat (map first (keys all-decode-examples)) later (map #(vector (first %) (second %)) (keys all-decode-examples))))]
+  (let [used (set (concat (map first (keys all-decode-examples)) (map #(vector (first %) (second %)) (keys all-decode-examples))))]
     (concat (mapv #(format "%02x" %) (filter #(not (used %)) (range 256)))
             (mapv #(format "%02x %02x" (first %) (second %)) (filter #(not (used %)) (map #(vector 0x0f %) (range 256)))))))
-
-
-(defn first-examples [examples]
-  (sort-by first
-           (vals (reduce #(assoc %1 (first %2) %2)
-                         {}
-                         (reverse (sort (keys all-decode-examples)))))))
 
 
 (deftest signed-byte-test
