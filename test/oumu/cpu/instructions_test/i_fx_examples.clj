@@ -1,4 +1,4 @@
-(ns oumu.cpu.instructions-test.ifx-examples
+(ns oumu.cpu.instructions-test.i-fx-examples
     (:require [oumu.cpu.instructions :as i]
               [oumu.cpu.registers :as r]))
 

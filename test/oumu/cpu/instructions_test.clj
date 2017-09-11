@@ -7,18 +7,18 @@
             [oumu.cpu.instructions-test.simple-examples :refer :all]
             [oumu.cpu.instructions-test.bound-examples :refer :all]
             [oumu.cpu.instructions-test.arpl-examples :refer :all]
-            [oumu.cpu.instructions-test.i8x-examples :refer :all]
+            [oumu.cpu.instructions-test.i-8x-examples :refer :all]
             [oumu.cpu.instructions-test.x87-examples :refer :all]
-            [oumu.cpu.instructions-test.idx-examples :refer :all]
+            [oumu.cpu.instructions-test.i-dx-examples :refer :all]
             [oumu.cpu.instructions-test.test-examples :refer :all]
             [oumu.cpu.instructions-test.xchg-examples :refer :all]
             [oumu.cpu.instructions-test.mov-examples :refer :all]
             [oumu.cpu.instructions-test.lea-examples :refer :all]
             [oumu.cpu.instructions-test.pop-examples :refer :all]
-            [oumu.cpu.instructions-test.icx-examples :refer :all]
+            [oumu.cpu.instructions-test.i-cx-examples :refer :all]
             [oumu.cpu.instructions-test.les-examples :refer :all]
             [oumu.cpu.instructions-test.lds-examples :refer :all]
-            [oumu.cpu.instructions-test.ifx-examples :refer :all]
+            [oumu.cpu.instructions-test.i-fx-examples :refer :all]
             [oumu.cpu.instructions-test.i-fe-examples :refer :all]))
 
 
