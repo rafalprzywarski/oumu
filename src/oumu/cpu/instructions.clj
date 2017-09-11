@@ -671,22 +671,28 @@
           (bit-and 0xc000 (bit-shift-left (second bytes) 8))))
 
 
+(defn decode-instr [bytes]
+  (or (one-byte (first bytes))
+      (when (contains? bytes 1)
+        (or (two-byte (word bytes))
+            (when (contains? bytes 2)
+              (two-byte-ext (ext2-opcode bytes)))
+            (one-byte-ext-st (ext-opcode-st bytes))
+            (one-byte-ext (ext-opcode bytes))))))
+
+(defn decode-args [instr bytes]
+  (try
+    (let [modrm (nth bytes (dec (::length instr)))
+          instr (decode-instr-arg instr modrm 0 bytes)
+          instr (decode-instr-arg instr modrm 1 bytes)
+          instr (decode-instr-arg instr modrm 2 bytes)
+          instr (decode-instr-arg instr modrm 3 bytes)
+          instr (if (not-any? vector? (::args instr)) (dissoc instr ::type) instr)]
+      (if (not-any? #(= ::invalid %) (::args instr))
+        instr))
+    (catch IndexOutOfBoundsException e
+      nil)))
+
 (defn decode [bytes]
-  (when-let [instr (or (one-byte (first bytes))
-                       (when (contains? bytes 1)
-                         (or (two-byte (word bytes))
-                             (when (contains? bytes 2)
-                               (two-byte-ext (ext2-opcode bytes)))
-                             (one-byte-ext-st (ext-opcode-st bytes))
-                             (one-byte-ext (ext-opcode bytes)))))]
-    (try
-      (let [modrm (nth bytes (dec (::length instr)))
-            instr (decode-instr-arg instr modrm 0 bytes)
-            instr (decode-instr-arg instr modrm 1 bytes)
-            instr (decode-instr-arg instr modrm 2 bytes)
-            instr (decode-instr-arg instr modrm 3 bytes)
-            instr (if (not-any? vector? (::args instr)) (dissoc instr ::type) instr)]
-        (if (not-any? #(= ::invalid %) (::args instr))
-          instr))
-      (catch IndexOutOfBoundsException e
-        nil))))
+  (when-let [instr (decode-instr bytes)]
+    (decode-args instr bytes)))
