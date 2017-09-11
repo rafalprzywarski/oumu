@@ -649,8 +649,8 @@
 
 
 (defn- decode-instr-arg [instr modrm n bytes]
-  (if-let [arg (decode-arg (get (::args instr) n) modrm (drop (::length instr) bytes))]
-    (update (assoc-in instr [::args n] (arg 0)) ::length #(+ % (arg 1)))
+  (if-let [[arg arg-len] (decode-arg (get (::args instr) n) modrm (drop (::length instr) bytes))]
+    (update (assoc-in instr [::args n] arg) ::length #(+ % arg-len))
     instr))
 
 
