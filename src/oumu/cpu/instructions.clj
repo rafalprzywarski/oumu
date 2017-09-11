@@ -694,5 +694,6 @@
       nil)))
 
 (defn decode [bytes]
+  {:pre (vector? bytes)}
   (when-let [instr (decode-instr bytes)]
     (decode-args instr bytes)))

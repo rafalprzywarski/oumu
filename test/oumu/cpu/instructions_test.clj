@@ -146,5 +146,4 @@
         (test instr bytes)
         (doseq [len (range 1 (count bytes))]
           (test nil (subvec bytes 0 len)))))
-    (test nil [])
-    (test nil nil)))
+    (test nil [])))
